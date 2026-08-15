@@ -87,6 +87,7 @@ body.dark .panel{box-shadow:0 18px 46px rgba(0,0,0,.28), inset 0 1px 0 rgba(255,
 .navRight{display:flex;align-items:center;gap:6px}
 .navBtn{width:38px;height:38px;border-radius:12px;border:1px solid var(--edge);background:var(--panel);color:var(--text);display:grid;place-items:center;transition:.2s}
 .navBtn:hover{background:var(--panel-strong)}
+.navBtn svg{width:17px;height:17px}
 .theme{position:relative;overflow:hidden}
 .theme div{position:absolute;inset:0;display:grid;place-items:center;transition:.4s}
 .theme .moon{opacity:0;transform:translateY(10px)}
@@ -104,6 +105,7 @@ section{padding:130px 0}
 .heroText p{color:var(--muted);font-size:16px;line-height:1.75;margin:24px 0 32px;max-width:520px}
 .actions{display:flex;flex-wrap:wrap;gap:10px}
 .btn{min-height:48px;padding:0 20px;display:inline-flex;align-items:center;justify-content:center;gap:8px;border-radius:16px;font-size:13px;font-weight:600;transition:transform .3s cubic-bezier(.2,.8,.2,1),background .25s,border-color .25s}
+.btn svg{width:15px;height:15px}
 .btn.panel:hover{transform:translateY(-2px);border-color:var(--edge-strong)}
 .btn.primary{color:#fff;border:0;background:linear-gradient(135deg,var(--blue),var(--purple));box-shadow:0 14px 34px rgba(58,168,255,.3)}
 .btn.primary:hover{transform:translateY(-3px);box-shadow:0 20px 44px rgba(58,168,255,.38)}
@@ -130,7 +132,7 @@ section{padding:130px 0}
 .marqueeTrack{display:flex;gap:18px;width:max-content;animation:scrollMarquee 35s linear infinite}
 .marqueeTrack:hover{animation-play-state:paused}
 @keyframes scrollMarquee{to{transform:translateX(-50%)}}
-.marqueeItem{display:flex;align-items:center;gap:10px;padding:12px 22px;border-radius:18px;background:var(--panel-strong);border:1px solid var(--edge-strong);font-size:13px;font-weight:600;color:var(--text);transition:all .3s}
+.marqueeItem{display:flex;align-items:center;gap:10px;padding:12px 22px;border-radius:18px;background:var(--panel-strong);border:1px solid var(--edge-strong);font-size:13px;font-weight:600;color:var(--text);transition:all .3s;flex:0 0 auto}
 .marqueeItem img{width:22px;height:22px;object-fit:contain;transition:transform .3s, opacity .3s, filter .3s;opacity:.85;filter:grayscale(100%)}
 body.dark .marqueeItem img{filter:grayscale(100%) brightness(1.2);opacity:.85}
 .marqueeItem:hover{background:var(--panel);border-color:var(--edge-strong);transform:translateY(-2px)}
@@ -170,7 +172,8 @@ body.dark .marqueeItem:hover img{transform:scale(1.1);opacity:1;filter:grayscale
 .filmEnd{flex:0 0 auto;width:260px;scroll-snap-align:start;border-radius:26px;display:flex;flex-direction:column;justify-content:center;padding:26px;min-height:230px}
 .filmEnd h3{font:700 22px "Space Grotesk"}
 .filmEnd p{margin-top:8px;color:var(--muted);font-size:12px;line-height:1.7}
-.filmEnd a{margin-top:16px;color:var(--cyan);font-size:12px;font-weight:600}
+.filmEnd a{margin-top:16px;color:var(--cyan);font-size:12px;font-weight:600;display:inline-flex;align-items:center;gap:6px}
+.filmEnd a svg{width:13px;height:13px}
 
 .webFeature{display:grid;grid-template-columns:1fr 1fr;gap:8px;border-radius:32px;overflow:hidden}
 .browser{min-height:420px;border-radius:24px;margin:8px;overflow:hidden;position:relative;background:#0a0d14;border:1px solid var(--edge)}
@@ -210,7 +213,8 @@ body.dark .marqueeItem:hover img{transform:scale(1.1);opacity:1;filter:grayscale
 
 .services{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
 .service{padding:30px;border-radius:26px}
-.serviceIcon{width:42px;height:42px;display:grid;place-items:center;border-radius:14px;background:rgba(99,230,212,.08);border:1px solid rgba(99,230,212,.16);color:var(--cyan);margin-bottom:20px;font-size:18px}
+.serviceIcon{width:42px;height:42px;display:grid;place-items:center;border-radius:14px;background:rgba(99,230,212,.08);border:1px solid rgba(99,230,212,.16);color:var(--cyan);margin-bottom:20px}
+.serviceIcon svg{width:20px;height:20px}
 .service h3{font:700 18px "Space Grotesk";margin-bottom:9px}
 .service p{color:var(--muted);font-size:12px;line-height:1.75}
 .skills{display:flex;flex-wrap:wrap;gap:7px;margin-top:18px}
@@ -246,8 +250,9 @@ footer{padding:44px 0 60px;margin-top:20px}
 .musicTitle{font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .musicArtist{color:var(--muted);font-size:10px}
 .musicControls{display:flex;align-items:center;gap:6px}
-.musicBtn{width:32px;height:32px;border-radius:10px;background:var(--panel);border:1px solid var(--edge);display:grid;place-items:center;font-size:12px;transition:.2s}
+.musicBtn{width:32px;height:32px;border-radius:10px;background:var(--panel);border:1px solid var(--edge);display:grid;place-items:center;transition:.2s}
 .musicBtn:hover{background:var(--panel-strong)}
+.musicBtn svg{width:14px;height:14px}
 .eq{display:flex;align-items:flex-end;gap:2px;height:14px;width:14px}
 .eq span{width:3px;background:var(--cyan);border-radius:2px;animation:eqAnim 1.2s ease-in-out infinite alternate;transform-origin:bottom}
 .eq span:nth-child(2){animation-delay:.3s}
@@ -277,7 +282,8 @@ footer{padding:44px 0 60px;margin-top:20px}
 .overlay.open{opacity:1;visibility:visible}
 .dialog{width:min(760px,100%);max-height:88vh;overflow:auto;border-radius:28px;transform:scale(.97) translateY(10px);transition:.3s;position:relative}
 .overlay.open .dialog{transform:none}
-.close{position:absolute;right:14px;top:14px;z-index:3;width:36px;height:36px;border-radius:12px;color:#fff;background:rgba(0,0,0,.4);border:1px solid rgba(255,255,255,.14)}
+.close{position:absolute;right:14px;top:14px;z-index:3;width:36px;height:36px;border-radius:12px;color:#fff;background:rgba(0,0,0,.4);border:1px solid rgba(255,255,255,.14);display:grid;place-items:center}
+.close svg{width:16px;height:16px}
 .dialogImg{height:300px;overflow:hidden}
 .dialogImg img{width:100%;height:100%;object-fit:cover}
 .dialogBody{padding:30px}
@@ -286,15 +292,30 @@ footer{padding:44px 0 60px;margin-top:20px}
 .dialogActions{display:flex;gap:8px;margin-top:22px}
 .command{width:min(560px,100%);border-radius:24px;overflow:hidden}
 .cmdSearch{display:flex;align-items:center;gap:10px;padding:16px 18px;border-bottom:1px solid var(--edge)}
-.cmdSearch b{color:var(--cyan);font-size:13px}
+.cmdSearch svg{width:16px;height:16px;color:var(--cyan);flex-shrink:0}
 .cmdSearch input{width:100%;border:0;outline:0;background:transparent;color:var(--text);font-size:14px}
 .cmdList{padding:8px;max-height:400px;overflow:auto}
 .cmdItem{width:100%;display:flex;align-items:center;gap:12px;padding:12px;border-radius:12px;color:var(--muted);text-align:left;transition:.15s}
 .cmdItem:hover{background:var(--panel-strong);color:var(--text)}
 .cmdIcon{width:32px;height:32px;display:grid;place-items:center;border-radius:10px;background:var(--panel)}
+.cmdIcon svg{width:16px;height:16px}
+
+/* Command menu trigger — sized for a compact icon button, not oversized text */
+#commandButton{display:grid;place-items:center}
+#commandButton svg{width:16px;height:16px}
+#commandButton .kbdHint{display:none;margin-left:6px;font-size:10px;font-weight:600;letter-spacing:.3px;color:var(--muted)}
+/* Show the "⌘K" style text hint only where it's meaningful and there's room: pointer devices, wide viewports */
+@media (min-width:1040px) and (hover:hover) and (pointer:fine){
+  #commandButton{width:auto;padding:0 12px 0 10px;gap:6px}
+  #commandButton .kbdHint{display:inline}
+}
+/* Touch / coarse-pointer devices (phones, tablets) don't have a keyboard shortcut, so hide the trigger entirely */
+@media (hover:none), (pointer:coarse){
+  #commandButton{display:none}
+}
 
 @media(max-width:1000px){
-  .heroGrid{grid-template-columns:1fr;text-align:center}
+  .heroGrid{grid-template-columns:1fr}
   .heroText p{margin-left:auto;margin-right:auto}
   .actions{justify-content:center}
   .heroCard{min-height:420px}
@@ -336,8 +357,8 @@ footer{padding:44px 0 60px;margin-top:20px}
   <a href="#home" class="brand"><div class="brandmark"><img src="https://cdn.discordapp.com/avatars/1262288699606040628/d63491260b9cb4506b76b0bf41dcdb2d.webp?size=100" alt="Death"></div><div class="brandtext">Death <span>/ Developer</span></div></a>
   <div class="links"><a href="#work">Work</a><a href="#web">Web</a><a href="#experience">Experience</a><a href="#services">Services</a><a href="#contact">Contact</a></div>
   <div class="navRight">
-    <button class="navBtn" id="commandButton" title="Command menu">⌘K</button>
-    <button class="navBtn theme" id="themeButton"><div class="sun">☀</div><div class="moon">☾</div></button>
+    <button class="navBtn" id="commandButton" title="Command menu"><i data-lucide="command"></i><span class="kbdHint">⌘K</span></button>
+    <button class="navBtn theme" id="themeButton"><div class="sun"><i data-lucide="sun"></i></div><div class="moon"><i data-lucide="moon"></i></div></button>
   </div>
 </nav>
 </div>
@@ -348,7 +369,7 @@ footer{padding:44px 0 60px;margin-top:20px}
     <div class="heroText reveal">
       <h1>I build <span class="accent">digital worlds.</span></h1>
       <p>I'm <strong>Death</strong>, a Roblox and web developer focused on immersive environments, polished interfaces, and interactive systems and websites that feel completely custom.</p>
-      <div class="actions"><a class="btn primary" href="#work">Explore my work ↗</a><a class="btn panel" href="#contact">Start a project →</a><a class="btn panel" href="https://www.roblox.com/users/profile?username=DeathStrider114" target="_blank" rel="noopener">Roblox ↗</a></div>
+      <div class="actions"><a class="btn primary" href="#work">Explore my work <i data-lucide="arrow-up-right"></i></a><a class="btn panel" href="#contact">Start a project <i data-lucide="arrow-right"></i></a><a class="btn panel" href="https://www.roblox.com/users/profile?username=DeathStrider114" target="_blank" rel="noopener">Roblox <i data-lucide="arrow-up-right"></i></a></div>
     </div>
 
     <div class="heroCard" id="heroCard">
@@ -373,14 +394,7 @@ footer{padding:44px 0 60px;margin-top:20px}
 </section>
 
 <div class="marquee glass" aria-label="Tech stack marquee">
-  <div class="marqueeTrack">
-    <div class="marqueeItem"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" alt="JavaScript">JavaScript</div>
-    <div class="marqueeItem"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" alt="Python">Python</div>
-    <div class="marqueeItem"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/lua/lua-original.svg" alt="Luau">Luau</div>
-    <div class="marqueeItem"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" alt="HTML5">HTML5</div>
-    <div class="marqueeItem"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg" alt="CSS3">CSS3</div>
-    <div class="marqueeItem"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/blender/blender-original.svg" alt="Blender">3D Modelling</div>
-    <!-- Duplicated track for seamless loop -->
+  <div class="marqueeTrack" id="marqueeTrack">
     <div class="marqueeItem"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" alt="JavaScript">JavaScript</div>
     <div class="marqueeItem"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" alt="Python">Python</div>
     <div class="marqueeItem"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/lua/lua-original.svg" alt="Luau">Luau</div>
@@ -404,12 +418,12 @@ footer{padding:44px 0 60px;margin-top:20px}
 
   <div class="project featureRow panel tilt" data-category="web" data-title="Pond — ER:LC Portfolio" data-image="https://s6.imgcdn.dev/YXgBSn.jpg" data-description="A custom portfolio website designed and developed for Pond, combining a premium presentation with responsive layout and interactive frontend work." data-url="https://pondvx.vercel.app">
     <div class="featureMedia slide-left"><img src="https://s6.imgcdn.dev/YXgBSn.jpg" alt="Pond portfolio project" loading="lazy"></div>
-    <div class="featureBody slide-right"><h3>Pond — ER:LC Portfolio</h3><p>Designed and developed as a polished community portfolio experience, with custom motion and a distinct visual identity.</p><a class="btn primary openProject" href="#">View project ↗</a></div>
+    <div class="featureBody slide-right"><h3>Pond — ER:LC Portfolio</h3><p>Designed and developed as a polished community portfolio experience, with custom motion and a distinct visual identity.</p><a class="btn primary openProject" href="#">View project <i data-lucide="arrow-up-right"></i></a></div>
   </div>
 
   <div class="project featureRow rev panel tilt" data-category="web" data-title="Death.dev" data-image="https://s6.imgcdn.dev/YXgGeg.jpg" data-description="The evolving developer portfolio for Death, built to showcase Roblox, web and 3D work." data-url="https://death.itsjohan.dev">
     <div class="featureMedia slide-right"><img src="https://s6.imgcdn.dev/YXgGeg.jpg" alt="Death portfolio" loading="lazy"></div>
-    <div class="featureBody slide-left"><h3>Death.dev</h3><p>My own developer portfolio, continuously evolving alongside the rest of the work.</p><a class="btn primary openProject" href="#">View project ↗</a></div>
+    <div class="featureBody slide-left"><h3>Death.dev</h3><p>My own developer portfolio, continuously evolving alongside the rest of the work.</p><a class="btn primary openProject" href="#">View project <i data-lucide="arrow-up-right"></i></a></div>
   </div>
 
   <div class="filmstrip stagger">
@@ -425,7 +439,7 @@ footer{padding:44px 0 60px;margin-top:20px}
     <div class="filmItem project tilt scale-in" data-category="building" data-title="Large Environment" data-image="https://s6.imgcdn.dev/YXgAYB.jpg" data-description="Larger-scale environment work demonstrating scale, composition and detail.">
       <img src="https://s6.imgcdn.dev/YXgAYB.jpg" alt="Large environment" loading="lazy"><div class="filmCaption"><h4>Large Environment</h4><p>Large-scale worldbuilding with a focus on visual hierarchy.</p></div>
     </div>
-    <div class="filmEnd panel scale-in"><h3>Next project.</h3><p>The portfolio is designed to grow with the work.</p><a href="#contact">Start something ↗</a></div>
+    <div class="filmEnd panel scale-in"><h3>Next project.</h3><p>The portfolio is designed to grow with the work.</p><a href="#contact">Start something <i data-lucide="arrow-up-right"></i></a></div>
   </div>
 </section>
 <section id="web">
@@ -437,7 +451,7 @@ footer{padding:44px 0 60px;margin-top:20px}
     </div>
     <div class="webCopy slide-right"><h3>Pond's<br>portfolio.</h3><p>I designed and developed Pond's website as a complete frontend experience, with custom presentation, motion, responsive sections and a distinct visual identity.</p>
       <div class="featureGrid stagger"><div class="panel pop-in"><b>UI / UX</b>Visual hierarchy</div><div class="panel pop-in"><b>Frontend</b>HTML / CSS / JS</div><div class="panel pop-in"><b>Responsive</b>Desktop + mobile</div><div class="panel pop-in"><b>Interaction</b>Motion + states</div></div>
-      <div class="actions"><a href="https://pondvx.vercel.app" target="_blank" rel="noopener" class="btn primary">View live website ↗</a><a href="https://death.itsjohan.dev" target="_blank" rel="noopener" class="btn panel">My current site ↗</a></div>
+      <div class="actions"><a href="https://pondvx.vercel.app" target="_blank" rel="noopener" class="btn primary">View live website <i data-lucide="arrow-up-right"></i></a><a href="https://death.itsjohan.dev" target="_blank" rel="noopener" class="btn panel">My current site <i data-lucide="arrow-up-right"></i></a></div>
     </div>
   </div>
 </section>
@@ -454,9 +468,9 @@ footer{padding:44px 0 60px;margin-top:20px}
 <section id="services">
   <div class="sectionHead"><div><div class="kicker slide-left">Services</div><h2 class="title fade-up">More than one skill.</h2></div><p class="desc fade-up">Different projects need different strengths, so I keep the workflow broad.</p></div>
   <div class="services stagger">
-    <article class="service panel tilt rotate-in"><div class="serviceIcon">◈</div><h3>Roblox Development</h3><p>Gameplay-oriented development, systems, UI and world creation inside Roblox Studio.</p><div class="skills"><span class="skill panel">Roblox Studio</span><span class="skill panel">Luau</span><span class="skill panel">UI</span></div></article>
-    <article class="service panel tilt rotate-in"><div class="serviceIcon">⌘</div><h3>Web & JavaScript</h3><p>Modern responsive websites and apps with custom JavaScript interactions and styling.</p><div class="skills"><span class="skill panel">JavaScript</span><span class="skill panel">HTML5</span><span class="skill panel">CSS3</span></div></article>
-    <article class="service panel tilt rotate-in"><div class="serviceIcon">◇</div><h3>3D Building & Design</h3><p>Custom 3D environments, assets, and world design.</p><div class="skills"><span class="skill panel">3D Building</span><span class="skill panel">Modelling</span><span class="skill panel">Environment</span></div></article>
+    <article class="service panel tilt rotate-in"><div class="serviceIcon"><i data-lucide="gamepad-2"></i></div><h3>Roblox Development</h3><p>Gameplay-oriented development, systems, UI and world creation inside Roblox Studio.</p><div class="skills"><span class="skill panel">Roblox Studio</span><span class="skill panel">Luau</span><span class="skill panel">UI</span></div></article>
+    <article class="service panel tilt rotate-in"><div class="serviceIcon"><i data-lucide="code-2"></i></div><h3>Web & JavaScript</h3><p>Modern responsive websites and apps with custom JavaScript interactions and styling.</p><div class="skills"><span class="skill panel">JavaScript</span><span class="skill panel">HTML5</span><span class="skill panel">CSS3</span></div></article>
+    <article class="service panel tilt rotate-in"><div class="serviceIcon"><i data-lucide="box"></i></div><h3>3D Building & Design</h3><p>Custom 3D environments, assets, and world design.</p><div class="skills"><span class="skill panel">3D Building</span><span class="skill panel">Modelling</span><span class="skill panel">Environment</span></div></article>
   </div>
 </section>
 
@@ -477,37 +491,41 @@ footer{padding:44px 0 60px;margin-top:20px}
 </section>
 
 <section id="contact">
-  <div class="contact panel scale-in"><div class="contactInner"><div class="kicker">Start something</div><h2>Have an idea?<br>Let's make it real.</h2><p>Looking for a Roblox developer, builder, modeller or web developer? If the project matters, I'm interested.</p><div class="contactBtns"><a class="btn primary" href="https://www.roblox.com/users/profile?username=DeathStrider114" target="_blank" rel="noopener">Roblox Profile ↗</a><button class="btn panel" id="copyRoblox">Copy Roblox Username</button><button class="btn panel" id="openCommand2">Command Menu ⌘K</button></div></div></div>
+  <div class="contact panel scale-in"><div class="contactInner"><div class="kicker">Start something</div><h2>Have an idea?<br>Let's make it real.</h2><p>Looking for a Roblox developer, builder, modeller or web developer? If the project matters, I'm interested.</p><div class="contactBtns"><a class="btn primary" href="https://www.roblox.com/users/profile?username=DeathStrider114" target="_blank" rel="noopener">Roblox Profile <i data-lucide="arrow-up-right"></i></a><button class="btn panel" id="copyRoblox"><i data-lucide="copy"></i> Copy Roblox Username</button><button class="btn panel" id="openCommand2"><i data-lucide="command"></i> Command Menu</button></div></div></div>
 </section>
 
 </div>
 </main>
-<footer><div class="container"><div class="footer"><div><div class="footBrand">Death <span>/ Developer</span></div><div class="footSub">Roblox · Web · JavaScript · 3D Building</div></div><div class="footLinks"><a href="#home">Home</a><a href="#work">Work</a><a href="#web">Web</a><a href="#about">About</a><a href="https://www.roblox.com/users/profile?username=DeathStrider114" target="_blank">Roblox ↗</a></div></div></div></footer>
+<footer><div class="container"><div class="footer"><div><div class="footBrand">Death <span>/ Developer</span></div><div class="footSub">Roblox · Web · JavaScript · 3D Building</div></div><div class="footLinks"><a href="#home">Home</a><a href="#work">Work</a><a href="#web">Web</a><a href="#about">About</a><a href="https://www.roblox.com/users/profile?username=DeathStrider114" target="_blank">Roblox <i data-lucide="arrow-up-right"></i></a></div></div></div></footer>
 
 <div class="musicPlayer glass paused" id="musicPlayer">
   <div class="eq" id="eqAnimation"><span></span><span></span><span></span></div>
   <div class="musicInfo">
-    <div class="musicTitle" id="trackTitle">Select Song 1</div>
+    <div class="musicTitle" id="trackTitle">Select a track</div>
     <div class="musicArtist" id="trackArtist">Death Playlist</div>
   </div>
   <div class="musicControls">
-    <button class="musicBtn" id="prevTrack" title="Previous">⏮</button>
-    <button class="musicBtn" id="playPauseBtn" title="Play/Pause">▶</button>
-    <button class="musicBtn" id="nextTrack" title="Next">⏭</button>
+    <button class="musicBtn" id="prevTrack" title="Previous"><i data-lucide="skip-back"></i></button>
+    <button class="musicBtn" id="playPauseBtn" title="Play/Pause"><i data-lucide="play"></i></button>
+    <button class="musicBtn" id="nextTrack" title="Next"><i data-lucide="skip-forward"></i></button>
   </div>
 </div>
-<div class="overlay" id="projectOverlay"><div class="dialog glass"><button class="close" id="projectClose">×</button><div class="dialogImg"><img id="dialogImage" src="" alt=""></div><div class="dialogBody"><div class="kicker">Project</div><h3 id="dialogTitle"></h3><p id="dialogDescription"></p><div class="dialogActions"><a id="dialogLink" class="btn primary" href="#" target="_blank" rel="noopener">Open live project ↗</a><button class="btn panel" id="dialogClose">Close</button></div></div></div></div>
+<div class="overlay" id="projectOverlay"><div class="dialog glass"><button class="close" id="projectClose"><i data-lucide="x"></i></button><div class="dialogImg"><img id="dialogImage" src="" alt=""></div><div class="dialogBody"><div class="kicker">Project</div><h3 id="dialogTitle"></h3><p id="dialogDescription"></p><div class="dialogActions"><a id="dialogLink" class="btn primary" href="#" target="_blank" rel="noopener">Open live project <i data-lucide="arrow-up-right"></i></a><button class="btn panel" id="dialogClose">Close</button></div></div></div></div>
 
-<div class="overlay" id="commandOverlay"><div class="command glass"><div class="cmdSearch"><b>⌘</b><input id="commandInput" placeholder="Type a command… try work, web, theme, roblox" autocomplete="off"></div><div class="cmdList">
-<button class="cmdItem" data-command="work"><div class="cmdIcon">◈</div><div>View selected work</div></button>
-<button class="cmdItem" data-command="web"><div class="cmdIcon">⌘</div><div>Open web development</div></button>
-<button class="cmdItem" data-command="roblox"><div class="cmdIcon">◇</div><div>Open Roblox profile</div></button>
-<button class="cmdItem" data-command="theme"><div class="cmdIcon">☾</div><div>Toggle day / night</div></button>
-<button class="cmdItem" data-command="contact"><div class="cmdIcon">↗</div><div>Jump to contact</div></button>
+<div class="overlay" id="commandOverlay"><div class="command glass"><div class="cmdSearch"><i data-lucide="search"></i><input id="commandInput" placeholder="Type a command… try work, web, theme, roblox" autocomplete="off"></div><div class="cmdList">
+<button class="cmdItem" data-command="work"><div class="cmdIcon"><i data-lucide="layout-grid"></i></div><div>View selected work</div></button>
+<button class="cmdItem" data-command="web"><div class="cmdIcon"><i data-lucide="globe"></i></div><div>Open web development</div></button>
+<button class="cmdItem" data-command="roblox"><div class="cmdIcon"><i data-lucide="gamepad-2"></i></div><div>Open Roblox profile</div></button>
+<button class="cmdItem" data-command="theme"><div class="cmdIcon"><i data-lucide="moon"></i></div><div>Toggle day / night</div></button>
+<button class="cmdItem" data-command="contact"><div class="cmdIcon"><i data-lucide="arrow-up-right"></i></div><div>Jump to contact</div></button>
 </div></div></div>
 
+<script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
 <script>
 const $=s=>document.querySelector(s);const $$=s=>document.querySelectorAll(s);
+
+/* icons */
+if(window.lucide) lucide.createIcons();
 
 /* theme setup */
 function setTheme(theme){document.body.classList.toggle("dark",theme==="dark");localStorage.setItem("death-theme",theme)}
@@ -559,6 +577,41 @@ $$('[data-count]').forEach(e=>countObserver.observe(e));
 
 setTimeout(()=>$("#heroCard").classList.add("visible"),150);
 
+/* true infinite marquee: duplicate the track enough times to fill 2x the viewport, then loop seamlessly */
+(function initMarquee(){
+  const track=$("#marqueeTrack");
+  if(!track)return;
+  const originals=[...track.children];
+  function fillTrack(){
+    // reset to just the originals first so we can measure accurately
+    track.querySelectorAll('[data-clone="true"]').forEach(el=>el.remove());
+    let width=track.scrollWidth;
+    const target=innerWidth*2.2; // enough so the loop never shows a gap, at any screen size
+    let i=0;
+    while(width<target){
+      const clone=originals[i%originals.length].cloneNode(true);
+      clone.setAttribute('data-clone','true');
+      track.appendChild(clone);
+      width+=clone.offsetWidth+18; // approx gap
+      i++;
+    }
+    // now duplicate the whole filled sequence once more so the -50% translateX loop is seamless
+    const filled=[...track.children];
+    filled.forEach(el=>{
+      const clone=el.cloneNode(true);
+      clone.setAttribute('data-clone','true');
+      track.appendChild(clone);
+    });
+    // adjust animation duration to keep a consistent scroll speed regardless of content length
+    const singleSetWidth=filled.reduce((sum,el)=>sum+el.offsetWidth+18,0);
+    const speed=45; // px per second
+    track.style.animationDuration=(singleSetWidth/speed)+'s';
+  }
+  fillTrack();
+  let resizeTimer;
+  addEventListener('resize',()=>{clearTimeout(resizeTimer);resizeTimer=setTimeout(fillTrack,250)});
+})();
+
 /* project filters */
 $$(".filter").forEach(f=>f.onclick=()=>{
   $$(".filter").forEach(x=>x.classList.remove("active"));f.classList.add("active");
@@ -573,15 +626,20 @@ function closeProject(){po.classList.remove('open');document.body.style.overflow
 $$('.project').forEach(p=>p.addEventListener('click',e=>{if(e.target.closest('a'))return;openProject(p)}));
 $("#projectClose").onclick=closeProject;$("#dialogClose").onclick=closeProject;po.onclick=e=>{if(e.target===po)closeProject()};
 
-/* command palette */
+/* command palette — desktop pointer devices only (hidden on touch via CSS); keyboard shortcut only wired on non-touch */
 const co=$("#commandOverlay"),ci=$("#commandInput");
+const isTouch=matchMedia('(hover: none), (pointer: coarse)').matches;
 function openCommand(){co.classList.add('open');setTimeout(()=>ci.focus(),80)}
 function closeCommand(){co.classList.remove('open');ci.value='';$$('.cmdItem').forEach(x=>x.style.display='flex')}
 $("#commandButton").onclick=openCommand;$("#openCommand2").onclick=openCommand;
-document.addEventListener('keydown',e=>{
-  if((e.ctrlKey||e.metaKey)&&e.key.toLowerCase()==='k'){e.preventDefault();co.classList.contains('open')?closeCommand():openCommand()}
-  if(e.key==='Escape'){closeCommand();closeProject()}
-});
+if(!isTouch){
+  document.addEventListener('keydown',e=>{
+    if((e.ctrlKey||e.metaKey)&&e.key.toLowerCase()==='k'){e.preventDefault();co.classList.contains('open')?closeCommand():openCommand()}
+    if(e.key==='Escape'){closeCommand();closeProject()}
+  });
+}else{
+  document.addEventListener('keydown',e=>{ if(e.key==='Escape'){closeCommand();closeProject()} });
+}
 co.onclick=e=>{if(e.target===co)closeCommand()};
 ci.oninput=()=>{const q=ci.value.toLowerCase();$$('.cmdItem').forEach(x=>x.style.display=x.textContent.toLowerCase().includes(q)?'flex':'none')};
 $$('.cmdItem').forEach(x=>x.onclick=()=>{
@@ -594,18 +652,19 @@ $$('.cmdItem').forEach(x=>x.onclick=()=>{
 });
 
 /* copy roblox username */
-$("#copyRoblox").onclick=async function(){const old=this.textContent;try{await navigator.clipboard.writeText('DeathStrider114');this.textContent='Copied ✓'}catch{this.textContent='DeathStrider114'}setTimeout(()=>this.textContent=old,1500)};
+$("#copyRoblox").onclick=async function(){const old=this.innerHTML;try{await navigator.clipboard.writeText('DeathStrider114');this.textContent='Copied ✓'}catch{this.textContent='DeathStrider114'}setTimeout(()=>this.innerHTML=old,1500)};
 
 /* active nav highlight */
 const secs=$$('main section[id]'),nls=$$('.links a');
 const secObs=new IntersectionObserver(es=>es.forEach(e=>{if(!e.isIntersecting)return;nls.forEach(l=>l.classList.toggle('active',l.getAttribute('href')==='#'+e.target.id))}),{rootMargin:'-40% 0px -50% 0px'});
 secs.forEach(s=>secObs.observe(s));
 
-/* 3-Song Music Player Setup */
+/* Local music player — reads files from a "music" folder next to this HTML file.
+   Drop your audio files into ./music/ and list their filenames below. */
 const PLAYLIST = [
-  { title: "Song One", artist: "DRAKE", url: "https://anytourl.com/s/85579270997709339" },
-  { title: "Song Two", artist: "XXXTENTACION", url: "https://anytourl.com/s/85579254380653376" },
-  { title: "Song Three", artist: "KITSCHKRIEG", url: "https://anytourl.com/s/85579262257971737" }
+  { title: "Track 01", artist: "Death Playlist", src: "music/track1.mp3" },
+  { title: "Track 02", artist: "Death Playlist", src: "music/track2.mp3" },
+  { title: "Track 03", artist: "Death Playlist", src: "music/track3.mp3" }
 ];
 let currentTrackIdx = 0;
 const audioElement = new Audio();
@@ -615,37 +674,46 @@ const playPauseBtn = $("#playPauseBtn");
 const nextTrackBtn = $("#nextTrack");
 const prevTrackBtn = $("#prevTrack");
 const trackTitleEl = $("#trackTitle");
+const trackArtistEl = $("#trackArtist");
 const musicPlayerEl = $("#musicPlayer");
+
+function setPlayIcon(name){
+  playPauseBtn.innerHTML = `<i data-lucide="${name}"></i>`;
+  if(window.lucide) lucide.createIcons({ nodes: [playPauseBtn] });
+}
 
 function loadTrack(idx) {
   const track = PLAYLIST[idx];
   trackTitleEl.textContent = track.title;
-  audioElement.src = track.url;
+  trackArtistEl.textContent = track.artist;
+  audioElement.src = track.src;
 }
 
 function togglePlay() {
-  if (!PLAYLIST[currentTrackIdx].url) {
-    trackTitleEl.textContent = "Paste song link!";
-    setTimeout(() => { trackTitleEl.textContent = PLAYLIST[currentTrackIdx].title; }, 2000);
-    return;
-  }
   if (isPlaying) {
     audioElement.pause();
     isPlaying = false;
-    playPauseBtn.textContent = "▶";
+    setPlayIcon("play");
     musicPlayerEl.classList.remove("playing");
     musicPlayerEl.classList.add("paused");
   } else {
     audioElement.play().then(() => {
       isPlaying = true;
-      playPauseBtn.textContent = "⏸";
+      setPlayIcon("pause");
       musicPlayerEl.classList.remove("paused");
       musicPlayerEl.classList.add("playing");
     }).catch(() => {
-      trackTitleEl.textContent = "Invalid link";
+      trackTitleEl.textContent = "Couldn't load track";
+      setTimeout(() => { trackTitleEl.textContent = PLAYLIST[currentTrackIdx].title; }, 2000);
     });
   }
 }
+
+audioElement.addEventListener('ended', () => {
+  currentTrackIdx = (currentTrackIdx + 1) % PLAYLIST.length;
+  loadTrack(currentTrackIdx);
+  audioElement.play();
+});
 
 playPauseBtn.onclick = togglePlay;
 nextTrackBtn.onclick = () => {
