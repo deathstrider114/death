@@ -3,233 +3,662 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="theme-color" content="#05070d">
-<meta name="description" content="DeathStrider114 — Roblox & Web Developer portfolio.">
+<meta name="theme-color" content="#eaf6ff">
+<meta name="description" content="Death — Roblox & Web Developer portfolio.">
 <title>Death — Roblox × Web Developer</title>
+<link rel="icon" type="image/webp" href="https://cdn.discordapp.com/avatars/1262288699606040628/d63491260b9cb4506b76b0bf41dcdb2d.webp?size=100">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
 <style>
-:root{--bg:#05070d;--surface:rgba(14,19,31,.74);--surface2:#0e1420;--line:rgba(255,255,255,.085);--line2:rgba(255,255,255,.16);--text:#f7f9ff;--muted:#8994a8;--subtle:#5d697d;--blue:#55bcff;--cyan:#6fffe8;--violet:#8c7eff;--purple:#c076ff;--green:#5ce8aa;--shadow:0 35px 110px rgba(0,0,0,.42)}
-body.light{--bg:#eef3f8;--surface:rgba(255,255,255,.74);--surface2:#fff;--line:rgba(12,22,38,.095);--line2:rgba(12,22,38,.17);--text:#111722;--muted:#657185;--subtle:#8994a6;--blue:#1989dc;--cyan:#12ab98;--violet:#6655df;--purple:#a84bd9;--shadow:0 30px 100px rgba(35,55,80,.14)}
-*{box-sizing:border-box;margin:0;padding:0}html{scroll-behavior:smooth}body{min-height:100vh;overflow-x:hidden;color:var(--text);background:radial-gradient(circle at 12% 5%,rgba(85,188,255,.12),transparent 28%),radial-gradient(circle at 90% 18%,rgba(140,126,255,.11),transparent 30%),var(--bg);font-family:Inter,sans-serif;transition:background .7s ease,color .5s ease}a{color:inherit;text-decoration:none}button,input{font:inherit}button{cursor:pointer}img{display:block;max-width:100%}::selection{background:rgba(111,255,232,.25)}
-::-webkit-scrollbar{width:7px}::-webkit-scrollbar-track{background:var(--bg)}::-webkit-scrollbar-thumb{background:linear-gradient(var(--blue),var(--violet));border-radius:99px}
-.loader{position:fixed;inset:0;z-index:99999;display:grid;place-items:center;overflow:hidden;background:#03050a;transition:opacity .9s ease,visibility .9s ease}.loader.hide{opacity:0;visibility:hidden;pointer-events:none}.loader-grid{position:absolute;inset:-25%;background-image:linear-gradient(rgba(111,255,232,.08) 1px,transparent 1px),linear-gradient(90deg,rgba(111,255,232,.08) 1px,transparent 1px);background-size:65px 65px;transform:perspective(500px) rotateX(64deg) translateY(20%);animation:gridMove 8s linear infinite}.loader-glow{position:absolute;width:600px;height:600px;border-radius:50%;background:radial-gradient(circle,rgba(83,188,255,.2),transparent 66%);filter:blur(12px);animation:glow 5s ease-in-out infinite}.loader-core{position:relative;z-index:2;text-align:center}.loader-emblem{position:relative;width:110px;height:110px;margin:auto;display:grid;place-items:center;border:1px solid rgba(111,255,232,.25);border-radius:31px;background:linear-gradient(135deg,rgba(83,188,255,.16),rgba(140,126,255,.12));box-shadow:0 0 90px rgba(83,188,255,.18);animation:float 3s ease-in-out infinite}.loader-emblem:before,.loader-emblem:after{content:"";position:absolute;border:1px solid rgba(111,255,232,.2);border-radius:inherit;animation:pulse 2.1s ease-out infinite}.loader-emblem:before{inset:-15px}.loader-emblem:after{inset:-30px;animation-delay:.55s}.loader-emblem b{font:800 45px "Space Grotesk";background:linear-gradient(135deg,#fff,var(--cyan),var(--violet));-webkit-background-clip:text;background-clip:text;color:transparent}.loader-title{margin-top:30px;color:#8792a7;font:10px "DM Mono";letter-spacing:3px}.loader-bar{width:min(380px,78vw);height:2px;margin:17px auto 0;background:#151b2a;overflow:hidden}.loader-bar i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--blue),var(--cyan),var(--violet));box-shadow:0 0 20px var(--cyan);transition:width .12s linear}.loader-pct{margin-top:10px;color:#546074;font:9px "DM Mono"}
-@keyframes gridMove{to{transform:perspective(500px) rotateX(64deg) translateY(20%) translateX(-65px)}}@keyframes glow{50%{transform:scale(1.12) translate(25px,-18px)}}@keyframes float{50%{transform:translateY(-10px) rotate(2deg)}}@keyframes pulse{0%{transform:scale(.8);opacity:0}30%{opacity:1}100%{transform:scale(1.12);opacity:0}}
-.bg{position:fixed;inset:0;z-index:-10;pointer-events:none;overflow:hidden}.bggrid{position:absolute;inset:-30%;background-image:linear-gradient(rgba(255,255,255,.02) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.02) 1px,transparent 1px);background-size:70px 70px;transform:perspective(650px) rotateX(62deg) translateY(20%);mask-image:linear-gradient(to top,black,transparent 82%);-webkit-mask-image:linear-gradient(to top,black,transparent 82%)}.orb{position:absolute;width:560px;height:560px;border-radius:50%;filter:blur(120px);opacity:.12;animation:floatOrb 18s ease-in-out infinite}.orb.a{left:-320px;top:-240px;background:#4f8cff}.orb.b{right:-340px;top:20%;background:#8b5cff;animation-delay:-6s}.orb.c{left:30%;bottom:-500px;background:#23d3bd;animation-delay:-11s}@keyframes floatOrb{50%{transform:translate(35px,-30px) scale(1.08)}}#particles{position:fixed;inset:0;z-index:-5;pointer-events:none;opacity:.72}.progress{position:fixed;left:0;top:0;width:0;height:2px;z-index:100001;background:linear-gradient(90deg,var(--cyan),var(--blue),var(--violet));box-shadow:0 0 14px var(--cyan)}
-.cursor,.cursorRing{position:fixed;z-index:100002;pointer-events:none;border-radius:50%;transform:translate(-50%,-50%)}.cursor{width:5px;height:5px;background:#fff;box-shadow:0 0 12px var(--cyan)}.cursorRing{width:30px;height:30px;border:1px solid rgba(111,255,232,.45);transition:.22s ease}.cursorRing.hot{width:53px;height:53px;border-color:rgba(140,126,255,.78)}@media(pointer:coarse){.cursor,.cursorRing{display:none}}
-.navWrap{position:fixed;top:16px;left:50%;width:min(1200px,calc(100% - 26px));transform:translateX(-50%);z-index:5000}.nav{min-height:68px;display:flex;align-items:center;justify-content:space-between;gap:16px;padding:8px 9px 8px 17px;background:color-mix(in srgb,var(--surface2) 78%,transparent);border:1px solid var(--line);border-radius:21px;backdrop-filter:blur(25px) saturate(140%);box-shadow:var(--shadow);transition:.3s ease}.nav.scrolled{min-height:60px;border-color:var(--line2)}.brand{display:flex;align-items:center;gap:10px}.brandmark{width:40px;height:40px;display:grid;place-items:center;border-radius:13px;color:#fff;font:800 17px "Space Grotesk";background:linear-gradient(135deg,#49baff,#776eff,#b76fff);box-shadow:0 0 30px rgba(83,188,255,.23)}.brandtext{font:700 14px "Space Grotesk"}.brandtext span{color:var(--muted);font-weight:500}.links{display:flex;align-items:center;gap:3px}.links a{padding:10px 12px;border-radius:10px;color:var(--muted);font-size:11px;font-weight:600}.links a:hover{background:rgba(255,255,255,.05);color:var(--text)}.navRight{display:flex;align-items:center;gap:6px}.available{display:flex;align-items:center;gap:7px;padding:9px 11px;border:1px solid rgba(92,232,170,.15);border-radius:10px;background:rgba(92,232,170,.04);color:var(--green);font:9px "DM Mono"}.available i{width:6px;height:6px;border-radius:50%;background:var(--green);box-shadow:0 0 12px var(--green)}.navBtn{min-width:41px;height:41px;padding:0 10px;border:1px solid var(--line);background:rgba(255,255,255,.04);color:var(--text);border-radius:11px}.theme{position:relative;overflow:hidden}.theme div{position:absolute;inset:0;display:grid;place-items:center;transition:.5s}.theme .moon{opacity:0;transform:translateY(12px) rotate(-40deg)}body.light .theme .sun{opacity:0;transform:translateY(-12px) rotate(40deg)}body.light .theme .moon{opacity:1;transform:none}
-.container{width:min(1200px,calc(100% - 30px));margin:auto}section{padding:110px 0}.hero{min-height:100vh;padding-top:155px;display:grid;grid-template-columns:1.08fr .92fr;gap:55px;align-items:center}.eyebrow{width:max-content;display:flex;align-items:center;gap:8px;padding:8px 11px;border:1px solid rgba(92,232,170,.17);border-radius:99px;background:rgba(92,232,170,.04);color:#86eabb;font:10px "DM Mono";margin-bottom:24px}.statusDot{width:7px;height:7px;border-radius:50%;background:var(--green);box-shadow:0 0 15px var(--green)}.hero h1{font:700 clamp(66px,9.5vw,122px)/.82 "Space Grotesk";letter-spacing:-7px}.accent{display:block;background:linear-gradient(100deg,#fff,#bff0ff,#61e7ff,#8c7fff,#c177ff);background-size:220% auto;-webkit-background-clip:text;background-clip:text;color:transparent;animation:gradient 7s ease-in-out infinite}@keyframes gradient{50%{background-position:100% 50%}}.hero p{max-width:680px;color:var(--muted);font-size:15px;line-height:1.9;margin:30px 0}.actions{display:flex;flex-wrap:wrap;gap:9px}.btn{min-height:47px;padding:0 17px;display:inline-flex;align-items:center;justify-content:center;gap:8px;border-radius:12px;border:1px solid var(--line);background:rgba(255,255,255,.04);color:var(--text);font-size:11px;font-weight:800;overflow:hidden;position:relative;transition:.25s}.btn:before{content:"";position:absolute;inset:-100%;background:linear-gradient(110deg,transparent 40%,rgba(255,255,255,.2),transparent 60%);transform:translateX(-60%);transition:.65s}.btn:hover:before{transform:translateX(60%)}.btn:hover{transform:translateY(-3px);border-color:rgba(111,255,232,.3)}.primary{color:#031017;border:0;background:linear-gradient(135deg,#6cddff,#65eddd,#9485ff);box-shadow:0 16px 42px rgba(83,188,255,.17)}.meta{display:flex;flex-wrap:wrap;gap:18px;margin-top:31px;color:var(--subtle);font:9px "DM Mono"}.meta b{color:var(--muted);font-weight:500}
-.stage{position:relative;min-height:560px;display:grid;place-items:center;perspective:1200px}.stageGlow{position:absolute;width:450px;height:450px;border-radius:50%;background:radial-gradient(circle,rgba(83,188,255,.18),transparent 68%);filter:blur(12px)}.ring{position:absolute;width:400px;height:140px;border:1px solid rgba(111,255,232,.16);border-radius:50%;transform:rotateX(66deg) rotateZ(-24deg)}.ring.two{width:470px;height:165px;transform:rotateY(67deg) rotateZ(27deg);border-color:rgba(140,126,255,.16)}.ring.three{width:310px;height:100px;transform:rotateX(68deg) rotateZ(72deg);border-color:rgba(83,188,255,.11)}.ringDot{position:absolute;width:8px;height:8px;border-radius:50%;background:var(--cyan);box-shadow:0 0 20px var(--cyan);animation:orbit 7s linear infinite}@keyframes orbit{to{transform:rotate(360deg) translateX(200px) rotate(-360deg)}}.model{position:relative;width:250px;height:250px;transform-style:preserve-3d}.modelCore{position:absolute;inset:25px;transform-style:preserve-3d;transition:transform .12s ease-out}.face{position:absolute;inset:0;border:1px solid rgba(190,244,255,.42);border-radius:34px;background:linear-gradient(135deg,rgba(94,207,255,.13),rgba(140,126,255,.1)),rgba(255,255,255,.03);box-shadow:inset 0 0 42px rgba(111,255,232,.05),0 0 65px rgba(83,188,255,.08);backdrop-filter:blur(8px)}.front{transform:translateZ(100px)}.back{transform:rotateY(180deg) translateZ(100px)}.right{transform:rotateY(90deg) translateZ(100px)}.left{transform:rotateY(-90deg) translateZ(100px)}.top{transform:rotateX(90deg) translateZ(100px)}.bottom{transform:rotateX(-90deg) translateZ(100px)}.letter{position:absolute;inset:0;z-index:4;display:grid;place-items:center;transform:translateZ(108px);font:800 76px "Space Grotesk";color:#fff;text-shadow:0 0 40px rgba(111,255,232,.4)}.chip{position:absolute;display:flex;align-items:center;gap:7px;padding:9px 11px;border:1px solid var(--line);border-radius:11px;background:var(--surface);backdrop-filter:blur(16px);color:var(--muted);font:9px "DM Mono";box-shadow:var(--shadow);animation:chip 5s ease-in-out infinite}.chip b{color:var(--text)}.chip.a{left:2%;top:17%}.chip.b{right:0;bottom:21%;animation-delay:-2s}.chip.c{left:10%;bottom:9%;animation-delay:-3.5s}@keyframes chip{50%{transform:translateY(-9px)}}.stageTools{position:absolute;right:5px;top:5px;display:flex;gap:6px}.stageTool{padding:8px 10px;border:1px solid var(--line);border-radius:9px;background:var(--surface);color:var(--muted);font:8px "DM Mono"}.stageLabel{position:absolute;bottom:20px;left:20px;color:var(--subtle);font:8px "DM Mono"}
-.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;padding-bottom:40px}.stat{position:relative;min-height:138px;padding:24px;border:1px solid var(--line);border-radius:19px;background:var(--surface);overflow:hidden;transition:.3s}.stat:hover{transform:translateY(-5px);border-color:rgba(111,255,232,.22)}.stat:after{content:"";position:absolute;right:-60px;top:-60px;width:130px;height:130px;border-radius:50%;background:rgba(83,188,255,.09);filter:blur(25px)}.stat strong{font:700 30px "Space Grotesk";position:relative;z-index:2}.stat span{display:block;margin-top:7px;color:var(--muted);font:9px "DM Mono";position:relative;z-index:2}.stat small{position:absolute;right:18px;bottom:18px;color:var(--subtle);font:8px "DM Mono"}
-.sectionHead{display:flex;align-items:end;justify-content:space-between;gap:30px;margin-bottom:34px}.kicker{color:var(--cyan);font:10px "DM Mono";letter-spacing:2px;margin-bottom:9px}.title{font:700 clamp(39px,5vw,62px)/.95 "Space Grotesk";letter-spacing:-3px}.desc{max-width:600px;color:var(--muted);font-size:13px;line-height:1.8}.filters{display:flex;flex-wrap:wrap;gap:7px;margin-bottom:20px}.filter{padding:9px 12px;border-radius:10px;border:1px solid var(--line);background:var(--surface);color:var(--muted);font:9px "DM Mono";transition:.2s}.filter:hover,.filter.active{color:var(--text);border-color:rgba(111,255,232,.28);background:rgba(111,255,232,.07)}
-.bento{display:grid;grid-template-columns:repeat(4,1fr);grid-auto-rows:235px;gap:12px}.project{position:relative;overflow:hidden;border:1px solid var(--line);border-radius:23px;background:var(--surface);transform-style:preserve-3d;transition:transform .35s,border-color .25s,box-shadow .35s,opacity .3s;cursor:pointer}.project:hover{border-color:rgba(111,255,232,.25);box-shadow:0 28px 80px rgba(0,0,0,.25)}.project.hidden{display:none}.large{grid-column:span 2;grid-row:span 2}.wide{grid-column:span 2}.project:before{content:"";position:absolute;inset:0;z-index:3;opacity:0;pointer-events:none;background:radial-gradient(300px circle at var(--mx,50%) var(--my,50%),rgba(111,255,232,.1),transparent 58%);transition:.2s}.project:hover:before{opacity:1}.projectImage{position:absolute;inset:0;overflow:hidden}.projectImage img{width:100%;height:100%;object-fit:cover;opacity:.78;transition:.8s cubic-bezier(.2,.8,.2,1)}.project:hover .projectImage img{transform:scale(1.07);opacity:.94}.projectImage:after{content:"";position:absolute;inset:0;background:linear-gradient(to top,rgba(4,7,12,.96),rgba(4,7,12,.1) 68%)}.projectBody{position:absolute;left:20px;right:20px;bottom:18px;z-index:4}.tag{display:inline-flex;padding:6px 8px;border:1px solid rgba(255,255,255,.12);border-radius:7px;background:rgba(4,7,12,.6);backdrop-filter:blur(10px);color:#d0d8e8;font:8px "DM Mono"}.projectBody h3{font:700 22px "Space Grotesk";margin-top:9px}.projectBody p{max-width:620px;margin-top:6px;color:#a9b4c5;font-size:10px;line-height:1.6}.tools{display:flex;flex-wrap:wrap;gap:5px;margin-top:11px}.tech{padding:6px 8px;border-radius:7px;border:1px solid rgba(255,255,255,.08);background:rgba(255,255,255,.05);color:#bbc6d4;font:8px "DM Mono"}.arrow{position:absolute;right:17px;top:17px;z-index:4;width:35px;height:35px;border:1px solid rgba(255,255,255,.13);border-radius:10px;background:rgba(3,6,11,.52);color:#fff;backdrop-filter:blur(10px)}.empty{padding:23px;display:flex;flex-direction:column;justify-content:space-between}.emptyIcon{width:44px;height:44px;display:grid;place-items:center;border:1px solid rgba(111,255,232,.15);border-radius:12px;background:rgba(111,255,232,.06);color:var(--cyan);font-size:18px}.empty h3{font:700 21px "Space Grotesk"}.empty p{margin-top:7px;color:var(--muted);font-size:11px;line-height:1.7}.empty a{display:inline-flex;margin-top:14px;color:var(--cyan);font:9px "DM Mono"}
-.webFeature{display:grid;grid-template-columns:1fr 1fr;gap:18px;padding:12px;border:1px solid var(--line);border-radius:28px;background:var(--surface);overflow:hidden}.browser{min-height:470px;border:1px solid var(--line);border-radius:20px;background:#0a1018;overflow:hidden;position:relative;transform:perspective(1200px) rotateY(-4deg)}.browserTop{height:38px;display:flex;align-items:center;gap:6px;padding:0 13px;background:#0e1520;border-bottom:1px solid rgba(255,255,255,.06)}.browserDot{width:7px;height:7px;border-radius:50%;background:#4a5360}.browserUrl{margin-left:8px;color:#647083;font:8px "DM Mono"}.browserScreen{position:absolute;inset:38px 0 0;padding:30px;background:radial-gradient(circle at 80% 20%,rgba(139,124,255,.21),transparent 32%),linear-gradient(135deg,#0a1018,#10162a)}.fakeNav{display:flex;justify-content:space-between;align-items:center;color:#768296;font:7px "DM Mono"}.fakeLogo{font:700 13px "Space Grotesk";color:#fff}.fakeHero{margin-top:95px}.fakeHero small{color:var(--cyan);font:8px "DM Mono"}.fakeHero h4{font:700 45px/.88 "Space Grotesk";letter-spacing:-3px;color:#fff;margin-top:10px}.fakeLine{width:190px;height:5px;border-radius:99px;margin-top:18px;background:linear-gradient(90deg,var(--cyan),var(--violet))}.fakeCard{position:absolute;border:1px solid rgba(255,255,255,.08);background:linear-gradient(135deg,rgba(111,255,232,.12),rgba(139,124,255,.08));border-radius:12px}.fakeCard.a{width:110px;height:105px;right:28px;top:85px}.fakeCard.b{width:145px;height:80px;right:155px;bottom:50px}.fakeCard.c{width:100px;height:80px;right:32px;bottom:50px}.webCopy{padding:42px 34px 30px 10px;display:flex;flex-direction:column;justify-content:center}.id{color:var(--cyan);font:9px "DM Mono";letter-spacing:2px}.webCopy h3{font:700 clamp(38px,4.2vw,59px)/.92 "Space Grotesk";letter-spacing:-3px;margin-top:12px}.webCopy p{color:var(--muted);font-size:12px;line-height:1.85;margin-top:20px}.featureGrid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:20px}.featureGrid div{padding:11px;border:1px solid var(--line);border-radius:10px;background:var(--surface);color:var(--muted);font:8px "DM Mono"}.featureGrid b{display:block;color:var(--text);font:700 10px Inter;margin-bottom:4px}
-.timeline{max-width:900px;margin:auto;position:relative}.timeline:before{content:"";position:absolute;left:13px;top:0;bottom:0;width:1px;background:linear-gradient(var(--cyan),var(--violet),transparent)}.item{position:relative;padding-left:52px;padding-bottom:31px}.node{position:absolute;left:6px;top:5px;width:15px;height:15px;border-radius:50%;background:var(--bg);border:3px solid var(--cyan);box-shadow:0 0 20px rgba(111,255,232,.45)}.timeCard{padding:22px;border:1px solid var(--line);border-radius:19px;background:var(--surface);transition:.3s}.timeCard:hover{transform:translateX(4px);border-color:rgba(111,255,232,.22)}.top{display:flex;justify-content:space-between;gap:20px}.role{font:700 19px "Space Grotesk"}.place{margin-top:4px;color:var(--cyan);font:8px "DM Mono"}.date{color:var(--subtle);font:8px "DM Mono"}.timeCard p{margin-top:13px;color:var(--muted);font-size:11px;line-height:1.75}
-.services{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}.service{padding:27px;border:1px solid var(--line);border-radius:22px;background:var(--surface);transition:.3s}.service:hover{transform:translateY(-6px);border-color:rgba(111,255,232,.23)}.serviceIcon{width:44px;height:44px;display:grid;place-items:center;border-radius:13px;background:rgba(111,255,232,.07);border:1px solid rgba(111,255,232,.13);color:var(--cyan);margin-bottom:20px}.service h3{font:700 18px "Space Grotesk";margin-bottom:9px}.service p{color:var(--muted);font-size:11px;line-height:1.75}.skills{display:flex;flex-wrap:wrap;gap:7px;margin-top:18px}.skill{padding:8px 10px;border-radius:9px;border:1px solid var(--line);background:rgba(255,255,255,.035);color:var(--muted);font:8px "DM Mono";transition:.25s}.skill:hover{color:var(--text);border-color:rgba(111,255,232,.24);transform:translateY(-2px)}
-.about{display:grid;grid-template-columns:1.1fr .9fr;gap:12px}.aboutCard{padding:30px;border:1px solid var(--line);border-radius:22px;background:var(--surface)}.aboutCard h3{font:700 24px "Space Grotesk";margin-bottom:14px}.aboutCard p{color:var(--muted);font-size:12px;line-height:1.85}.facts{display:grid;gap:8px}.fact{display:flex;justify-content:space-between;gap:15px;padding:12px;border:1px solid var(--line);background:rgba(255,255,255,.035);border-radius:10px;font-size:10px}.fact span:first-child{color:var(--muted)}.fact strong{color:var(--text)}
-.contact{position:relative;min-height:410px;display:grid;place-items:center;text-align:center;overflow:hidden;border:1px solid rgba(111,255,232,.17);border-radius:30px;background:radial-gradient(circle at 50% 110%,rgba(83,188,255,.14),transparent 38%),radial-gradient(circle at 80% 10%,rgba(139,124,255,.13),transparent 35%),var(--surface)}.contact:before,.contact:after{content:"";position:absolute;border:1px solid rgba(111,255,232,.08);border-radius:50%}.contact:before{width:550px;height:550px}.contact:after{width:760px;height:760px}.contactInner{position:relative;z-index:2;padding:30px}.contact h2{font:700 clamp(44px,6.5vw,76px)/.9 "Space Grotesk";letter-spacing:-5px}.contact p{max-width:580px;margin:18px auto 25px;color:var(--muted);font-size:12px;line-height:1.8}.contactBtns{display:flex;justify-content:center;flex-wrap:wrap;gap:9px}
-footer{padding:42px 0 55px;border-top:1px solid var(--line);margin-top:20px}.footer{display:flex;justify-content:space-between;align-items:center;gap:20px}.footBrand{font:700 14px "Space Grotesk"}.footBrand span{color:var(--muted);font-weight:500}.footSub{margin-top:5px;color:var(--subtle);font:9px "DM Mono"}.footLinks{display:flex;gap:14px;flex-wrap:wrap}.footLinks a{color:var(--muted);font:9px "DM Mono"}.footLinks a:hover{color:var(--cyan)}
-.reveal{opacity:0;transform:translateY(28px);transition:opacity .8s ease,transform .8s cubic-bezier(.2,.8,.2,1)}.reveal.visible{opacity:1;transform:none}
-.overlay{position:fixed;inset:0;z-index:8000;display:grid;place-items:center;padding:18px;background:rgba(2,4,8,.72);backdrop-filter:blur(14px);opacity:0;visibility:hidden;transition:.25s}.overlay.open{opacity:1;visibility:visible}.dialog{width:min(850px,100%);max-height:88vh;overflow:auto;background:var(--surface2);border:1px solid var(--line2);border-radius:24px;box-shadow:0 50px 140px rgba(0,0,0,.55);transform:scale(.97) translateY(12px);transition:.3s}.overlay.open .dialog{transform:none}.close{position:absolute;right:14px;top:14px;z-index:3;width:37px;height:37px;border-radius:10px;color:#fff;background:rgba(0,0,0,.45);border:1px solid rgba(255,255,255,.15)}.dialogImg{height:330px;overflow:hidden}.dialogImg img{width:100%;height:100%;object-fit:cover}.dialogBody{padding:28px}.dialogBody h3{margin-top:8px;font:700 31px "Space Grotesk"}.dialogBody p{margin-top:12px;color:var(--muted);font-size:12px;line-height:1.8}.dialogActions{display:flex;gap:8px;margin-top:20px}.command{width:min(620px,100%);background:var(--surface2);border:1px solid var(--line2);border-radius:20px;overflow:hidden;box-shadow:var(--shadow)}.cmdSearch{display:flex;align-items:center;gap:10px;padding:17px;border-bottom:1px solid var(--line)}.cmdSearch b{color:var(--cyan);font:10px "DM Mono"}.cmdSearch input{width:100%;border:0;outline:0;background:transparent;color:var(--text);font-size:13px}.cmdList{padding:8px;max-height:430px;overflow:auto}.cmdItem{width:100%;display:flex;align-items:center;gap:11px;padding:12px;border:0;border-radius:10px;background:transparent;color:var(--muted);text-align:left}.cmdItem:hover{background:rgba(255,255,255,.05);color:var(--text)}.cmdIcon{width:32px;height:32px;display:grid;place-items:center;border-radius:9px;background:rgba(255,255,255,.04)}.cmdHint{margin-left:auto;color:var(--subtle);font:8px "DM Mono"}
-@media(max-width:1000px){.hero{grid-template-columns:1fr;text-align:center}.hero .eyebrow,.hero .heroActions,.hero .meta{justify-content:center;margin-left:auto;margin-right:auto}.hero p{margin-left:auto;margin-right:auto}.stage{min-height:450px}.stats{grid-template-columns:repeat(2,1fr)}.webFeature{grid-template-columns:1fr}.webCopy{padding:25px}.about{grid-template-columns:1fr}}
-@media(max-width:800px){.links{display:none}.available{display:none}.bento{grid-template-columns:repeat(2,1fr)}.large,.wide{grid-column:span 2}.services{grid-template-columns:1fr 1fr}}
-@media(max-width:560px){.container{width:calc(100% - 22px)}.navWrap{top:9px;width:calc(100% - 16px)}.nav{min-height:60px}.brandtext{display:none}.hero{padding-top:115px}.hero h1{font-size:59px;letter-spacing:-4px}.hero p{font-size:13px}.stage{min-height:350px}.model{transform:scale(.76)}.ring{transform:rotateX(66deg) rotateZ(-24deg) scale(.76)}.ring.two{transform:rotateY(67deg) rotateZ(27deg) scale(.76)}.stats{grid-template-columns:1fr 1fr}.bento{grid-template-columns:1fr;grid-auto-rows:300px}.large,.wide{grid-column:span 1}.services{grid-template-columns:1fr}.sectionHead{display:block}.desc{margin-top:14px}.top{display:block}.date{margin-top:7px}.contact{min-height:350px}.contactInner{padding:22px}.footer{flex-direction:column;align-items:flex-start}}
-@media(prefers-reduced-motion:reduce){*,*:before,*:after{scroll-behavior:auto!important;animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}}
+:root{
+  --bg:#eef7ff;
+  --panel:rgba(255,255,255,.6);
+  --panel-strong:rgba(255,255,255,.85);
+  --edge:rgba(20,110,214,.12);
+  --edge-strong:rgba(20,110,214,.2);
+  --text:#0e2436;
+  --muted:#5a7690;
+  --subtle:#93aec2;
+  --blue:#3aa8ff;
+  --cyan:#7ecbff;
+  --violet:#4fb8ff;
+  --purple:#1f7fd6;
+  --shadow:0 24px 70px rgba(20,120,214,.12);
+}
+body.dark{
+  --bg:#071420;
+  --panel:rgba(255,255,255,.06);
+  --panel-strong:rgba(255,255,255,.1);
+  --edge:rgba(255,255,255,.14);
+  --edge-strong:rgba(255,255,255,.24);
+  --text:#eef8ff;
+  --muted:#a7c3d9;
+  --subtle:#5c7c93;
+  --blue:#3aa8ff;
+  --cyan:#7ecbff;
+  --violet:#4fb8ff;
+  --purple:#2e8fe0;
+  --shadow:0 24px 70px rgba(0,0,0,.5);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  min-height:100vh;overflow-x:hidden;color:var(--text);font-family:Inter,sans-serif;
+  background:var(--bg);
+  transition:background .6s ease,color .4s ease;
+}
+a{color:inherit;text-decoration:none}
+button,input{font:inherit;color:inherit}
+button{cursor:pointer;background:none;border:none}
+img{display:block;max-width:100%}
+::selection{background:rgba(58,168,255,.25)}
+::-webkit-scrollbar{width:8px}
+::-webkit-scrollbar-track{background:transparent}
+::-webkit-scrollbar-thumb{background:linear-gradient(var(--blue),var(--violet));border-radius:99px}
+
+.glass{
+  background:linear-gradient(155deg,var(--panel),rgba(255,255,255,.015));
+  border:1px solid var(--edge);
+  backdrop-filter:blur(20px) saturate(150%);
+  -webkit-backdrop-filter:blur(20px) saturate(150%);
+  box-shadow:var(--shadow), inset 0 1px 0 rgba(255,255,255,.5);
+}
+body.dark .glass{box-shadow:var(--shadow), inset 0 1px 0 rgba(255,255,255,.10)}
+.panel{
+  background:linear-gradient(155deg,var(--panel-strong),var(--panel) 60%,rgba(255,255,255,.02));
+  border:1px solid var(--edge);
+  box-shadow:0 18px 46px rgba(20,120,214,.10), inset 0 1px 0 rgba(255,255,255,.5);
+}
+body.dark .panel{box-shadow:0 18px 46px rgba(0,0,0,.28), inset 0 1px 0 rgba(255,255,255,.09)}
+
+.progress{position:fixed;left:0;top:0;width:0;height:2px;z-index:9999;background:linear-gradient(90deg,var(--cyan),var(--blue),var(--violet))}
+
+.navWrap{position:fixed;top:16px;left:50%;width:min(920px,calc(100% - 24px));transform:translateX(-50%);z-index:5000}
+.nav{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:10px 10px 10px 18px;border-radius:22px}
+.brand{display:flex;align-items:center;gap:10px}
+.brandmark{width:36px;height:36px;border-radius:50%;overflow:hidden;box-shadow:0 8px 24px rgba(77,168,255,.3);flex-shrink:0}
+.brandmark img{width:100%;height:100%;object-fit:cover}
+.brandtext{font:600 14px "Space Grotesk"}
+.brandtext span{color:var(--muted);font-weight:500}
+.links{display:flex;align-items:center;gap:2px}
+.links a{padding:9px 13px;border-radius:11px;color:var(--muted);font-size:13px;font-weight:500;transition:.2s}
+.links a:hover,.links a.active{background:var(--panel-strong);color:var(--text)}
+.navRight{display:flex;align-items:center;gap:6px}
+.navBtn{width:38px;height:38px;border-radius:12px;border:1px solid var(--edge);background:var(--panel);color:var(--text);display:grid;place-items:center;transition:.2s}
+.navBtn:hover{background:var(--panel-strong)}
+.theme{position:relative;overflow:hidden}
+.theme div{position:absolute;inset:0;display:grid;place-items:center;transition:.4s}
+.theme .moon{opacity:0;transform:translateY(10px)}
+body.dark .theme .sun{opacity:0;transform:translateY(-10px)}
+body.dark .theme .moon{opacity:1;transform:none}
+
+.container{width:min(1080px,calc(100% - 32px));margin:auto}
+section{padding:130px 0}
+
+.hero{min-height:100vh;padding:120px 0 60px;display:flex;align-items:center;overflow:hidden}
+.heroGrid{display:grid;grid-template-columns:1.05fr .95fr;gap:50px;align-items:center}
+.heroText h1{font:700 clamp(44px,5.6vw,74px)/1.04 "Space Grotesk";letter-spacing:-2.5px}
+.accent{display:block;background:linear-gradient(100deg,var(--purple),var(--blue) 45%,var(--cyan));background-size:220% auto;-webkit-background-clip:text;background-clip:text;color:transparent;animation:sheen 8s ease-in-out infinite}
+@keyframes sheen{50%{background-position:100% 50%}}
+.heroText p{color:var(--muted);font-size:16px;line-height:1.75;margin:24px 0 32px;max-width:520px}
+.actions{display:flex;flex-wrap:wrap;gap:10px}
+.btn{min-height:48px;padding:0 20px;display:inline-flex;align-items:center;justify-content:center;gap:8px;border-radius:16px;font-size:13px;font-weight:600;transition:transform .3s cubic-bezier(.2,.8,.2,1),background .25s,border-color .25s}
+.btn.panel:hover{transform:translateY(-2px);border-color:var(--edge-strong)}
+.btn.primary{color:#fff;border:0;background:linear-gradient(135deg,var(--blue),var(--purple));box-shadow:0 14px 34px rgba(58,168,255,.3)}
+.btn.primary:hover{transform:translateY(-3px);box-shadow:0 20px 44px rgba(58,168,255,.38)}
+
+.heroCard{position:relative;min-height:560px;border-radius:40px;overflow:visible}
+.heroCardBg{position:absolute;inset:0;border-radius:40px;overflow:hidden;z-index:0;box-shadow:0 30px 80px rgba(20,120,214,.22)}
+.heroCardBg svg{width:100%;height:100%;display:block}
+.heroCardGlow{position:absolute;inset:-15%;z-index:0;border-radius:50%;background:radial-gradient(circle,rgba(58,168,255,.35),transparent 68%);filter:blur(50px);opacity:.8;animation:pulse 6s ease-in-out infinite}
+@keyframes pulse{50%{transform:scale(1.08);opacity:1}}
+.heroImgWrap{position:absolute;inset:0;z-index:2;display:flex;align-items:flex-end;justify-content:center;overflow:hidden;border-radius:40px}
+.heroImg{width:88%;max-height:104%;object-fit:contain;object-position:bottom;transform:translateY(115%);opacity:0;transition:transform 1.15s cubic-bezier(.16,.9,.24,1),opacity .8s ease .1s;filter:drop-shadow(0 30px 40px rgba(10,40,70,.35))}
+.heroCard.visible .heroImg{transform:translateY(0);opacity:1;animation:heroFloat 5s ease-in-out 1.2s infinite}
+@keyframes heroFloat{50%{transform:translateY(-14px)}}
+
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;padding:40px 0 20px}
+.stat{padding:26px 22px;border-radius:24px;text-align:left}
+.stat strong{font:700 32px "Space Grotesk";display:block}
+.stat span{display:block;margin-top:6px;color:var(--muted);font-size:12px}
+
+.marquee{overflow:hidden;width:100%;padding:28px 0;margin:20px 0 40px;position:relative}
+.marquee:before,.marquee:after{content:"";position:absolute;top:0;bottom:0;width:80px;z-index:3;pointer-events:none}
+.marquee:before{left:0;background:linear-gradient(90deg,var(--bg),transparent)}
+.marquee:after{right:0;background:linear-gradient(-90deg,var(--bg),transparent)}
+.marqueeTrack{display:flex;gap:18px;width:max-content;animation:scrollMarquee 35s linear infinite}
+.marqueeTrack:hover{animation-play-state:paused}
+@keyframes scrollMarquee{to{transform:translateX(-50%)}}
+.marqueeItem{display:flex;align-items:center;gap:10px;padding:12px 22px;border-radius:18px;background:var(--panel-strong);border:1px solid var(--edge-strong);font-size:13px;font-weight:600;color:var(--text);transition:all .3s}
+.marqueeItem img{width:22px;height:22px;object-fit:contain;transition:transform .3s, opacity .3s, filter .3s;opacity:.85;filter:grayscale(100%)}
+body.dark .marqueeItem img{filter:grayscale(100%) brightness(1.2);opacity:.85}
+.marqueeItem:hover{background:var(--panel);border-color:var(--edge-strong);transform:translateY(-2px)}
+.marqueeItem:hover img{transform:scale(1.1);opacity:1;filter:grayscale(0%)}
+body.dark .marqueeItem:hover img{transform:scale(1.1);opacity:1;filter:grayscale(0%) brightness(1.25)}
+.sectionHead{display:flex;align-items:end;justify-content:space-between;gap:30px;margin-bottom:38px}
+.kicker{color:var(--cyan);font-size:12px;font-weight:600;letter-spacing:.5px;margin-bottom:10px}
+.title{font:700 clamp(34px,4.6vw,54px)/1.05 "Space Grotesk";letter-spacing:-1.5px}
+.desc{max-width:520px;color:var(--muted);font-size:14px;line-height:1.75}
+.filters{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:26px}
+.filter{padding:9px 15px;border-radius:12px;color:var(--muted);font-size:12px;font-weight:600;transition:.2s}
+.filter:hover,.filter.active{color:var(--text);background:var(--panel-strong)}
+
+.tilt{transition:transform .4s cubic-bezier(.2,.8,.2,1),box-shadow .4s}
+.tilt:hover{transform:perspective(900px) rotateX(2deg) rotateY(-2deg) translateY(-6px)}
+
+.featureRow{display:grid;grid-template-columns:1.1fr .9fr;gap:8px;border-radius:32px;overflow:hidden;margin-bottom:14px}
+.featureRow.rev{grid-template-columns:.9fr 1.1fr}
+.featureRow.rev .featureMedia{order:2}
+.featureMedia{position:relative;min-height:340px;overflow:hidden}
+.featureMedia img{width:100%;height:100%;object-fit:cover;position:absolute;inset:0}
+.featureBody{padding:40px 38px;display:flex;flex-direction:column;justify-content:center}
+.featureBody h3{font:700 30px "Space Grotesk";letter-spacing:-.5px}
+.featureBody p{margin-top:14px;color:var(--muted);font-size:13px;line-height:1.8}
+.featureBody .btn{margin-top:22px;align-self:flex-start}
+
+.filmstrip{display:flex;gap:12px;overflow-x:auto;scroll-snap-type:x mandatory;padding-bottom:8px;margin-top:14px}
+.filmstrip::-webkit-scrollbar{height:6px}
+.filmItem{flex:0 0 auto;width:320px;scroll-snap-align:start;border-radius:26px;overflow:hidden;position:relative;min-height:230px;cursor:pointer;transition:transform .3s}
+.filmItem:hover{transform:translateY(-4px)}
+.filmItem img{width:100%;height:100%;object-fit:cover;position:absolute;inset:0;opacity:.85;transition:.5s}
+.filmItem:hover img{opacity:1;transform:scale(1.04)}
+.filmItem:after{content:"";position:absolute;inset:0;background:linear-gradient(to top,rgba(3,5,9,.92),transparent 60%)}
+.filmCaption{position:absolute;left:18px;right:18px;bottom:16px;z-index:2}
+.filmCaption h4{font:600 17px "Space Grotesk";color:#fff}
+.filmCaption p{margin-top:4px;color:#c3cad9;font-size:11px}
+.filmEnd{flex:0 0 auto;width:260px;scroll-snap-align:start;border-radius:26px;display:flex;flex-direction:column;justify-content:center;padding:26px;min-height:230px}
+.filmEnd h3{font:700 22px "Space Grotesk"}
+.filmEnd p{margin-top:8px;color:var(--muted);font-size:12px;line-height:1.7}
+.filmEnd a{margin-top:16px;color:var(--cyan);font-size:12px;font-weight:600}
+
+.webFeature{display:grid;grid-template-columns:1fr 1fr;gap:8px;border-radius:32px;overflow:hidden}
+.browser{min-height:420px;border-radius:24px;margin:8px;overflow:hidden;position:relative;background:#0a0d14;border:1px solid var(--edge)}
+.browserTop{height:36px;display:flex;align-items:center;gap:6px;padding:0 13px;background:rgba(255,255,255,.03);border-bottom:1px solid rgba(255,255,255,.06)}
+.browserDot{width:7px;height:7px;border-radius:50%;background:#3d434f}
+.browserUrl{margin-left:8px;color:#6b7280;font-size:10px}
+.browserScreen{position:absolute;inset:36px 0 0;padding:30px;background:radial-gradient(circle at 80% 20%,rgba(154,139,255,.18),transparent 32%),linear-gradient(150deg,#0a0d14,#12172a)}
+.fakeNav{display:flex;justify-content:space-between;color:#7a8194;font-size:10px}
+.fakeLogo{font:700 14px "Space Grotesk";color:#fff}
+.fakeHero{margin-top:80px}
+.fakeHero small{color:var(--cyan);font-size:11px;font-weight:600}
+.fakeHero h4{font:700 42px/.9 "Space Grotesk";color:#fff;margin-top:10px;letter-spacing:-1px}
+.fakeLine{width:170px;height:5px;border-radius:99px;margin-top:16px;background:linear-gradient(90deg,var(--cyan),var(--violet))}
+.fakeCard{position:absolute;border:1px solid rgba(255,255,255,.08);background:linear-gradient(150deg,rgba(99,230,212,.14),rgba(154,139,255,.08));border-radius:14px}
+.fakeCard.a{width:105px;height:100px;right:26px;top:78px}
+.fakeCard.b{width:135px;height:76px;right:150px;bottom:46px}
+.fakeCard.c{width:95px;height:76px;right:30px;bottom:46px}
+.webCopy{padding:44px 40px 40px 12px;display:flex;flex-direction:column;justify-content:center}
+.webCopy h3{font:700 clamp(32px,3.6vw,46px)/1.05 "Space Grotesk";letter-spacing:-1px}
+.webCopy p{color:var(--muted);font-size:13px;line-height:1.85;margin-top:18px}
+.featureGrid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:22px}
+.featureGrid div{padding:13px 14px;border-radius:14px;color:var(--muted);font-size:11px}
+.featureGrid b{display:block;color:var(--text);font-size:12px;margin-bottom:3px}
+.webCopy .actions{margin-top:24px}
+
+.timeline{max-width:820px;margin:auto;position:relative}
+.timelineLine{position:absolute;left:12px;top:6px;bottom:6px;width:1px;background:linear-gradient(var(--cyan),var(--violet),transparent);transform-origin:top;transform:scaleY(0);opacity:1;transition:transform 1s cubic-bezier(.16,.9,.24,1)}
+.timelineLine.visible{transform:scaleY(1)}
+.item{position:relative;padding-left:48px;padding-bottom:24px}
+.node{position:absolute;left:5px;top:4px;width:14px;height:14px;border-radius:50%;background:var(--bg);border:3px solid var(--cyan)}
+.timeCard{padding:26px 28px;border-radius:24px}
+.timeCard .top{display:flex;justify-content:space-between;gap:20px}
+.role{font:700 19px "Space Grotesk"}
+.place{margin-top:4px;color:var(--cyan);font-size:11px;font-weight:600}
+.date{color:var(--subtle);font-size:11px}
+.timeCard p{margin-top:14px;color:var(--muted);font-size:13px;line-height:1.75}
+
+.services{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.service{padding:30px;border-radius:26px}
+.serviceIcon{width:42px;height:42px;display:grid;place-items:center;border-radius:14px;background:rgba(99,230,212,.08);border:1px solid rgba(99,230,212,.16);color:var(--cyan);margin-bottom:20px;font-size:18px}
+.service h3{font:700 18px "Space Grotesk";margin-bottom:9px}
+.service p{color:var(--muted);font-size:12px;line-height:1.75}
+.skills{display:flex;flex-wrap:wrap;gap:7px;margin-top:18px}
+.skill{padding:8px 12px;border-radius:11px;color:var(--muted);font-size:11px;transition:.2s}
+.skill:hover{color:var(--text)}
+
+.about{display:grid;grid-template-columns:1.1fr .9fr;gap:10px}
+.aboutCard{padding:34px;border-radius:26px}
+.aboutCard h3{font:700 24px "Space Grotesk";margin-bottom:15px}
+.aboutCard p{color:var(--muted);font-size:13px;line-height:1.85}
+.facts{display:grid;gap:8px}
+.fact{display:flex;justify-content:space-between;gap:15px;padding:13px 14px;border-radius:13px;font-size:12px}
+.fact span:first-child{color:var(--muted)}
+.fact strong{color:var(--text)}
+
+.contact{position:relative;min-height:380px;display:grid;place-items:center;text-align:center;overflow:hidden;border-radius:36px}
+.contactInner{position:relative;z-index:2;padding:30px}
+.contact h2{font:700 clamp(38px,5.6vw,64px)/1.05 "Space Grotesk";letter-spacing:-2px}
+.contact p{max-width:520px;margin:18px auto 26px;color:var(--muted);font-size:14px;line-height:1.8}
+.contactBtns{display:flex;justify-content:center;flex-wrap:wrap;gap:10px}
+
+footer{padding:44px 0 60px;margin-top:20px}
+.footer{display:flex;justify-content:space-between;align-items:center;gap:20px;padding-top:30px;border-top:1px solid var(--edge)}
+.footBrand{font:600 14px "Space Grotesk"}
+.footBrand span{color:var(--muted);font-weight:500}
+.footSub{margin-top:5px;color:var(--subtle);font-size:11px}
+.footLinks{display:flex;gap:16px;flex-wrap:wrap}
+.footLinks a{color:var(--muted);font-size:12px}
+.footLinks a:hover{color:var(--cyan)}
+
+.musicPlayer{position:fixed;bottom:20px;left:20px;z-index:4900;display:flex;align-items:center;gap:12px;padding:10px 16px;border-radius:20px;max-width:320px}
+.musicInfo{font-size:12px;overflow:hidden}
+.musicTitle{font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.musicArtist{color:var(--muted);font-size:10px}
+.musicControls{display:flex;align-items:center;gap:6px}
+.musicBtn{width:32px;height:32px;border-radius:10px;background:var(--panel);border:1px solid var(--edge);display:grid;place-items:center;font-size:12px;transition:.2s}
+.musicBtn:hover{background:var(--panel-strong)}
+.eq{display:flex;align-items:flex-end;gap:2px;height:14px;width:14px}
+.eq span{width:3px;background:var(--cyan);border-radius:2px;animation:eqAnim 1.2s ease-in-out infinite alternate;transform-origin:bottom}
+.eq span:nth-child(2){animation-delay:.3s}
+.eq span:nth-child(3){animation-delay:.6s}
+.playing .eq span{animation-play-state:running}
+.paused .eq span{animation-play-state:paused;height:3px!important}
+@keyframes eqAnim{0%{height:3px}100%{height:14px}}
+
+.reveal,.fade-up,.fade-down,.slide-left,.slide-right,.scale-in,.rotate-in,.blur-in,.flip-in,.pop-in{
+  opacity:0;transition:opacity .85s cubic-bezier(.16,.9,.24,1),transform .85s cubic-bezier(.16,.9,.24,1),filter .7s ease;
+}
+.reveal.visible,.fade-up.visible,.fade-down.visible,.slide-left.visible,.slide-right.visible,.scale-in.visible,.rotate-in.visible,.blur-in.visible,.flip-in.visible,.pop-in.visible{
+  opacity:1;transform:none;filter:none;
+}
+.reveal{transform:translateY(28px) scale(.985)}
+.fade-up{transform:translateY(34px)}
+.fade-down{transform:translateY(-30px)}
+.slide-left{transform:translateX(-56px)}
+.slide-right{transform:translateX(56px)}
+.scale-in{transform:scale(.86)}
+.rotate-in{transform:rotate(-5deg) translateY(26px)}
+.blur-in{transform:translateY(16px);filter:blur(9px)}
+.flip-in{transform:perspective(900px) rotateX(28deg) translateY(10px);transform-origin:top center}
+.pop-in{transform:scale(.55);transition-timing-function:cubic-bezier(.34,1.56,.64,1)}
+
+.overlay{position:fixed;inset:0;z-index:8000;display:grid;place-items:center;padding:18px;background:rgba(2,4,8,.55);backdrop-filter:blur(16px);opacity:0;visibility:hidden;transition:.25s}
+.overlay.open{opacity:1;visibility:visible}
+.dialog{width:min(760px,100%);max-height:88vh;overflow:auto;border-radius:28px;transform:scale(.97) translateY(10px);transition:.3s;position:relative}
+.overlay.open .dialog{transform:none}
+.close{position:absolute;right:14px;top:14px;z-index:3;width:36px;height:36px;border-radius:12px;color:#fff;background:rgba(0,0,0,.4);border:1px solid rgba(255,255,255,.14)}
+.dialogImg{height:300px;overflow:hidden}
+.dialogImg img{width:100%;height:100%;object-fit:cover}
+.dialogBody{padding:30px}
+.dialogBody h3{margin-top:6px;font:700 28px "Space Grotesk"}
+.dialogBody p{margin-top:12px;color:var(--muted);font-size:13px;line-height:1.8}
+.dialogActions{display:flex;gap:8px;margin-top:22px}
+.command{width:min(560px,100%);border-radius:24px;overflow:hidden}
+.cmdSearch{display:flex;align-items:center;gap:10px;padding:16px 18px;border-bottom:1px solid var(--edge)}
+.cmdSearch b{color:var(--cyan);font-size:13px}
+.cmdSearch input{width:100%;border:0;outline:0;background:transparent;color:var(--text);font-size:14px}
+.cmdList{padding:8px;max-height:400px;overflow:auto}
+.cmdItem{width:100%;display:flex;align-items:center;gap:12px;padding:12px;border-radius:12px;color:var(--muted);text-align:left;transition:.15s}
+.cmdItem:hover{background:var(--panel-strong);color:var(--text)}
+.cmdIcon{width:32px;height:32px;display:grid;place-items:center;border-radius:10px;background:var(--panel)}
+
+@media(max-width:1000px){
+  .heroGrid{grid-template-columns:1fr;text-align:center}
+  .heroText p{margin-left:auto;margin-right:auto}
+  .actions{justify-content:center}
+  .heroCard{min-height:420px}
+  .stats{grid-template-columns:repeat(2,1fr)}
+  .webFeature{grid-template-columns:1fr}
+  .about{grid-template-columns:1fr}
+  .featureRow,.featureRow.rev{grid-template-columns:1fr}
+  .featureRow.rev .featureMedia{order:0}
+  .featureMedia{min-height:260px}
+}
+@media(max-width:800px){
+  .links{display:none}
+  .services{grid-template-columns:1fr}
+}
+@media(max-width:560px){
+  .container{width:calc(100% - 22px)}
+  .navWrap{top:9px;width:calc(100% - 16px)}
+  .brandtext{display:none}
+  .hero{padding-top:100px}
+  .heroCard{min-height:340px}
+  .heroText h1{font-size:40px;letter-spacing:-1.5px}
+  .stats{grid-template-columns:1fr 1fr}
+  .sectionHead{display:block}
+  .desc{margin-top:14px}
+  .timeCard .top{display:block}
+  .date{margin-top:7px}
+  .footer{flex-direction:column;align-items:flex-start}
+}
+@media(prefers-reduced-motion:reduce){
+  *,*:before,*:after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important;scroll-behavior:auto!important}
+}
 </style>
 </head>
 <body>
-
-<div class="loader" id="loader">
-    <div class="loader-grid"></div>
-    <div class="loader-glow"></div>
-    <div class="loader-core">
-        <div class="loader-emblem"><b>D</b></div>
-        <div class="loader-title">INITIALISING DEATH.DEV</div>
-        <div class="loader-bar"><i id="loaderBar"></i></div>
-        <div class="loader-pct" id="loaderPct">0%</div>
-    </div>
-</div>
-
 <div class="progress" id="progress"></div>
-<div class="bg"><div class="bggrid"></div><div class="orb a"></div><div class="orb b"></div><div class="orb c"></div></div>
-<canvas id="particles"></canvas>
-<div class="cursor" id="cursor"></div><div class="cursorRing" id="cursorRing"></div>
 
 <div class="navWrap">
-<nav class="nav" id="nav">
-    <a href="#home" class="brand"><div class="brandmark">D</div><div class="brandtext">Death <span>/ Developer</span></div></a>
-    <div class="links"><a href="#work">Work</a><a href="#web">Web</a><a href="#experience">Experience</a><a href="#services">Services</a><a href="#contact">Contact</a></div>
-    <div class="navRight">
-        <div class="available"><i></i>AVAILABLE</div>
-        <button class="navBtn" id="commandButton">⌘K</button>
-        <button class="navBtn theme" id="themeButton"><div class="sun">☀</div><div class="moon">☾</div></button>
-    </div>
+<nav class="nav glass" id="nav">
+  <a href="#home" class="brand"><div class="brandmark"><img src="https://cdn.discordapp.com/avatars/1262288699606040628/d63491260b9cb4506b76b0bf41dcdb2d.webp?size=100" alt="Death"></div><div class="brandtext">Death <span>/ Developer</span></div></a>
+  <div class="links"><a href="#work">Work</a><a href="#web">Web</a><a href="#experience">Experience</a><a href="#services">Services</a><a href="#contact">Contact</a></div>
+  <div class="navRight">
+    <button class="navBtn" id="commandButton" title="Command menu">⌘K</button>
+    <button class="navBtn theme" id="themeButton"><div class="sun">☀</div><div class="moon">☾</div></button>
+  </div>
 </nav>
 </div>
 
 <main>
-<div class="container">
-
 <section class="hero" id="home">
-    <div class="reveal">
-        <div class="eyebrow"><span class="statusDot"></span>Building for Roblox & the web</div>
-        <h1>I build <span class="accent">digital worlds.</span></h1>
-        <p>I'm <strong>DeathStrider114</strong>, a 17-year-old Roblox and web developer focused on immersive environments, polished interfaces, interactive systems and websites that feel completely custom.</p>
-        <div class="actions heroActions"><a class="btn primary" href="#work">Explore my work ↗</a><a class="btn" href="#contact">Start a project →</a><a class="btn" href="https://www.roblox.com/users/profile?username=DeathStrider114" target="_blank" rel="noopener">Roblox ↗</a></div>
-        <div class="meta"><span>◉ <b>ROBLOX</b> DEVELOPMENT</span><span>◉ <b>WEB</b> DEVELOPMENT</span><span>◉ <b>3D</b> BUILDING</span></div>
+  <div class="container heroGrid">
+    <div class="heroText reveal">
+      <h1>I build <span class="accent">digital worlds.</span></h1>
+      <p>I'm <strong>Death</strong>, a Roblox and web developer focused on immersive environments, polished interfaces, and interactive systems and websites that feel completely custom.</p>
+      <div class="actions"><a class="btn primary" href="#work">Explore my work ↗</a><a class="btn panel" href="#contact">Start a project →</a><a class="btn panel" href="https://www.roblox.com/users/profile?username=DeathStrider114" target="_blank" rel="noopener">Roblox ↗</a></div>
     </div>
 
-    <div class="stage reveal" id="stage">
-        <div class="stageGlow"></div>
-        <div class="ring"></div><div class="ring two"></div><div class="ring three"></div><div class="ringDot"></div>
-        <div class="model" id="model">
-            <div class="modelCore" id="modelCore">
-                <div class="face front"></div><div class="face back"></div><div class="face right"></div><div class="face left"></div><div class="face top"></div><div class="face bottom"></div>
-                <div class="letter">D</div>
-            </div>
-        </div>
-        <div class="stageTools"><button class="stageTool" id="spinToggle">AUTO SPIN: ON</button><button class="stageTool" id="resetModel">RESET</button></div>
-        <div class="chip a">01 <b>ROBLOX</b></div><div class="chip b">02 <b>WEB / UI</b></div><div class="chip c">03 <b>3D / BUILDING</b></div>
-        <div class="stageLabel">INTERACTIVE ARTIFACT · DRAG / MOVE</div>
+    <div class="heroCard" id="heroCard">
+      <div class="heroCardGlow" aria-hidden="true"></div>
+      <div class="heroCardBg" aria-hidden="true">
+        <svg viewBox="0 0 900 1000" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
+          <defs>
+            <pattern id="dots" width="26" height="26" patternUnits="userSpaceOnUse">
+              <circle cx="2" cy="2" r="2" fill="rgba(255,255,255,.4)"/>
+            </pattern>
+          </defs>
+          <rect width="900" height="1000" fill="#3aa8ff"/>
+          <circle cx="760" cy="120" r="380" fill="#7ecbff" opacity=".55"/>
+          <circle cx="90" cy="900" r="300" fill="#1f7fd6" opacity=".5"/>
+          <path d="M0 720 Q225 640 450 720 T900 720 V1000 H0 Z" fill="#4fb8ff" opacity=".45"/>
+          <rect width="900" height="1000" fill="url(#dots)" opacity=".4"/>
+        </svg>
+      </div>
+      <div class="heroImgWrap"><img class="heroImg" src="https://s6.imgcdn.dev/Yg6Reu.png" alt=""></div>
     </div>
+  </div>
 </section>
 
-<div class="stats">
-    <div class="stat reveal"><strong>17</strong><span>YEARS OLD</span><small>PROFILE</small></div>
-    <div class="stat reveal"><strong>02</strong><span>CORE DISCIPLINES</span><small>ROBLOX / WEB</small></div>
-    <div class="stat reveal"><strong>06</strong><span>FEATURED VISUAL BUILDS</span><small>3D</small></div>
-    <div class="stat reveal"><strong>∞</strong><span>IDEAS TO BUILD</span><small>FUTURE</small></div>
+<div class="marquee glass" aria-label="Tech stack marquee">
+  <div class="marqueeTrack">
+    <div class="marqueeItem"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" alt="JavaScript">JavaScript</div>
+    <div class="marqueeItem"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" alt="Python">Python</div>
+    <div class="marqueeItem"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/lua/lua-original.svg" alt="Luau">Luau</div>
+    <div class="marqueeItem"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" alt="HTML5">HTML5</div>
+    <div class="marqueeItem"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg" alt="CSS3">CSS3</div>
+    <div class="marqueeItem"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/blender/blender-original.svg" alt="Blender">3D Modelling</div>
+    <!-- Duplicated track for seamless loop -->
+    <div class="marqueeItem"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" alt="JavaScript">JavaScript</div>
+    <div class="marqueeItem"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" alt="Python">Python</div>
+    <div class="marqueeItem"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/lua/lua-original.svg" alt="Luau">Luau</div>
+    <div class="marqueeItem"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" alt="HTML5">HTML5</div>
+    <div class="marqueeItem"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg" alt="CSS3">CSS3</div>
+    <div class="marqueeItem"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/blender/blender-original.svg" alt="Blender">3D Modelling</div>
+  </div>
+</div>
+
+<div class="container">
+<div class="stats stagger">
+  <div class="stat panel pop-in"><strong data-count="17">0</strong><span>Years old</span></div>
+  <div class="stat panel pop-in"><strong data-count="2" data-pad="1">0</strong><span>Core disciplines</span></div>
+  <div class="stat panel pop-in"><strong data-count="6" data-pad="1">0</strong><span>Featured builds</span></div>
+  <div class="stat panel pop-in"><strong>∞</strong><span>Ideas to build</span></div>
 </div>
 
 <section id="work">
-    <div class="sectionHead reveal"><div><div class="kicker">01 / Selected work</div><h2 class="title">The work speaks.</h2></div><p class="desc">Roblox development, modelling, building and web work presented as an interactive project system.</p></div>
-    <div class="filters reveal"><button class="filter active" data-filter="all">ALL</button><button class="filter" data-filter="web">WEB</button><button class="filter" data-filter="roblox">ROBLOX</button><button class="filter" data-filter="building">BUILDING</button><button class="filter" data-filter="modelling">MODELLING</button></div>
+  <div class="sectionHead"><div><div class="kicker slide-left">Selected work</div><h2 class="title fade-up">The work speaks.</h2></div><p class="desc fade-up">Roblox development, modelling, building and web work presented as an interactive project system.</p></div>
+  <div class="filters stagger"><button class="filter active pop-in" data-filter="all">All</button><button class="filter pop-in" data-filter="web">Web</button><button class="filter pop-in" data-filter="roblox">Roblox</button><button class="filter pop-in" data-filter="building">Building</button><button class="filter pop-in" data-filter="modelling">Modelling</button></div>
 
-    <div class="bento">
-        <article class="project large tilt reveal" data-category="web" data-title="Pond — ER:LC Portfolio" data-image="https://s6.imgcdn.dev/YXgBSn.jpg" data-description="A custom portfolio website designed and developed for Pond, combining a premium presentation with responsive layout and interactive frontend work." data-url="https://pondvx.vercel.app">
-            <div class="projectImage"><img src="https://s6.imgcdn.dev/YXgBSn.jpg" alt="Pond portfolio project" loading="lazy"></div><button class="arrow openProject">↗</button><div class="projectBody"><span class="tag">WEB / FEATURED</span><h3>Pond — ER:LC Portfolio</h3><p>Designed and developed as a polished community portfolio experience.</p><div class="tools"><span class="tech">HTML</span><span class="tech">CSS</span><span class="tech">JAVASCRIPT</span><span class="tech">UI / UX</span></div></div>
-        </article>
-        <article class="project wide tilt reveal" data-category="web" data-title="Death.dev" data-image="https://s6.imgcdn.dev/YXgGeg.jpg" data-description="The evolving developer portfolio for DeathStrider114, built to showcase Roblox, web and 3D work." data-url="https://death.itsjohan.dev">
-            <div class="projectImage"><img src="https://s6.imgcdn.dev/YXgGeg.jpg" alt="Death portfolio" loading="lazy"></div><button class="arrow openProject">↗</button><div class="projectBody"><span class="tag">WEB / PERSONAL</span><h3>Death.dev</h3><p>My own developer portfolio, continuously evolving.</p></div>
-        </article>
-        <article class="project tilt reveal" data-category="building" data-title="Environment Study I" data-image="https://s6.imgcdn.dev/YXgrcv.jpg" data-description="Roblox building work focused on structure, atmosphere and composition."><div class="projectImage"><img src="https://s6.imgcdn.dev/YXgrcv.jpg" alt="Environment study" loading="lazy"></div><button class="arrow openProject">+</button><div class="projectBody"><span class="tag">BUILDING</span><h3>Environment I</h3><p>Structured worldbuilding and scene composition.</p></div></article>
-        <article class="project tilt reveal" data-category="modelling" data-title="Asset Study II" data-image="https://s6.imgcdn.dev/YXgvaN.jpg" data-description="Custom modelling and visual asset work for Roblox projects."><div class="projectImage"><img src="https://s6.imgcdn.dev/YXgvaN.jpg" alt="Asset study" loading="lazy"></div><button class="arrow openProject">+</button><div class="projectBody"><span class="tag">MODELLING</span><h3>Asset Study II</h3><p>Custom 3D work and detail passes.</p></div></article>
-        <article class="project wide tilt reveal" data-category="roblox" data-title="Roblox Development" data-image="https://s6.imgcdn.dev/YXgxtq.jpg" data-description="Roblox development combining environment design, systems thinking and visual presentation."><div class="projectImage"><img src="https://s6.imgcdn.dev/YXgxtq.jpg" alt="Roblox development" loading="lazy"></div><button class="arrow openProject">+</button><div class="projectBody"><span class="tag">ROBLOX DEVELOPMENT</span><h3>Worldbuilding</h3><p>From blockout to polished, presentation-ready space.</p><div class="tools"><span class="tech">ROBLOX</span><span class="tech">LUAU</span></div></div></article>
-        <article class="project large tilt reveal" data-category="building" data-title="Large Environment" data-image="https://s6.imgcdn.dev/YXgAYB.jpg" data-description="Larger-scale environment work demonstrating scale, composition and detail."><div class="projectImage"><img src="https://s6.imgcdn.dev/YXgAYB.jpg" alt="Large environment" loading="lazy"></div><button class="arrow openProject">+</button><div class="projectBody"><span class="tag">ROBLOX / LARGE SCALE</span><h3>Large Environment</h3><p>Large-scale worldbuilding with a focus on visual hierarchy.</p></div></article>
-        <article class="project empty wide tilt reveal"><div><div class="emptyIcon">✦</div><span class="tag" style="margin-top:15px">MORE TO COME</span></div><div><h3>Next project.</h3><p>The portfolio is designed to grow with the work.</p><a href="#contact">START SOMETHING ↗</a></div></article>
+  <div class="project featureRow panel tilt" data-category="web" data-title="Pond — ER:LC Portfolio" data-image="https://s6.imgcdn.dev/YXgBSn.jpg" data-description="A custom portfolio website designed and developed for Pond, combining a premium presentation with responsive layout and interactive frontend work." data-url="https://pondvx.vercel.app">
+    <div class="featureMedia slide-left"><img src="https://s6.imgcdn.dev/YXgBSn.jpg" alt="Pond portfolio project" loading="lazy"></div>
+    <div class="featureBody slide-right"><h3>Pond — ER:LC Portfolio</h3><p>Designed and developed as a polished community portfolio experience, with custom motion and a distinct visual identity.</p><a class="btn primary openProject" href="#">View project ↗</a></div>
+  </div>
+
+  <div class="project featureRow rev panel tilt" data-category="web" data-title="Death.dev" data-image="https://s6.imgcdn.dev/YXgGeg.jpg" data-description="The evolving developer portfolio for Death, built to showcase Roblox, web and 3D work." data-url="https://death.itsjohan.dev">
+    <div class="featureMedia slide-right"><img src="https://s6.imgcdn.dev/YXgGeg.jpg" alt="Death portfolio" loading="lazy"></div>
+    <div class="featureBody slide-left"><h3>Death.dev</h3><p>My own developer portfolio, continuously evolving alongside the rest of the work.</p><a class="btn primary openProject" href="#">View project ↗</a></div>
+  </div>
+
+  <div class="filmstrip stagger">
+    <div class="filmItem project tilt scale-in" data-category="building" data-title="Environment Study I" data-image="https://s6.imgcdn.dev/YXgrcv.jpg" data-description="Roblox building work focused on structure, atmosphere and composition.">
+      <img src="https://s6.imgcdn.dev/YXgrcv.jpg" alt="Environment study" loading="lazy"><div class="filmCaption"><h4>Environment I</h4><p>Structured worldbuilding and scene composition.</p></div>
     </div>
+    <div class="filmItem project tilt scale-in" data-category="modelling" data-title="Asset Study II" data-image="https://s6.imgcdn.dev/YXgvaN.jpg" data-description="Custom modelling and visual asset work for Roblox projects.">
+      <img src="https://s6.imgcdn.dev/YXgvaN.jpg" alt="Asset study" loading="lazy"><div class="filmCaption"><h4>Asset Study II</h4><p>Custom 3D work and detail passes.</p></div>
+    </div>
+    <div class="filmItem project tilt scale-in" data-category="roblox" data-title="Roblox Development" data-image="https://s6.imgcdn.dev/YXgxtq.jpg" data-description="Roblox development combining environment design, systems thinking and visual presentation.">
+      <img src="https://s6.imgcdn.dev/YXgxtq.jpg" alt="Roblox development" loading="lazy"><div class="filmCaption"><h4>Worldbuilding</h4><p>From blockout to polished, presentation-ready space.</p></div>
+    </div>
+    <div class="filmItem project tilt scale-in" data-category="building" data-title="Large Environment" data-image="https://s6.imgcdn.dev/YXgAYB.jpg" data-description="Larger-scale environment work demonstrating scale, composition and detail.">
+      <img src="https://s6.imgcdn.dev/YXgAYB.jpg" alt="Large environment" loading="lazy"><div class="filmCaption"><h4>Large Environment</h4><p>Large-scale worldbuilding with a focus on visual hierarchy.</p></div>
+    </div>
+    <div class="filmEnd panel scale-in"><h3>Next project.</h3><p>The portfolio is designed to grow with the work.</p><a href="#contact">Start something ↗</a></div>
+  </div>
 </section>
-
 <section id="web">
-    <div class="sectionHead reveal"><div><div class="kicker">02 / Web development</div><h2 class="title">I build for the browser too.</h2></div><p class="desc">A web portfolio should demonstrate web development by being an experience itself.</p></div>
-    <div class="webFeature reveal">
-        <div class="browser">
-            <div class="browserTop"><span class="browserDot"></span><span class="browserDot"></span><span class="browserDot"></span><span class="browserUrl">pondvx.vercel.app</span></div>
-            <div class="browserScreen"><div class="fakeNav"><div class="fakeLogo">POND.</div><div>EXPERIENCE · LEADERSHIP · CONTACT</div></div><div class="fakeHero"><small>ER:LC COMMUNITY PROFESSIONAL</small><h4>Meet<br>Pond.</h4><div class="fakeLine"></div></div><div class="fakeCard a"></div><div class="fakeCard b"></div><div class="fakeCard c"></div></div>
-        </div>
-        <div class="webCopy"><div class="id">WEB / 001</div><h3>Pond's<br>Portfolio.</h3><p>I designed and developed Pond's website as a complete frontend experience, with custom presentation, motion, responsive sections and a distinct visual identity.</p><div class="featureGrid"><div><b>UI / UX</b>Visual hierarchy</div><div><b>FRONTEND</b>HTML / CSS / JS</div><div><b>RESPONSIVE</b>Desktop + mobile</div><div><b>INTERACTION</b>Motion + states</div></div><div class="actions" style="margin-top:22px"><a href="https://pondvx.vercel.app" target="_blank" rel="noopener" class="btn primary">View live website ↗</a><a href="https://death.itsjohan.dev" target="_blank" rel="noopener" class="btn">My current site ↗</a></div></div>
+  <div class="sectionHead"><div><div class="kicker slide-left">Web development</div><h2 class="title fade-up">I build for the browser too.</h2></div><p class="desc fade-up">A web portfolio should demonstrate web development by being an experience itself.</p></div>
+  <div class="webFeature panel">
+    <div class="browser slide-left">
+      <div class="browserTop"><span class="browserDot"></span><span class="browserDot"></span><span class="browserDot"></span><span class="browserUrl">pondvx.vercel.app</span></div>
+      <div class="browserScreen"><div class="fakeNav"><div class="fakeLogo">POND.</div><div>EXPERIENCE · LEADERSHIP · CONTACT</div></div><div class="fakeHero"><small>ER:LC COMMUNITY PROFESSIONAL</small><h4>Meet<br>Pond.</h4><div class="fakeLine"></div></div><div class="fakeCard a"></div><div class="fakeCard b"></div><div class="fakeCard c"></div></div>
     </div>
+    <div class="webCopy slide-right"><h3>Pond's<br>portfolio.</h3><p>I designed and developed Pond's website as a complete frontend experience, with custom presentation, motion, responsive sections and a distinct visual identity.</p>
+      <div class="featureGrid stagger"><div class="panel pop-in"><b>UI / UX</b>Visual hierarchy</div><div class="panel pop-in"><b>Frontend</b>HTML / CSS / JS</div><div class="panel pop-in"><b>Responsive</b>Desktop + mobile</div><div class="panel pop-in"><b>Interaction</b>Motion + states</div></div>
+      <div class="actions"><a href="https://pondvx.vercel.app" target="_blank" rel="noopener" class="btn primary">View live website ↗</a><a href="https://death.itsjohan.dev" target="_blank" rel="noopener" class="btn panel">My current site ↗</a></div>
+    </div>
+  </div>
 </section>
 
 <section id="experience">
-    <div class="sectionHead reveal"><div><div class="kicker">03 / Experience</div><h2 class="title">What I'm building toward.</h2></div><p class="desc">I'm 17, building across Roblox and the web, and aiming toward larger games, communities and professional teams.</p></div>
-    <div class="timeline">
-        <div class="item reveal"><i class="node"></i><div class="timeCard"><div class="top"><div><div class="role">Roblox Development</div><div class="place">ROBLOX STUDIO / LUAU</div></div><div class="date">ONGOING</div></div><p>Developing systems, interfaces, environments and assets with the player experience in mind.</p></div></div>
-        <div class="item reveal"><i class="node"></i><div class="timeCard"><div class="top"><div><div class="role">Web Development</div><div class="place">HTML / CSS / JAVASCRIPT</div></div><div class="date">ONGOING</div></div><p>Creating responsive websites with animation, interaction and custom visual systems.</p></div></div>
-        <div class="item reveal"><i class="node"></i><div class="timeCard"><div class="top"><div><div class="role">3D / Environment Work</div><div class="place">MODELLING / BUILDING</div></div><div class="date">ONGOING</div></div><p>Building detailed Roblox environments and assets with attention to scale, usability and visual identity.</p></div></div>
-    </div>
+  <div class="sectionHead"><div><div class="kicker slide-left">Experience</div><h2 class="title fade-up">What I'm building toward.</h2></div><p class="desc fade-up">Building across Roblox, JavaScript, and the web.</p></div>
+  <div class="timeline">
+    <div class="timelineLine" aria-hidden="true"></div>
+    <div class="item"><i class="node"></i><div class="timeCard panel slide-left"><div class="top"><div><div class="role">Roblox Development & Luau</div><div class="place">ROBLOX STUDIO / LUAU</div></div><div class="date">Ongoing</div></div><p>Developing gameplay systems, interfaces, environments and assets with the player experience in mind.</p></div></div>
+    <div class="item"><i class="node"></i><div class="timeCard panel slide-right"><div class="top"><div><div class="role">JavaScript & Web Engineering</div><div class="place">HTML5 / CSS3 / JAVASCRIPT</div></div><div class="date">Ongoing</div></div><p>Creating responsive web applications and custom frontend animations with JavaScript and modern CSS.</p></div></div>
+    <div class="item"><i class="node"></i><div class="timeCard panel slide-left"><div class="top"><div><div class="role">3D Environments & Building</div><div class="place">BLENDER / STUDIO</div></div><div class="date">Ongoing</div></div><p>Building detailed 3D worlds, lighting scenarios, and environments with attention to scale and visual fidelity.</p></div></div>
+  </div>
 </section>
-
 <section id="services">
-    <div class="sectionHead reveal"><div><div class="kicker">04 / Services</div><h2 class="title">More than one skill.</h2></div><p class="desc">Different projects need different strengths, so I keep the workflow broad.</p></div>
-    <div class="services">
-        <article class="service reveal"><div class="serviceIcon">◈</div><h3>Roblox Development</h3><p>Gameplay-oriented development, systems, UI and world creation inside Roblox Studio.</p><div class="skills"><span class="skill">Roblox Studio</span><span class="skill">Luau</span><span class="skill">UI</span></div></article>
-        <article class="service reveal"><div class="serviceIcon">⌘</div><h3>Web Development</h3><p>Modern responsive websites with animation, interaction and a custom visual system.</p><div class="skills"><span class="skill">HTML</span><span class="skill">CSS</span><span class="skill">JavaScript</span></div></article>
-        <article class="service reveal"><div class="serviceIcon">◇</div><h3>3D / Building</h3><p>Custom Roblox environments, assets, buildings and scene composition designed around gameplay.</p><div class="skills"><span class="skill">Building</span><span class="skill">Modelling</span><span class="skill">Environment</span></div></article>
-    </div>
+  <div class="sectionHead"><div><div class="kicker slide-left">Services</div><h2 class="title fade-up">More than one skill.</h2></div><p class="desc fade-up">Different projects need different strengths, so I keep the workflow broad.</p></div>
+  <div class="services stagger">
+    <article class="service panel tilt rotate-in"><div class="serviceIcon">◈</div><h3>Roblox Development</h3><p>Gameplay-oriented development, systems, UI and world creation inside Roblox Studio.</p><div class="skills"><span class="skill panel">Roblox Studio</span><span class="skill panel">Luau</span><span class="skill panel">UI</span></div></article>
+    <article class="service panel tilt rotate-in"><div class="serviceIcon">⌘</div><h3>Web & JavaScript</h3><p>Modern responsive websites and apps with custom JavaScript interactions and styling.</p><div class="skills"><span class="skill panel">JavaScript</span><span class="skill panel">HTML5</span><span class="skill panel">CSS3</span></div></article>
+    <article class="service panel tilt rotate-in"><div class="serviceIcon">◇</div><h3>3D Building & Design</h3><p>Custom 3D environments, assets, and world design.</p><div class="skills"><span class="skill panel">3D Building</span><span class="skill panel">Modelling</span><span class="skill panel">Environment</span></div></article>
+  </div>
 </section>
 
 <section id="skills">
-    <div class="sectionHead reveal"><div><div class="kicker">05 / Toolkit</div><h2 class="title">The tools behind the work.</h2></div><p class="desc">A flexible toolkit lets me move between game development, web interfaces and 3D work.</p></div>
-    <div class="about">
-        <div class="aboutCard reveal"><h3>Technical</h3><div class="skills"><span class="skill">Roblox Studio</span><span class="skill">Luau</span><span class="skill">HTML</span><span class="skill">CSS</span><span class="skill">JavaScript</span><span class="skill">Responsive Design</span><span class="skill">UI Development</span><span class="skill">Interactive UI</span></div></div>
-        <div class="aboutCard reveal"><h3>Creative</h3><div class="skills"><span class="skill">3D Building</span><span class="skill">Modelling</span><span class="skill">Environment Design</span><span class="skill">UI / UX</span><span class="skill">Motion</span><span class="skill">Composition</span><span class="skill">Visual Systems</span></div></div>
-    </div>
+  <div class="sectionHead"><div><div class="kicker slide-left">Toolkit</div><h2 class="title fade-up">The tools behind the work.</h2></div><p class="desc fade-up">A flexible toolkit lets me move between game development, JavaScript web interfaces and 3D work.</p></div>
+  <div class="about">
+    <div class="aboutCard panel blur-in"><h3>Technical</h3><div class="skills"><span class="skill panel">Roblox Studio</span><span class="skill panel">Luau</span><span class="skill panel">JavaScript</span><span class="skill panel">Python</span><span class="skill panel">HTML5</span><span class="skill panel">CSS3</span><span class="skill panel">Responsive Design</span></div></div>
+    <div class="aboutCard panel blur-in"><h3>Creative</h3><div class="skills"><span class="skill panel">3D Building</span><span class="skill panel">Modelling</span><span class="skill panel">Environment Design</span><span class="skill panel">UI / UX</span><span class="skill panel">Motion</span><span class="skill panel">Composition</span></div></div>
+  </div>
 </section>
 
 <section id="about">
-    <div class="sectionHead reveal"><div><div class="kicker">06 / About</div><h2 class="title">Still learning.<br>Still building.</h2></div><p class="desc">Being 17 doesn't mean the work needs to feel young. I care about learning quickly and pushing quality.</p></div>
-    <div class="about">
-        <div class="aboutCard reveal"><h3>I'm Death.</h3><p>I'm a Roblox and web developer who enjoys taking rough ideas and turning them into polished experiences. Roblox gives me the ability to build worlds, systems and assets; web development gives me another place to experiment with interfaces and presentation.</p><br><p>My goal is to contribute to much larger games, ER:LC communities and development teams where technical thinking and visual quality both matter.</p></div>
-        <div class="aboutCard reveal"><h3>Quick profile.</h3><div class="facts"><div class="fact"><span>Name</span><strong>Death</strong></div><div class="fact"><span>Roblox</span><strong>DeathStrider114</strong></div><div class="fact"><span>Age</span><strong>17</strong></div><div class="fact"><span>Focus</span><strong>Roblox + Web</strong></div><div class="fact"><span>Current site</span><strong>death.itsjohan.dev</strong></div></div></div>
-    </div>
+  <div class="sectionHead"><div><div class="kicker slide-left">About</div><h2 class="title fade-up">Still learning.<br>Still building.</h2></div><p class="desc fade-up">Being young doesn't mean the work needs to feel young. I care about learning quickly and pushing quality.</p></div>
+  <div class="about">
+    <div class="aboutCard panel slide-left"><h3>I'm Death.</h3><p>I'm a Roblox, JavaScript, and web developer who enjoys taking rough ideas and turning them into polished experiences. Roblox gives me the ability to build worlds and systems; JavaScript and web development give me another place to experiment with interfaces and presentation.</p><br><p>My goal is to contribute to much larger games, ER:LC communities and professional teams where technical thinking and visual quality both matter.</p></div>
+    <div class="aboutCard panel slide-right"><h3>Quick profile.</h3><div class="facts stagger"><div class="fact panel fade-up"><span>Name</span><strong>Death</strong></div><div class="fact panel fade-up"><span>Roblox</span><strong>DeathStrider114</strong></div><div class="fact panel fade-up"><span>Focus</span><strong>Roblox + Web + JS</strong></div><div class="fact panel fade-up"><span>Current site</span><strong>death.itsjohan.dev</strong></div></div></div>
+  </div>
 </section>
 
 <section id="contact">
-    <div class="contact reveal"><div class="contactInner"><div class="kicker">07 / Start something</div><h2>Have an idea?<br>Let's make it real.</h2><p>Looking for a Roblox developer, builder, modeller or web developer? If the project matters, I'm interested.</p><div class="contactBtns"><a class="btn primary" href="https://www.roblox.com/users/profile?username=DeathStrider114" target="_blank" rel="noopener">Roblox Profile ↗</a><button class="btn" id="copyRoblox">Copy Roblox Username</button><button class="btn" id="openCommand2">Command Centre ⌘K</button></div></div></div>
+  <div class="contact panel scale-in"><div class="contactInner"><div class="kicker">Start something</div><h2>Have an idea?<br>Let's make it real.</h2><p>Looking for a Roblox developer, builder, modeller or web developer? If the project matters, I'm interested.</p><div class="contactBtns"><a class="btn primary" href="https://www.roblox.com/users/profile?username=DeathStrider114" target="_blank" rel="noopener">Roblox Profile ↗</a><button class="btn panel" id="copyRoblox">Copy Roblox Username</button><button class="btn panel" id="openCommand2">Command Menu ⌘K</button></div></div></div>
 </section>
 
 </div>
 </main>
+<footer><div class="container"><div class="footer"><div><div class="footBrand">Death <span>/ Developer</span></div><div class="footSub">Roblox · Web · JavaScript · 3D Building</div></div><div class="footLinks"><a href="#home">Home</a><a href="#work">Work</a><a href="#web">Web</a><a href="#about">About</a><a href="https://www.roblox.com/users/profile?username=DeathStrider114" target="_blank">Roblox ↗</a></div></div></div></footer>
 
-<footer><div class="container"><div class="footer"><div><div class="footBrand">Death <span>/ Developer</span></div><div class="footSub">Roblox · Web · 3D</div></div><div class="footLinks"><a href="#home">HOME</a><a href="#work">WORK</a><a href="#web">WEB</a><a href="#about">ABOUT</a><a href="https://www.roblox.com/users/profile?username=DeathStrider114" target="_blank">ROBLOX ↗</a></div></div></div></footer>
+<div class="musicPlayer glass paused" id="musicPlayer">
+  <div class="eq" id="eqAnimation"><span></span><span></span><span></span></div>
+  <div class="musicInfo">
+    <div class="musicTitle" id="trackTitle">Select Song 1</div>
+    <div class="musicArtist" id="trackArtist">Death Playlist</div>
+  </div>
+  <div class="musicControls">
+    <button class="musicBtn" id="prevTrack" title="Previous">⏮</button>
+    <button class="musicBtn" id="playPauseBtn" title="Play/Pause">▶</button>
+    <button class="musicBtn" id="nextTrack" title="Next">⏭</button>
+  </div>
+</div>
+<div class="overlay" id="projectOverlay"><div class="dialog glass"><button class="close" id="projectClose">×</button><div class="dialogImg"><img id="dialogImage" src="" alt=""></div><div class="dialogBody"><div class="kicker">Project</div><h3 id="dialogTitle"></h3><p id="dialogDescription"></p><div class="dialogActions"><a id="dialogLink" class="btn primary" href="#" target="_blank" rel="noopener">Open live project ↗</a><button class="btn panel" id="dialogClose">Close</button></div></div></div></div>
 
-<div class="overlay" id="projectOverlay"><div class="dialog"><button class="close" id="projectClose">×</button><div class="dialogImg"><img id="dialogImage" src="" alt=""></div><div class="dialogBody"><div class="kicker">PROJECT</div><h3 id="dialogTitle"></h3><p id="dialogDescription"></p><div class="dialogActions"><a id="dialogLink" class="btn primary" href="#" target="_blank" rel="noopener">Open live project ↗</a><button class="btn" id="dialogClose">Close</button></div></div></div></div>
-
-<div class="overlay" id="commandOverlay"><div class="command"><div class="cmdSearch"><b>⌘</b><input id="commandInput" placeholder="Type a command… try work, web, theme, roblox" autocomplete="off"></div><div class="cmdList">
-<button class="cmdItem" data-command="work"><div class="cmdIcon">◈</div><div>View selected work</div><div class="cmdHint">WORK</div></button>
-<button class="cmdItem" data-command="web"><div class="cmdIcon">⌘</div><div>Open web development</div><div class="cmdHint">WEB</div></button>
-<button class="cmdItem" data-command="roblox"><div class="cmdIcon">◇</div><div>Open Roblox profile</div><div class="cmdHint">ROBLOX</div></button>
-<button class="cmdItem" data-command="theme"><div class="cmdIcon">☾</div><div>Toggle day / night</div><div class="cmdHint">THEME</div></button>
-<button class="cmdItem" data-command="spin"><div class="cmdIcon">↻</div><div>Toggle model auto-spin</div><div class="cmdHint">3D</div></button>
-<button class="cmdItem" data-command="contact"><div class="cmdIcon">↗</div><div>Jump to contact</div><div class="cmdHint">CONTACT</div></button>
+<div class="overlay" id="commandOverlay"><div class="command glass"><div class="cmdSearch"><b>⌘</b><input id="commandInput" placeholder="Type a command… try work, web, theme, roblox" autocomplete="off"></div><div class="cmdList">
+<button class="cmdItem" data-command="work"><div class="cmdIcon">◈</div><div>View selected work</div></button>
+<button class="cmdItem" data-command="web"><div class="cmdIcon">⌘</div><div>Open web development</div></button>
+<button class="cmdItem" data-command="roblox"><div class="cmdIcon">◇</div><div>Open Roblox profile</div></button>
+<button class="cmdItem" data-command="theme"><div class="cmdIcon">☾</div><div>Toggle day / night</div></button>
+<button class="cmdItem" data-command="contact"><div class="cmdIcon">↗</div><div>Jump to contact</div></button>
 </div></div></div>
 
 <script>
 const $=s=>document.querySelector(s);const $$=s=>document.querySelectorAll(s);
 
-/* loader */
-let lp=0;const lb=$("#loaderBar"),lc=$("#loaderPct");const li=setInterval(()=>{lp=Math.min(100,lp+Math.floor(Math.random()*8)+4);lb.style.width=lp+"%";lc.textContent=lp+"%";if(lp>=100)clearInterval(li)},65);window.addEventListener("load",()=>setTimeout(()=>$("#loader").classList.add("hide"),2050));
+/* theme setup */
+function setTheme(theme){document.body.classList.toggle("dark",theme==="dark");localStorage.setItem("death-theme",theme)}
+const saved=localStorage.getItem("death-theme");if(saved)setTheme(saved);
+$("#themeButton").onclick=()=>setTheme(document.body.classList.contains("dark")?"light":"dark");
 
-/* theme */
-function setTheme(theme){document.body.classList.toggle("light",theme==="light");localStorage.setItem("death-theme",theme)}const saved=localStorage.getItem("death-theme");if(saved)setTheme(saved);$("#themeButton").onclick=()=>setTheme(document.body.classList.contains("light")?"dark":"light");
+/* scroll progress + nav state + hero parallax */
+let ticking=false;
+const heroGlow=$(".heroCardGlow"),heroCardEl=$("#heroCard");
+function scrollUI(){
+  const h=document.documentElement.scrollHeight-innerHeight;
+  $("#progress").style.width=(h?scrollY/h*100:0)+"%";
+  $("#nav").classList.toggle("scrolled",scrollY>30);
+  if(heroCardEl&&heroGlow){
+    const r=heroCardEl.getBoundingClientRect();
+    const p=(r.top+r.height/2-innerHeight/2)/innerHeight;
+    heroGlow.style.transform=`translateY(${p*40}px)`;
+  }
+  ticking=false;
+}
+addEventListener("scroll",()=>{if(!ticking){requestAnimationFrame(scrollUI);ticking=true}},{passive:true});
+scrollUI();
 
-/* scroll */
-function scrollUI(){const h=document.documentElement.scrollHeight-innerHeight;$("#progress").style.width=(h?scrollY/h*100:0)+"%";$("#nav").classList.toggle("scrolled",scrollY>30)}addEventListener("scroll",scrollUI,{passive:true});scrollUI();
+/* reveal animations */
+const ANIM_SEL=".reveal,.fade-up,.fade-down,.slide-left,.slide-right,.scale-in,.rotate-in,.blur-in,.flip-in,.pop-in,.timelineLine";
+$$(".stagger").forEach(g=>[...g.children].forEach((c,i)=>{
+  c.style.transitionDelay=(i*70)+"ms";
+  c.addEventListener("transitionend",()=>{c.style.transitionDelay=""},{once:true});
+}));
+const observer=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add("visible");observer.unobserve(e.target)}}),{threshold:.12,rootMargin:"0px 0px -6% 0px"});
+$$(ANIM_SEL).forEach(e=>observer.observe(e));
 
-/* reveals */
-const observer=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add("visible");observer.unobserve(e.target)}}),{threshold:.08});$$(".reveal").forEach(e=>observer.observe(e));
+/* stat counter */
+const countObserver=new IntersectionObserver(es=>es.forEach(e=>{
+  if(!e.isIntersecting)return;
+  countObserver.unobserve(e.target);
+  const el=e.target,target=parseInt(el.dataset.count,10);
+  if(isNaN(target)){el.classList.add('visible');return}
+  const dur=1100,start=performance.now();
+  function tick(now){
+    const p=Math.min(1,(now-start)/dur);
+    const eased=1-Math.pow(1-p,3);
+    el.textContent=String(Math.round(target*eased)).padStart(el.dataset.pad?2:1,'0');
+    if(p<1)requestAnimationFrame(tick);else el.textContent=el.dataset.count;
+  }
+  requestAnimationFrame(tick);
+}),{threshold:.6});
+$$('[data-count]').forEach(e=>countObserver.observe(e));
 
-/* filters */
-$$(".filter").forEach(f=>f.onclick=()=>{$$(".filter").forEach(x=>x.classList.remove("active"));f.classList.add("active");const value=f.dataset.filter;$$('.project').forEach(p=>{if(p.classList.contains("empty"))return;const show=value==="all"||p.dataset.category===value;p.classList.toggle("hidden",!show);if(show)p.animate([{opacity:0,transform:"scale(.97) translateY(8px)"},{opacity:1,transform:"scale(1) translateY(0)"}],{duration:350,easing:"cubic-bezier(.2,.8,.2,1)"})})});
+setTimeout(()=>$("#heroCard").classList.add("visible"),150);
 
-/* cards */
-$$('.tilt').forEach(card=>{card.addEventListener('pointermove',e=>{if(innerWidth<850)return;const r=card.getBoundingClientRect(),x=e.clientX-r.left,y=e.clientY-r.top;const ry=(x/r.width-.5)*4,rx=(y/r.height-.5)*-4;card.style.setProperty('--mx',x+'px');card.style.setProperty('--my',y+'px');card.style.transform=`perspective(1000px) rotateX(${rx}deg) rotateY(${ry}deg) translateY(-5px)`});card.addEventListener('pointerleave',()=>card.style.transform='')});
-
-/* 3D model */
-const stage=$("#stage"),core=$("#modelCore");let rx=-18,ry=35,auto=true,drag=false,px=0,py=0;
-function modelLoop(){if(auto&&!drag)ry+=.22;core.style.transform=`rotateX(${rx}deg) rotateY(${ry}deg) rotateZ(8deg)`;requestAnimationFrame(modelLoop)}modelLoop();
-stage.addEventListener('pointermove',e=>{if(innerWidth<850)return;const r=stage.getBoundingClientRect();if(!drag){ry=35+((e.clientX-r.left)/r.width-.5)*18;rx=-18+((e.clientY-r.top)/r.height-.5)*-14}else{ry+=(e.clientX-px)*.45;rx+=(e.clientY-py)*-.32;px=e.clientX;py=e.clientY}});stage.addEventListener('pointerdown',e=>{if(e.target.closest('button'))return;drag=true;px=e.clientX;py=e.clientY});addEventListener('pointerup',()=>drag=false);$("#spinToggle").onclick=function(){auto=!auto;this.textContent='AUTO SPIN: '+(auto?'ON':'OFF')};$("#resetModel").onclick=()=>{rx=-18;ry=35};
-
-/* particles */
-const canvas=$("#particles"),ctx=canvas.getContext("2d");let pts=[],mx=-9999,my=-9999,W=0,H=0;function resize(){W=innerWidth;H=innerHeight;const d=Math.min(devicePixelRatio||1,2);canvas.width=W*d;canvas.height=H*d;canvas.style.width=W+'px';canvas.style.height=H+'px';ctx.setTransform(d,0,0,d,0,0);pts=Array.from({length:innerWidth<700?45:95},()=>({x:Math.random()*W,y:Math.random()*H,vx:(Math.random()-.5)*.15,vy:(Math.random()-.5)*.15,r:Math.random()*1.3+.3,a:Math.random()*.35+.08}))}function draw(){ctx.clearRect(0,0,W,H);for(let i=0;i<pts.length;i++){const p=pts[i];const dx=mx-p.x,dy=my-p.y,d=Math.hypot(dx,dy);if(d<150){p.x+=dx*.001;p.y+=dy*.001}p.x+=p.vx;p.y+=p.vy;if(p.x<0)p.x=W;if(p.x>W)p.x=0;if(p.y<0)p.y=H;if(p.y>H)p.y=0;ctx.beginPath();ctx.arc(p.x,p.y,p.r,0,Math.PI*2);ctx.fillStyle=`rgba(111,255,232,${p.a})`;ctx.fill();for(let j=i+1;j<pts.length;j++){const q=pts[j],dist=Math.hypot(p.x-q.x,p.y-q.y);if(dist<85){ctx.beginPath();ctx.moveTo(p.x,p.y);ctx.lineTo(q.x,q.y);ctx.strokeStyle=`rgba(83,188,255,${((85-dist)/85)*.06})`;ctx.stroke()}}}requestAnimationFrame(draw)}addEventListener('resize',resize);addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY});resize();draw();
-
-/* cursor */
-const cd=$("#cursor"),cr=$("#cursorRing");let cx=0,cy=0,rx2=0,ry2=0;addEventListener('mousemove',e=>{cx=e.clientX;cy=e.clientY;cd.style.left=cx+'px';cd.style.top=cy+'px'});function cursorLoop(){rx2+=(cx-rx2)*.15;ry2+=(cy-ry2)*.15;cr.style.left=rx2+'px';cr.style.top=ry2+'px';requestAnimationFrame(cursorLoop)}cursorLoop();$$('a,button,.project,.skill').forEach(x=>{x.addEventListener('mouseenter',()=>cr.classList.add('hot'));x.addEventListener('mouseleave',()=>cr.classList.remove('hot'))});
+/* project filters */
+$$(".filter").forEach(f=>f.onclick=()=>{
+  $$(".filter").forEach(x=>x.classList.remove("active"));f.classList.add("active");
+  const value=f.dataset.filter;
+  $$('.project').forEach(p=>{const show=value==="all"||p.dataset.category===value;p.style.display=show?"":"none"});
+});
 
 /* project modal */
-const po=$("#projectOverlay"),di=$("#dialogImage"),dt=$("#dialogTitle"),dd=$("#dialogDescription"),dl=$("#dialogLink");function openProject(p){di.src=p.dataset.image||'';dt.textContent=p.dataset.title||'';dd.textContent=p.dataset.description||'';if(p.dataset.url){dl.style.display='inline-flex';dl.href=p.dataset.url}else dl.style.display='none';po.classList.add('open');document.body.style.overflow='hidden'}function closeProject(){po.classList.remove('open');document.body.style.overflow=''}$$('.openProject').forEach(b=>b.onclick=e=>{e.stopPropagation();openProject(b.closest('.project'))});$("#projectClose").onclick=closeProject;$("#dialogClose").onclick=closeProject;po.onclick=e=>{if(e.target===po)closeProject()};
+const po=$("#projectOverlay"),di=$("#dialogImage"),dt=$("#dialogTitle"),dd=$("#dialogDescription"),dl=$("#dialogLink");
+function openProject(p){di.src=p.dataset.image||'';dt.textContent=p.dataset.title||'';dd.textContent=p.dataset.description||'';if(p.dataset.url){dl.style.display='inline-flex';dl.href=p.dataset.url}else dl.style.display='none';po.classList.add('open');document.body.style.overflow='hidden'}
+function closeProject(){po.classList.remove('open');document.body.style.overflow=''}
+$$('.project').forEach(p=>p.addEventListener('click',e=>{if(e.target.closest('a'))return;openProject(p)}));
+$("#projectClose").onclick=closeProject;$("#dialogClose").onclick=closeProject;po.onclick=e=>{if(e.target===po)closeProject()};
 
 /* command palette */
-const co=$("#commandOverlay"),ci=$("#commandInput");function openCommand(){co.classList.add('open');setTimeout(()=>ci.focus(),80)}function closeCommand(){co.classList.remove('open');ci.value='';$$('.cmdItem').forEach(x=>x.style.display='flex')}$("#commandButton").onclick=openCommand;$("#openCommand2").onclick=openCommand;document.addEventListener('keydown',e=>{if((e.ctrlKey||e.metaKey)&&e.key.toLowerCase()==='k'){e.preventDefault();co.classList.contains('open')?closeCommand():openCommand()}if(e.key==='Escape'){closeCommand();closeProject()}});co.onclick=e=>{if(e.target===co)closeCommand()};ci.oninput=()=>{const q=ci.value.toLowerCase();$$('.cmdItem').forEach(x=>x.style.display=x.textContent.toLowerCase().includes(q)?'flex':'none')};
-$$('.cmdItem').forEach(x=>x.onclick=()=>{const c=x.dataset.command;closeCommand();if(c==='work')$('#work').scrollIntoView({behavior:'smooth'});if(c==='web')$('#web').scrollIntoView({behavior:'smooth'});if(c==='contact')$('#contact').scrollIntoView({behavior:'smooth'});if(c==='theme')$('#themeButton').click();if(c==='spin')$('#spinToggle').click();if(c==='roblox')window.open('https://www.roblox.com/users/profile?username=DeathStrider114','_blank')});
+const co=$("#commandOverlay"),ci=$("#commandInput");
+function openCommand(){co.classList.add('open');setTimeout(()=>ci.focus(),80)}
+function closeCommand(){co.classList.remove('open');ci.value='';$$('.cmdItem').forEach(x=>x.style.display='flex')}
+$("#commandButton").onclick=openCommand;$("#openCommand2").onclick=openCommand;
+document.addEventListener('keydown',e=>{
+  if((e.ctrlKey||e.metaKey)&&e.key.toLowerCase()==='k'){e.preventDefault();co.classList.contains('open')?closeCommand():openCommand()}
+  if(e.key==='Escape'){closeCommand();closeProject()}
+});
+co.onclick=e=>{if(e.target===co)closeCommand()};
+ci.oninput=()=>{const q=ci.value.toLowerCase();$$('.cmdItem').forEach(x=>x.style.display=x.textContent.toLowerCase().includes(q)?'flex':'none')};
+$$('.cmdItem').forEach(x=>x.onclick=()=>{
+  const c=x.dataset.command;closeCommand();
+  if(c==='work')$('#work').scrollIntoView({behavior:'smooth'});
+  if(c==='web')$('#web').scrollIntoView({behavior:'smooth'});
+  if(c==='contact')$('#contact').scrollIntoView({behavior:'smooth'});
+  if(c==='theme')$('#themeButton').click();
+  if(c==='roblox')window.open('https://www.roblox.com/users/profile?username=DeathStrider114','_blank');
+});
 
-/* copy */
+/* copy roblox username */
 $("#copyRoblox").onclick=async function(){const old=this.textContent;try{await navigator.clipboard.writeText('DeathStrider114');this.textContent='Copied ✓'}catch{this.textContent='DeathStrider114'}setTimeout(()=>this.textContent=old,1500)};
 
-/* active navigation */
-const secs=$$('main section[id]'),nls=$$('.links a');const secObs=new IntersectionObserver(es=>es.forEach(e=>{if(!e.isIntersecting)return;nls.forEach(l=>l.style.color=l.getAttribute('href')==='#'+e.target.id?'var(--text)':'')}),{rootMargin:'-40% 0px -50% 0px'});secs.forEach(s=>secObs.observe(s));
+/* active nav highlight */
+const secs=$$('main section[id]'),nls=$$('.links a');
+const secObs=new IntersectionObserver(es=>es.forEach(e=>{if(!e.isIntersecting)return;nls.forEach(l=>l.classList.toggle('active',l.getAttribute('href')==='#'+e.target.id))}),{rootMargin:'-40% 0px -50% 0px'});
+secs.forEach(s=>secObs.observe(s));
+
+/* 3-Song Music Player Setup */
+const PLAYLIST = [
+  { title: "Song One", artist: "DRAKE", url: "https://anytourl.com/s/85579270997709339" },
+  { title: "Song Two", artist: "XXXTENTACION", url: "https://anytourl.com/s/85579254380653376" },
+  { title: "Song Three", artist: "KITSCHKRIEG", url: "https://anytourl.com/s/85579262257971737" }
+];
+let currentTrackIdx = 0;
+const audioElement = new Audio();
+let isPlaying = false;
+
+const playPauseBtn = $("#playPauseBtn");
+const nextTrackBtn = $("#nextTrack");
+const prevTrackBtn = $("#prevTrack");
+const trackTitleEl = $("#trackTitle");
+const musicPlayerEl = $("#musicPlayer");
+
+function loadTrack(idx) {
+  const track = PLAYLIST[idx];
+  trackTitleEl.textContent = track.title;
+  audioElement.src = track.url;
+}
+
+function togglePlay() {
+  if (!PLAYLIST[currentTrackIdx].url) {
+    trackTitleEl.textContent = "Paste song link!";
+    setTimeout(() => { trackTitleEl.textContent = PLAYLIST[currentTrackIdx].title; }, 2000);
+    return;
+  }
+  if (isPlaying) {
+    audioElement.pause();
+    isPlaying = false;
+    playPauseBtn.textContent = "▶";
+    musicPlayerEl.classList.remove("playing");
+    musicPlayerEl.classList.add("paused");
+  } else {
+    audioElement.play().then(() => {
+      isPlaying = true;
+      playPauseBtn.textContent = "⏸";
+      musicPlayerEl.classList.remove("paused");
+      musicPlayerEl.classList.add("playing");
+    }).catch(() => {
+      trackTitleEl.textContent = "Invalid link";
+    });
+  }
+}
+
+playPauseBtn.onclick = togglePlay;
+nextTrackBtn.onclick = () => {
+  currentTrackIdx = (currentTrackIdx + 1) % PLAYLIST.length;
+  loadTrack(currentTrackIdx);
+  if (isPlaying) audioElement.play();
+};
+prevTrackBtn.onclick = () => {
+  currentTrackIdx = (currentTrackIdx - 1 + PLAYLIST.length) % PLAYLIST.length;
+  loadTrack(currentTrackIdx);
+  if (isPlaying) audioElement.play();
+};
+loadTrack(0);
 </script>
 </body>
 </html>
