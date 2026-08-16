@@ -1836,7 +1836,7 @@ footer{
 .magnifyLetter.magnified{
   display:inline-block!important;
   vertical-align:baseline;
-  transform:scale(1.3);
+  transform:scale(1.2);
   transform-origin:center center;
   z-index:100;
   text-shadow:0 0 18px rgba(58,168,255,.20);
@@ -1867,7 +1867,7 @@ body.cursor-magnifier{cursor:none}
 body.cursor-magnifier a,body.cursor-magnifier button{cursor:none}
 
 /* SMASH HEADINGS — the heading itself falls from high above, hits, bounces, then the screen reacts. */
-body.screen-slam{animation:wholeScreenSlam .22s cubic-bezier(.2,.8,.2,1) 1;}
+body.screen-slam{animation:none!important;transform:none!important;}
 @keyframes wholeScreenSlam{
   0%,100%{transform:none}
   18%{transform:translate3d(-3px,2px,0)}
@@ -1875,7 +1875,7 @@ body.screen-slam{animation:wholeScreenSlam .22s cubic-bezier(.2,.8,.2,1) 1;}
   54%{transform:translate3d(-2px,1px,0)}
   72%{transform:translate3d(1px,0,0)}
 }
-.sectionHead.impact-shake .slam-heading{animation:deathSlamFromAbove .9s cubic-bezier(.16,.9,.18,1) 1 both;}
+.sectionHead.impact-shake .slam-heading{animation:deathSlamFromAbove 1.02s cubic-bezier(.12,.9,.16,1) 1 both;}
 .sectionHead.impact-shake .kicker,.sectionHead.impact-shake .desc{animation:slamSupportPop .48s cubic-bezier(.16,.9,.2,1) .38s 1 both;}
 @keyframes deathSlamFromAbove{
   /* Visible before impact: the heading is already up in the air. */
@@ -1913,6 +1913,146 @@ body.screen-slam{animation:wholeScreenSlam .22s cubic-bezier(.2,.8,.2,1) 1;}
 .heroText.reveal{opacity:0;transform:translateY(24px)}
 .heroText.reveal.visible{opacity:1;transform:none}
 .heroText h1{position:relative;z-index:7}
+
+/* ============================================================
+   DEATH VISUAL REFINEMENT — stronger colour, impact and mobile
+   ============================================================ */
+:root{
+  --pink:#ff52aa;
+  --mint:#41e6be;
+  --gold:#ffb24a;
+  --electric:#8f70ff;
+}
+body{
+  background:
+    radial-gradient(circle at 12% 8%,rgba(58,168,255,.10),transparent 28%),
+    radial-gradient(circle at 88% 28%,rgba(255,82,170,.08),transparent 25%),
+    radial-gradient(circle at 48% 92%,rgba(65,230,190,.07),transparent 26%),
+    var(--bg);
+}
+body.dark{
+  background:
+    radial-gradient(circle at 12% 8%,rgba(58,168,255,.12),transparent 28%),
+    radial-gradient(circle at 88% 28%,rgba(255,82,170,.09),transparent 25%),
+    radial-gradient(circle at 48% 92%,rgba(65,230,190,.07),transparent 26%),
+    var(--bg);
+}
+#ambientCanvas{opacity:.98;mix-blend-mode:normal}
+.sectionHead .title,.gameGroupHead h3,.contact h2,.heroText h1{
+  text-shadow:0 12px 38px rgba(58,168,255,.10)
+}
+.sectionHead .title{
+  transform:translate3d(0,-180px,0) scale(.76) rotateX(58deg);
+  filter:blur(9px);
+  transform-origin:50% 0%;
+}
+.sectionHead .title.slam-visible{
+  animation:deathSlamFromAbove 1.02s cubic-bezier(.12,.9,.16,1) 1 both;
+}
+@keyframes deathSlamFromAbove{
+  0%{transform:translate3d(0,-210px,0) scale(.76) rotateX(52deg);opacity:0;filter:blur(10px)}
+  34%{transform:translate3d(0,-70px,0) scale(.91) rotateX(17deg);opacity:1;filter:blur(2px)}
+  47%{transform:translate3d(0,9px,0) scale(1.055) rotateX(-2deg);filter:none}
+  55%{transform:translate3d(0,-10px,0) scale(.985)}
+  66%{transform:translate3d(0,5px,0) scale(1.025)}
+  78%{transform:translate3d(0,-2px,0) scale(.996)}
+  90%{transform:translate3d(0,1px,0) scale(1.006)}
+  100%{transform:none;opacity:1;filter:none}
+}
+/* Never transform the document itself during an impact. */
+body.screen-slam{animation:none!important;transform:none!important}
+.sectionHead.impact-shake{transform:none!important}
+.sectionHead.impact-shake .kicker,.sectionHead.impact-shake .desc{
+  animation:slamSupportPop .52s cubic-bezier(.16,.9,.2,1) .42s 1 both;
+}
+.sectionHead .kicker{color:var(--mint)}
+.sectionHead .title::after{
+  content:"";display:block;width:clamp(44px,8vw,88px);height:4px;margin-top:14px;border-radius:99px;
+  background:linear-gradient(90deg,var(--blue),var(--electric),var(--pink),var(--gold));
+  box-shadow:0 0 22px rgba(143,112,255,.34);
+}
+.panel{box-shadow:0 20px 60px rgba(20,120,214,.10),0 0 0 1px rgba(255,255,255,.02) inset}
+.btn.primary{background:linear-gradient(115deg,var(--blue),var(--electric) 52%,var(--pink));background-size:180% 180%;animation:buttonGradient 7s ease infinite}
+@keyframes buttonGradient{50%{background-position:100% 50%}}
+.gameCard:nth-child(4n+1){--card-accent:var(--blue)}
+.gameCard:nth-child(4n+2){--card-accent:var(--mint)}
+.gameCard:nth-child(4n+3){--card-accent:var(--electric)}
+.gameCard:nth-child(4n){--card-accent:var(--pink)}
+.gameCard:after{background:linear-gradient(115deg,transparent 30%,color-mix(in srgb,var(--card-accent) 25%,transparent) 50%,transparent 70%)}
+.gameTag{border-color:color-mix(in srgb,var(--card-accent) 45%,white 10%);box-shadow:0 0 20px color-mix(in srgb,var(--card-accent) 18%,transparent)}
+.serviceIcon{background:color-mix(in srgb,var(--mint) 8%,transparent);border-color:color-mix(in srgb,var(--mint) 20%,transparent)}
+.heroCard{filter:drop-shadow(0 28px 80px rgba(58,168,255,.18))}
+.marqueeItem:nth-child(6n+1){--item-accent:var(--blue)}
+.marqueeItem:nth-child(6n+2){--item-accent:var(--mint)}
+.marqueeItem:nth-child(6n+3){--item-accent:var(--electric)}
+.marqueeItem:nth-child(6n+4){--item-accent:var(--pink)}
+.marqueeItem:nth-child(6n+5){--item-accent:var(--gold)}
+.marqueeItem:nth-child(6n){--item-accent:var(--cyan)}
+.marqueeItem:hover{border-color:color-mix(in srgb,var(--item-accent) 48%,transparent);box-shadow:0 10px 35px color-mix(in srgb,var(--item-accent) 13%,transparent)}
+.timelineLine{width:3px;box-shadow:0 0 18px rgba(143,112,255,.28)}
+.node{box-shadow:0 0 0 5px color-mix(in srgb,var(--cyan) 12%,transparent),0 0 20px rgba(58,168,255,.4)}
+
+@media(max-width:800px){
+  section{padding:92px 0}
+  .sectionHead{top:58px;padding:12px 0 15px;margin-bottom:20px}
+  .sectionHead .title{font-size:clamp(31px,8vw,48px);letter-spacing:-1.2px}
+  .sectionHead .title.slam-visible{animation-duration:.86s}
+  .sectionHead .title::after{height:3px;margin-top:10px}
+  .hero{min-height:auto;padding:112px 0 46px}
+  .heroGrid{gap:28px}
+  .heroCard{min-height:390px;border-radius:30px}
+  .heroCardBg,.heroImgWrap{border-radius:30px}
+  .heroText p{font-size:14px;line-height:1.7}
+  .stats{gap:8px;padding-top:26px}
+  .stat{padding:20px 17px;border-radius:20px}
+  .gameGroup{margin-top:38px}
+  .gameGrid{gap:8px}
+  .gameCard{min-height:245px;border-radius:22px}
+  .featureBody{padding:30px 24px}
+  .featureMedia{min-height:240px}
+  .webCopy{padding:30px 24px}
+  .browser{min-height:360px}
+  .contact{min-height:330px;border-radius:28px}
+}
+@media(max-width:560px){
+  body{font-size:14px}
+  section{padding:76px 0}
+  .sectionHead{top:54px}
+  .sectionHead .title{font-size:clamp(29px,9.4vw,40px)}
+  .sectionHead .desc{font-size:12px;line-height:1.65}
+  .hero{padding-top:92px}
+  .heroText h1{font-size:clamp(39px,12vw,58px);line-height:1.02}
+  .heroText p{font-size:13px;margin:18px 0 24px}
+  .actions{justify-content:flex-start}
+  .btn{min-height:44px;padding:0 15px;border-radius:13px;font-size:12px}
+  .heroCard{min-height:310px}
+  .stats{grid-template-columns:1fr 1fr}
+  .stat{padding:18px 15px}
+  .stat strong{font-size:26px}
+  .stat span{font-size:10px}
+  .gameGroupHead h3{font-size:30px}
+  .gameCard{min-height:225px}
+  .featureRow,.webFeature{border-radius:23px}
+  .featureBody h3{font-size:25px}
+  .browser{min-height:320px;margin:5px}
+  .browserScreen{padding:22px}
+  .fakeHero{margin-top:56px}
+  .fakeHero h4{font-size:34px}
+  .filmItem{width:280px;min-height:210px}
+  .timeCard{padding:22px 20px;border-radius:20px}
+  .item{padding-left:38px}
+  .services{gap:8px}
+  .service{padding:24px;border-radius:22px}
+  .aboutCard{padding:25px;border-radius:22px}
+  .contact h2{font-size:clamp(34px,10vw,48px)}
+  .musicPlayer{left:10px;right:10px;bottom:10px;max-width:none;padding:8px 11px;border-radius:16px}
+  .cursorSettings{right:10px;bottom:76px}
+}
+@media(prefers-reduced-motion:reduce){
+  .sectionHead .title.slam-visible{animation:none!important;transform:none!important;opacity:1!important;filter:none!important}
+  .btn.primary{animation:none!important}
+}
+
 </style>
  </head>
  <body>
@@ -2208,9 +2348,9 @@ body.screen-slam{animation:wholeScreenSlam .22s cubic-bezier(.2,.8,.2,1) 1;}
        Modelling
       </button>
      </div>
-     <div class="project featureRow panel tilt" data-category="web" data-description="A custom portfolio website designed and developed for Pond, combining a premium presentation with responsive layout and interactive frontend work." data-image="https://s6.imgcdn.dev/YgyIh9.png" data-title="Pond — ER:LC Portfolio" data-url="https://pondvx.vercel.app">
+     <div class="project featureRow panel tilt" data-category="web" data-description="A custom portfolio website designed and developed for Pond, combining a premium presentation with responsive layout and interactive frontend work." data-image="https://s6.imgcdn.dev/YXgBSn.jpg" data-title="Pond — ER:LC Portfolio" data-url="https://pondvx.vercel.app">
       <div class="featureMedia slide-left">
-       <img alt="Pond portfolio project" loading="lazy" src="https://s6.imgcdn.dev/YgyIh9.png"/>
+       <img alt="Pond portfolio project" loading="lazy" src="https://s6.imgcdn.dev/YXgBSn.jpg"/>
       </div>
       <div class="featureBody slide-right">
        <h3>
@@ -2219,11 +2359,16 @@ body.screen-slam{animation:wholeScreenSlam .22s cubic-bezier(.2,.8,.2,1) 1;}
        <p>
         Designed and developed as a polished community portfolio experience, with custom motion and a distinct visual identity.
        </p>
+       <a class="btn primary openProject" href="#">
+        View project
+        <i data-lucide="arrow-up-right">
+        </i>
+       </a>
       </div>
      </div>
-     <div class="project featureRow rev panel tilt" data-category="web" data-description="The evolving developer portfolio for Death, built to showcase Roblox, web and 3D work." data-image="https://s6.imgcdn.dev/YgysrH.png" data-title="Death.dev">
+     <div class="project featureRow rev panel tilt" data-category="web" data-description="The evolving developer portfolio for Death, built to showcase Roblox, web and 3D work." data-image="https://s6.imgcdn.dev/YXgGeg.jpg" data-title="Death.dev" data-url="https://death.itsjohan.dev">
       <div class="featureMedia slide-right">
-       <img alt="Death portfolio" loading="lazy" src="https://s6.imgcdn.dev/YgysrH.png"/>
+       <img alt="Death portfolio" loading="lazy" src="https://s6.imgcdn.dev/YXgGeg.jpg"/>
       </div>
       <div class="featureBody slide-left">
        <h3>
@@ -2329,7 +2474,7 @@ body.screen-slam{animation:wholeScreenSlam .22s cubic-bezier(.2,.8,.2,1) 1;}
       </div>
       <div class="gameGrid stagger-game">
        <article class="gameCard panel" data-game="The Gathering">
-        <img alt="The Gathering environment showcase" loading="lazy" src="https://s6.imgcdn.dev/"/>
+        <img alt="The Gathering environment showcase" loading="lazy" src="https://s6.imgcdn.dev/YXgrcv.jpg"/>
         <span class="gameIndex">
          01
         </span>
@@ -2346,7 +2491,7 @@ body.screen-slam{animation:wholeScreenSlam .22s cubic-bezier(.2,.8,.2,1) 1;}
         </div>
        </article>
        <article class="gameCard panel" data-game="The Gathering">
-        <img alt="The Gathering development showcase" loading="lazy" src="https://s6.imgcdn.dev/"/>
+        <img alt="The Gathering development showcase" loading="lazy" src="https://s6.imgcdn.dev/YXgxtq.jpg"/>
         <span class="gameIndex">
          02
         </span>
@@ -2363,7 +2508,7 @@ body.screen-slam{animation:wholeScreenSlam .22s cubic-bezier(.2,.8,.2,1) 1;}
         </div>
        </article>
        <article class="gameCard panel" data-game="The Gathering">
-        <img alt="The Gathering interface showcase" loading="lazy" src="https://s6.imgcdn.dev/"/>
+        <img alt="The Gathering interface showcase" loading="lazy" src="https://s6.imgcdn.dev/YXgGeg.jpg"/>
         <span class="gameIndex">
          03
         </span>
@@ -2380,7 +2525,7 @@ body.screen-slam{animation:wholeScreenSlam .22s cubic-bezier(.2,.8,.2,1) 1;}
         </div>
        </article>
        <article class="gameCard panel" data-game="The Gathering">
-        <img alt="The Gathering atmosphere showcase" loading="lazy" src="https://s6.imgcdn.dev/"/>
+        <img alt="The Gathering atmosphere showcase" loading="lazy" src="https://s6.imgcdn.dev/YXgAYB.jpg"/>
         <span class="gameIndex">
          04
         </span>
@@ -2414,7 +2559,7 @@ body.screen-slam{animation:wholeScreenSlam .22s cubic-bezier(.2,.8,.2,1) 1;}
       </div>
       <div class="gameGrid stagger-game">
        <article class="gameCard panel" data-game="Fairfax County Jail">
-        <img alt="Fairfax County Jail environment showcase" loading="lazy" src="https://s6.imgcdn.dev/YgsPDq.png"/>
+        <img alt="Fairfax County Jail environment showcase" loading="lazy" src="https://s6.imgcdn.dev/YXgrcv.jpg"/>
         <span class="gameIndex">
          01
         </span>
@@ -2431,7 +2576,7 @@ body.screen-slam{animation:wholeScreenSlam .22s cubic-bezier(.2,.8,.2,1) 1;}
         </div>
        </article>
        <article class="gameCard panel" data-game="Fairfax County Jail">
-        <img alt="Fairfax County Jail systems showcase" loading="lazy" src="https://s6.imgcdn.dev/YgsT5B.png"/>
+        <img alt="Fairfax County Jail systems showcase" loading="lazy" src="https://s6.imgcdn.dev/YXgxtq.jpg"/>
         <span class="gameIndex">
          02
         </span>
@@ -2448,7 +2593,7 @@ body.screen-slam{animation:wholeScreenSlam .22s cubic-bezier(.2,.8,.2,1) 1;}
         </div>
        </article>
        <article class="gameCard panel" data-game="Fairfax County Jail">
-        <img alt="Fairfax County Jail interface showcase" loading="lazy" src="https://s6.imgcdn.dev/Ygsyzv.png"/>
+        <img alt="Fairfax County Jail interface showcase" loading="lazy" src="https://s6.imgcdn.dev/YXgGeg.jpg"/>
         <span class="gameIndex">
          03
         </span>
@@ -2465,7 +2610,7 @@ body.screen-slam{animation:wholeScreenSlam .22s cubic-bezier(.2,.8,.2,1) 1;}
         </div>
        </article>
        <article class="gameCard panel" data-game="Fairfax County Jail">
-        <img alt="Fairfax County Jail atmosphere showcase" loading="lazy" src="https://s6.imgcdn.dev/YgsUOu.png"/>
+        <img alt="Fairfax County Jail atmosphere showcase" loading="lazy" src="https://s6.imgcdn.dev/YXgAYB.jpg"/>
         <span class="gameIndex">
          04
         </span>
@@ -2578,6 +2723,11 @@ body.screen-slam{animation:wholeScreenSlam .22s cubic-bezier(.2,.8,.2,1) 1;}
        <div class="actions">
         <a class="btn primary" href="https://pondvx.vercel.app" rel="noopener" target="_blank">
          View live website
+         <i data-lucide="arrow-up-right">
+         </i>
+        </a>
+        <a class="btn panel" href="https://death.itsjohan.dev" rel="noopener" target="_blank">
+         My current site
          <i data-lucide="arrow-up-right">
          </i>
         </a>
@@ -2889,7 +3039,7 @@ body.screen-slam{animation:wholeScreenSlam .22s cubic-bezier(.2,.8,.2,1) 1;}
           Current site
          </span>
          <strong>
-          deathstrider114.vercel.app
+          death.itsjohan.dev
          </strong>
         </div>
        </div>
@@ -3194,14 +3344,121 @@ const slamObserver=new IntersectionObserver(entries=>{
       section.querySelector('.sectionHead .kicker')?.classList.add('slam-support');
       section.querySelector('.sectionHead .desc')?.classList.add('slam-support');
       section.classList.remove('impact-shake');void section.offsetWidth;section.classList.add('impact-shake');
-      setTimeout(()=>{document.body.classList.remove('screen-slam');void document.body.offsetWidth;document.body.classList.add('screen-slam');},450);
+      
       section.querySelectorAll('.game-slam-heading').forEach(h=>{h.classList.remove('slam-visible');void h.offsetWidth;h.classList.add('slam-visible');h.style.animation='deathSlamBounce .78s cubic-bezier(.12,.9,.18,1)'});
-      setTimeout(()=>{section.classList.remove('impact-shake');document.body.classList.remove('screen-slam')},1150);
+      setTimeout(()=>{section.classList.remove('impact-shake')},1250);
     }));
     slamObserver.unobserve(section);
   });
 },{threshold:.18,rootMargin:'0px 0px -8% 0px'});
-$$('main section').forEach(section=>slamObserver.observe(section));  document.querySelectorAll('.stagger-game').forEach(group=>{   [...group.querySelectorAll('.gameCard')].forEach((card,index)=>{     card.style.transitionDelay=(index*75)+'ms';     const cardObserver=new IntersectionObserver(entries=>{       entries.forEach(entry=>{         if(!entry.isIntersecting)return;         card.classList.add('visible');         cardObserver.unobserve(card);       });     },{threshold:.12});     cardObserver.observe(card);   }); });  /* ============================================================    NOTICEABLE BACKGROUND PARTICLES + ONE HORIZONTAL RGB PARTICLE RAIL    The background field drifts continuously. Only the rail repels from the cursor.    ============================================================ */ (function initAmbientScene(){   const canvas=document.querySelector('#ambientCanvas');   if(!canvas)return;   const ctx=canvas.getContext('2d');   if(!ctx)return;   const particles=[];   const rail=[];   let width=0,height=0,dpr=1,mouseX=-9999,mouseY=-9999,t=0;   const reducedMotion=matchMedia('(prefers-reduced-motion:reduce)').matches;   const particleTarget=()=>Math.min(250,Math.max(150,Math.floor(innerWidth*innerHeight/8500)));   function makeParticle(){     return {x:Math.random()*innerWidth,y:Math.random()*innerHeight,vx:(Math.random()-.5)*.38,vy:(Math.random()-.5)*.38,r:1.1+Math.random()*2.25,a:.35+Math.random()*.48,phase:Math.random()*Math.PI*2};   }   function makeRailParticle(i){     return {u:i/Math.max(1,railTarget()-1),drift:(Math.random()-.5)*.008,phase:Math.random()*Math.PI*2,size:2.5+Math.random()*2.2,band:(Math.random()-.5)*8};   }   function railTarget(){return Math.min(190,Math.max(90,Math.floor(innerWidth/8)));}   function resize(){     width=innerWidth;height=innerHeight;dpr=Math.min(devicePixelRatio||1,1.8);     canvas.width=Math.floor(width*dpr);canvas.height=Math.floor(height*dpr);     canvas.style.width=width+'px';canvas.style.height=height+'px';ctx.setTransform(dpr,0,0,dpr,0,0);     while(particles.length<particleTarget())particles.push(makeParticle());     while(particles.length>particleTarget())particles.pop();     rail.length=0;     for(let i=0;i<railTarget();i++)rail.push(makeRailParticle(i));   }   function railY(x,time){     const nx=x/Math.max(width,1);     return height*.52+Math.sin(nx*Math.PI*2.05+time*.00048)*height*.052+Math.sin(nx*Math.PI*4.4-time*.00026)*height*.018;   }   function frame(ms){     t=ms;ctx.clearRect(0,0,width,height);      /* Free-moving background field. A strong barrier keeps particles on their current side of the rail. */     for(const p of particles){       p.phase+=.004;       p.x+=p.vx+Math.sin(p.phase*.8)*.045;       p.y+=p.vy+Math.cos(p.phase*.7)*.035;       const line=railY(p.x,ms);       const delta=p.y-line;       const barrier=30;       if(Math.abs(delta)<barrier){         const side=delta<0?-1:1;         const force=(1-Math.abs(delta)/barrier)*.52;         p.y+=side*force;         p.vy+=side*.010;       }       if(p.x<-12)p.x=width+12;if(p.x>width+12)p.x=-12;       if(p.y<-12)p.y=height+12;if(p.y>height+12)p.y=-12;       ctx.beginPath();       ctx.fillStyle=`rgba(121,200,255,${p.a+Math.sin(p.phase)*.08})`;       ctx.arc(p.x,p.y,p.r,0,Math.PI*2);       ctx.fill();     }      /* One thick, continuous-looking blue particle rail. */     const repelRadius=100;     for(let i=0;i<rail.length;i++){       const p=rail[i];       p.u+=p.drift*.1+0.00038;       if(p.u>1)p.u=0;if(p.u<0)p.u=1;       const x=p.u*width;       const y=railY(x,ms)+p.band;       let dx=x-mouseX,dy=y-mouseY,dist=Math.hypot(dx,dy)||.001;       let push=0;       if(dist<repelRadius)push=Math.pow(1-dist/repelRadius,2)*72;       const px=x+(dx/dist)*push;       const py=y+(dy/dist)*push;       const alpha=.82+Math.sin(p.phase+ms*.0015)*.12;       ctx.beginPath();       ctx.fillStyle=`rgba(48,145,255,${alpha})`;       ctx.shadowBlur=14;       ctx.shadowColor='rgba(58,168,255,.72)';       ctx.arc(px,py,p.size,0,Math.PI*2);       ctx.fill();     }     ctx.shadowBlur=0;     if(!reducedMotion)requestAnimationFrame(frame);   }   addEventListener('pointermove',e=>{mouseX=e.clientX;mouseY=e.clientY},{passive:true});   addEventListener('pointerleave',()=>{mouseX=-9999;mouseY=-9999},{passive:true});   addEventListener('resize',resize,{passive:true});   resize();   requestAnimationFrame(frame); })();  /* reveal animations */ const ANIM_SEL=".reveal,.fade-up,.fade-down,.slide-left,.slide-right,.scale-in,.rotate-in,.blur-in,.flip-in,.pop-in,.timelineLine"; $$(".stagger").forEach(g=>[...g.children].forEach((c,i)=>{   c.style.transitionDelay=(i*70)+"ms";   c.addEventListener("transitionend",()=>{c.style.transitionDelay=""},{once:true}); })); const observer=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add("visible");observer.unobserve(e.target)}}),{threshold:.12,rootMargin:"0px 0px -6% 0px"}); $$(ANIM_SEL).forEach(e=>observer.observe(e));  /* stat counter */ const countObserver=new IntersectionObserver(es=>es.forEach(e=>{   if(!e.isIntersecting)return;   countObserver.unobserve(e.target);   const el=e.target,target=parseInt(el.dataset.count,10);   if(isNaN(target)){el.classList.add('visible');return}   const dur=1100,start=performance.now();   function tick(now){     const p=Math.min(1,(now-start)/dur);     const eased=1-Math.pow(1-p,3);     el.textContent=String(Math.round(target*eased)).padStart(el.dataset.pad?2:1,'0');     if(p<1)requestAnimationFrame(tick);else el.textContent=el.dataset.count;   }   requestAnimationFrame(tick); }),{threshold:.6}); $$('[data-count]').forEach(e=>countObserver.observe(e));  setTimeout(()=>$("#heroCard").classList.add("visible"),150);  /* TRUE INFINITE MARQUEE — exact pixel loop, never pauses/resets visually */
+$$('main section').forEach(section=>slamObserver.observe(section));  document.querySelectorAll('.stagger-game').forEach(group=>{   [...group.querySelectorAll('.gameCard')].forEach((card,index)=>{     card.style.transitionDelay=(index*75)+'ms';     const cardObserver=new IntersectionObserver(entries=>{       entries.forEach(entry=>{         if(!entry.isIntersecting)return;         card.classList.add('visible');         cardObserver.unobserve(card);       });     },{threshold:.12});     cardObserver.observe(card);   }); });  /* ============================================================    NOTICEABLE BACKGROUND PARTICLES + ONE HORIZONTAL RGB PARTICLE RAIL    The background field drifts continuously. Only the rail repels from the cursor.    ============================================================ */ (function initAmbientScene(){
+  const canvas=document.querySelector('#ambientCanvas');
+  if(!canvas)return;
+  const ctx=canvas.getContext('2d');
+  if(!ctx)return;
+  const particles=[],rail=[];
+  let width=0,height=0,dpr=1,mouseX=-9999,mouseY=-9999,t=0;
+  const reducedMotion=matchMedia('(prefers-reduced-motion:reduce)').matches;
+  const palette=[
+    [58,168,255], [126,203,255], [143,112,255],
+    [255,82,170], [65,230,190], [255,178,74]
+  ];
+  const particleTarget=()=>Math.min(300,Math.max(170,Math.floor(innerWidth*innerHeight/7200)));
+  const railTarget=()=>Math.min(260,Math.max(110,Math.floor(innerWidth/6)));
+  const pick=()=>palette[(Math.random()*palette.length)|0];
+  function makeParticle(){
+    const c=pick();
+    return {x:Math.random()*innerWidth,y:Math.random()*innerHeight,vx:(Math.random()-.5)*.42,vy:(Math.random()-.5)*.42,r:.9+Math.random()*2.6,a:.24+Math.random()*.52,phase:Math.random()*Math.PI*2,c};
+  }
+  function makeRailParticle(i){
+    const c=pick();
+    return {u:i/Math.max(1,railTarget()-1),drift:(Math.random()-.5)*.012,phase:Math.random()*Math.PI*2,size:3.2+Math.random()*3.6,band:(Math.random()-.5)*11,c};
+  }
+  function resize(){
+    width=innerWidth;height=innerHeight;dpr=Math.min(devicePixelRatio||1,1.8);
+    canvas.width=Math.floor(width*dpr);canvas.height=Math.floor(height*dpr);
+    canvas.style.width=width+'px';canvas.style.height=height+'px';
+    ctx.setTransform(dpr,0,0,dpr,0,0);
+    while(particles.length<particleTarget())particles.push(makeParticle());
+    while(particles.length>particleTarget())particles.pop();
+    rail.length=0;
+    for(let i=0;i<railTarget();i++)rail.push(makeRailParticle(i));
+  }
+  function railY(x,time){
+    const nx=x/Math.max(width,1);
+    return height*.53+
+      Math.sin(nx*Math.PI*2.05+time*.00048)*height*.055+
+      Math.sin(nx*Math.PI*4.4-time*.00026)*height*.02;
+  }
+  function rgba(c,a){return `rgba(${c[0]},${c[1]},${c[2]},${a})`;}
+  function drawRail(ms){
+    const points=52;
+    const grad=ctx.createLinearGradient(0,0,width,0);
+    grad.addColorStop(0,'rgba(58,168,255,.72)');
+    grad.addColorStop(.2,'rgba(65,230,190,.72)');
+    grad.addColorStop(.42,'rgba(143,112,255,.76)');
+    grad.addColorStop(.64,'rgba(255,82,170,.72)');
+    grad.addColorStop(.82,'rgba(255,178,74,.72)');
+    grad.addColorStop(1,'rgba(126,203,255,.72)');
+    ctx.beginPath();
+    for(let i=0;i<=points;i++){
+      const x=width*(i/points),y=railY(x,ms);
+      if(i===0)ctx.moveTo(x,y);else ctx.lineTo(x,y);
+    }
+    ctx.lineWidth=4.5;
+    ctx.lineCap='round';
+    ctx.strokeStyle=grad;
+    ctx.shadowBlur=24;
+    ctx.shadowColor='rgba(92,150,255,.42)';
+    ctx.stroke();
+    ctx.lineWidth=1.2;
+    ctx.strokeStyle='rgba(255,255,255,.38)';
+    ctx.shadowBlur=0;
+    ctx.stroke();
+  }
+  function frame(ms){
+    t=ms;ctx.clearRect(0,0,width,height);
+    for(const p of particles){
+      p.phase+=.004;
+      p.x+=p.vx+Math.sin(p.phase*.8)*.045;
+      p.y+=p.vy+Math.cos(p.phase*.7)*.035;
+      const line=railY(p.x,ms),delta=p.y-line,barrier=34;
+      if(Math.abs(delta)<barrier){
+        const side=delta<0?-1:1;
+        const force=(1-Math.abs(delta)/barrier)*.56;
+        p.y+=side*force;p.vy+=side*.010;
+      }
+      if(p.x<-12)p.x=width+12;if(p.x>width+12)p.x=-12;
+      if(p.y<-12)p.y=height+12;if(p.y>height+12)p.y=-12;
+      ctx.beginPath();
+      ctx.fillStyle=rgba(p.c,p.a+Math.sin(p.phase)*.07);
+      ctx.shadowBlur=8;ctx.shadowColor=rgba(p.c,.28);
+      ctx.arc(p.x,p.y,p.r,0,Math.PI*2);ctx.fill();
+    }
+    drawRail(ms);
+    const repelRadius=125;
+    for(const p of rail){
+      p.u+=p.drift*.1+.00046;
+      if(p.u>1)p.u=0;if(p.u<0)p.u=1;
+      const x=p.u*width,y=railY(x,ms)+p.band;
+      let dx=x-mouseX,dy=y-mouseY,dist=Math.hypot(dx,dy)||.001;
+      let push=0;if(dist<repelRadius)push=Math.pow(1-dist/repelRadius,2)*86;
+      const px=x+(dx/dist)*push,py=y+(dy/dist)*push;
+      const alpha=.78+Math.sin(p.phase+ms*.0015)*.16;
+      ctx.beginPath();ctx.fillStyle=rgba(p.c,alpha);
+      ctx.shadowBlur=18;ctx.shadowColor=rgba(p.c,.72);
+      ctx.arc(px,py,p.size,0,Math.PI*2);ctx.fill();
+      ctx.beginPath();ctx.fillStyle='rgba(255,255,255,.55)';ctx.shadowBlur=0;
+      ctx.arc(px-p.size*.2,py-p.size*.2,Math.max(1,p.size*.24),0,Math.PI*2);ctx.fill();
+    }
+    ctx.shadowBlur=0;
+    if(!reducedMotion)requestAnimationFrame(frame);
+  }
+  addEventListener('pointermove',e=>{mouseX=e.clientX;mouseY=e.clientY},{passive:true});
+  addEventListener('pointerleave',()=>{mouseX=-9999;mouseY=-9999},{passive:true});
+  addEventListener('resize',resize,{passive:true});
+  resize();requestAnimationFrame(frame);
+})();  /* reveal animations */ const ANIM_SEL=".reveal,.fade-up,.fade-down,.slide-left,.slide-right,.scale-in,.rotate-in,.blur-in,.flip-in,.pop-in,.timelineLine"; $$(".stagger").forEach(g=>[...g.children].forEach((c,i)=>{   c.style.transitionDelay=(i*70)+"ms";   c.addEventListener("transitionend",()=>{c.style.transitionDelay=""},{once:true}); })); const observer=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add("visible");observer.unobserve(e.target)}}),{threshold:.12,rootMargin:"0px 0px -6% 0px"}); $$(ANIM_SEL).forEach(e=>observer.observe(e));  /* stat counter */ const countObserver=new IntersectionObserver(es=>es.forEach(e=>{   if(!e.isIntersecting)return;   countObserver.unobserve(e.target);   const el=e.target,target=parseInt(el.dataset.count,10);   if(isNaN(target)){el.classList.add('visible');return}   const dur=1100,start=performance.now();   function tick(now){     const p=Math.min(1,(now-start)/dur);     const eased=1-Math.pow(1-p,3);     el.textContent=String(Math.round(target*eased)).padStart(el.dataset.pad?2:1,'0');     if(p<1)requestAnimationFrame(tick);else el.textContent=el.dataset.count;   }   requestAnimationFrame(tick); }),{threshold:.6}); $$('[data-count]').forEach(e=>countObserver.observe(e));  setTimeout(()=>$("#heroCard").classList.add("visible"),150);  /* TRUE INFINITE MARQUEE — exact pixel loop, never pauses/resets visually */
 (function initMarquee(){
   const track=$("#marqueeTrack");
   if(!track)return;
