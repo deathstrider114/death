@@ -924,7 +924,7 @@ footer{
 }
 
 
-/* Matching vibrant hero backdrop, kept static for smooth scrolling. */
+/* Matching vibrant drifting colour field. Transform-only, never tied to scroll. */
 header.hero{position:relative;isolation:isolate;overflow:hidden}
 header.hero::before{
   content:"";position:absolute;inset:0;z-index:0;pointer-events:none;
@@ -943,6 +943,18 @@ header.hero::after{
 }
 header.hero>.container{position:relative;z-index:2}
 header.hero>.hero-grid,header.hero>.hero-orb,header.hero>.hero-orb2{z-index:1}
+header.hero::before{
+  inset:-5% -3%;
+  transform:translate3d(-1.5%,0,0) scale(1.04);
+  animation:portfolioColourDrift 24s ease-in-out infinite alternate;
+}
+@keyframes portfolioColourDrift{
+  0%{transform:translate3d(-1.5%,0,0) scale(1.04)}
+  100%{transform:translate3d(1.5%,1%,0) scale(1.08)}
+}
+@media(prefers-reduced-motion:reduce){
+  header.hero::before{animation:none}
+}
 </style>
 </head>
 
