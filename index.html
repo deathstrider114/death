@@ -2076,6 +2076,31 @@ body.dark .hero::after{opacity:.15}
     animation-iteration-count:infinite!important;
   }
 }
+
+/* Dedicated animated background layer: background-position avoids the
+   pseudo-element transform/cascade issue and keeps motion isolated. */
+.hero{isolation:isolate}
+.hero-drift{
+  position:absolute;inset:-35%;z-index:0;pointer-events:none;
+  background:
+    radial-gradient(ellipse 34% 42% at 18% 28%,rgba(0,190,255,.42),transparent 75%),
+    radial-gradient(ellipse 38% 46% at 78% 24%,rgba(105,83,255,.38),transparent 75%),
+    radial-gradient(ellipse 36% 44% at 72% 78%,rgba(0,220,185,.30),transparent 75%),
+    radial-gradient(ellipse 32% 40% at 24% 82%,rgba(255,70,170,.24),transparent 75%),
+    linear-gradient(115deg,rgba(48,142,255,.13),transparent 52%,rgba(100,80,255,.12));
+  background-size:180% 180%;
+  background-position:0% 0%;
+  animation:heroColourTravel 22s ease-in-out infinite alternate;
+}
+@keyframes heroColourTravel{
+  0%{background-position:0% 0%}
+  50%{background-position:100% 45%}
+  100%{background-position:15% 100%}
+}
+@media(prefers-reduced-motion:reduce){
+  .hero-drift{animation:heroColourTravel 22s ease-in-out infinite alternate!important;animation-duration:22s!important;animation-iteration-count:infinite!important}
+}
+
 </style>
  </head>
  <body>
@@ -2218,6 +2243,7 @@ rsorSettings">
   </div>
   <main>
    <section class="hero" id="home">
+    <div class="hero-drift" aria-hidden="true"></div>
     <div class="container heroGrid">
      <div class="heroText reveal">
       <h1>
