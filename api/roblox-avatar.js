@@ -1,18 +1,24 @@
 module.exports = async function handler(req, res) {
-  res.setHeader("Cache-Control", "public, s-maxage=3600, stale-while-revalidate=86400");
+  res.setHeader("Cache-Control", "no-store");
   try {
-    const lookup = await fetch("https://users.roblox.com/v1/usernames/users?username=DeathStrider114&excludeBannedUsers=true");
-    if (!lookup.ok) return res.status(200).json({ imageUrl: null });
-    const userData = await lookup.json();
-    const userId = userData && userData.data && userData.data[0] && userData.data[0].id;
-    if (!userId) return res.status(200).json({ imageUrl: null });
-
-    const avatar = await fetch("https://thumbnails.roblox.com/v1/users/avatar?userIds=" + userId + "&size=720x720&format=Png&isCircular=false");
-    if (!avatar.ok) return res.status(200).json({ imageUrl: null });
-    const avatarData = await avatar.json();
-    const imageUrl = avatarData && avatarData.data && avatarData.data[0] && avatarData.data[0].imageUrl;
-    return res.status(200).json({ imageUrl: imageUrl || null });
+    // Resolve the avatar directly by the account's Roblox user ID.
+    // This avoids the usernames endpoint, which can fail independently.
+    const userId = "2208824068";
+    const response = await fetch(
+      "https://thumbnails.roblox.com/v1/users/avatar?userIds=" +
+      userId +
+      "&size=720x720&format=Png&isCircular=false"
+    );
+    if (!response.ok) {
+      return res.status(502).json({ imageUrl: null, error: "Roblox thumbnail service unavailable" });
+    }
+    const payload = await response.json();
+    const imageUrl = payload && payload.data && payload.data[0] && payload.data[0].imageUrl;
+    if (!imageUrl) {
+      return res.status(502).json({ imageUrl: null, error: "Roblox did not return an avatar image" });
+    }
+    return res.status(200).json({ imageUrl });
   } catch (error) {
-    return res.status(200).json({ imageUrl: null });
+    return res.status(502).json({ imageUrl: null, error: "Avatar lookup failed" });
   }
 };
