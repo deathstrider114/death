@@ -2037,7 +2037,7 @@ body.screen-slam{animation:none!important;transform:none!important}
 }
 
 
-/* Vibrant hero backdrop: static layered colour, no scroll or frame animation. */
+/* Vibrant drifting colour field. Animation is transform-only and independent of scroll. */
 .hero{position:relative;isolation:isolate}
 .hero::before{
   content:"";position:absolute;inset:0;z-index:0;pointer-events:none;
@@ -2057,6 +2057,18 @@ body.screen-slam{animation:none!important;transform:none!important}
 .hero>.container{position:relative;z-index:2}
 body.dark .hero::before{opacity:1}
 body.dark .hero::after{opacity:.15}
+.hero::before{
+  inset:-5% -3%;
+  transform:translate3d(-1.5%,0,0) scale(1.04);
+  animation:portfolioColourDrift 24s ease-in-out infinite alternate;
+}
+@keyframes portfolioColourDrift{
+  0%{transform:translate3d(-1.5%,0,0) scale(1.04)}
+  100%{transform:translate3d(1.5%,1%,0) scale(1.08)}
+}
+@media(prefers-reduced-motion:reduce){
+  .hero::before{animation:none}
+}
 </style>
  </head>
  <body>
