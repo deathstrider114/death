@@ -923,6 +923,33 @@ footer{
     }
 }
 
+
+/* Shared Seshy-inspired colour field */
+header.hero{position:relative;isolation:isolate;overflow:hidden}
+header.hero::before{
+  content:"";position:absolute;z-index:0;pointer-events:none;
+  inset:-18% -12%;opacity:.76;
+  background:
+    radial-gradient(ellipse at 14% 24%,rgba(0,190,255,.32),transparent 31%),
+    radial-gradient(ellipse at 78% 20%,rgba(112,88,255,.32),transparent 32%),
+    radial-gradient(ellipse at 70% 80%,rgba(0,220,190,.2),transparent 30%),
+    radial-gradient(ellipse at 28% 82%,rgba(255,70,170,.16),transparent 28%),
+    linear-gradient(125deg,rgba(70,150,255,.06),transparent 48%,rgba(110,90,255,.08));
+  animation:portfolioColourDrift 26s ease-in-out infinite alternate;
+}
+header.hero::after{
+  content:"";position:absolute;z-index:0;pointer-events:none;inset:0;
+  opacity:.22;
+  background-image:radial-gradient(circle,rgba(126,203,255,.7) .8px,transparent 1.25px);
+  background-size:27px 27px;
+  mask-image:radial-gradient(ellipse at 50% 45%,#000 0%,transparent 78%);
+}
+header.hero>.container{position:relative;z-index:2}
+@keyframes portfolioColourDrift{
+  0%{transform:translate3d(-1.5%,0,0) scale(1.02)}
+  100%{transform:translate3d(1.5%,1%,0) scale(1.06)}
+}
+@media(prefers-reduced-motion:reduce){header.hero::before{animation:none}}
 </style>
 </head>
 
