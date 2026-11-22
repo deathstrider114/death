@@ -953,8 +953,14 @@ header.hero::before{
   0%{transform:translate3d(-9%,-5%,0) scale(1.12)}
   100%{transform:translate3d(9%,5%,0) scale(1.12)}
 }
+/* Keep the hero colour drift running even when the site's general
+   reduced-motion rule shortens other decorative animations. */
 @media(prefers-reduced-motion:reduce){
-  header.hero::before{animation:none;will-change:auto}
+  header.hero::before{
+    animation:portfolioColourDrift 18s ease-in-out infinite alternate!important;
+    animation-duration:18s!important;
+    animation-iteration-count:infinite!important;
+  }
 }
 </style>
 </head>
