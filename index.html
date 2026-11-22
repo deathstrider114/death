@@ -121,22 +121,6 @@ body.dark .panel{
   z-index:9999;
   background:linear-gradient(90deg,var(--cyan),var(--blue),var(--violet))}
 
-/* Ambient particle canvas + interactive horizontal RGB particle rail */ #ambientCanvas{
-  position:fixed;
-  inset:0;
-  width:100%;
-  height:100%;
-  z-index:1;
-  pointer-events:none;
-  opacity:1}
-
-body>main,body>footer{
-  position:relative;
-  z-index:2}
-
-body>.progress{
-  z-index:9999}
-
 /* Real magnifier + cursor modes */
 body.cursor-hidden{
   cursor:default}
@@ -2059,15 +2043,46 @@ body.screen-slam{animation:none!important;transform:none!important}
  <body>
   <div class="progress" id="progress">
   </div>
-  <canvas aria-hidden="true" id="ambientCanvas">
-  </canvas>
-  <div aria-hidden="true" class="cursorLens" id="cursorLens">
+<div aria-hidden="true" class="cursorLens" id="cursorLens">
    <span class="lensHandle">
    </span>
   </div>
   <div aria-hidden="true" class="customCursor" id="customCursor">
   </div>
-  <div class="cursorSettings" id="cursorSettings">
+  <div class="cursorSettings" id="cu
+/* Seshy-inspired colour field: layered gradients and a quiet dot texture.
+   The movement is transform-only; no scroll handlers or canvas loop. */
+.hero{position:relative;isolation:isolate}
+.hero::before{
+  content:"";position:absolute;z-index:0;pointer-events:none;
+  inset:-18% -12%;opacity:.78;
+  background:
+    radial-gradient(ellipse at 16% 28%,rgba(0,190,255,.34),transparent 31%),
+    radial-gradient(ellipse at 78% 22%,rgba(112,88,255,.30),transparent 32%),
+    radial-gradient(ellipse at 68% 78%,rgba(0,220,190,.22),transparent 30%),
+    radial-gradient(ellipse at 28% 82%,rgba(255,70,170,.16),transparent 28%),
+    linear-gradient(125deg,rgba(70,150,255,.06),transparent 48%,rgba(110,90,255,.08));
+  transform:translate3d(0,0,0) scale(1.02);
+  animation:portfolioColourDrift 26s ease-in-out infinite alternate;
+}
+.hero::after{
+  content:"";position:absolute;z-index:0;pointer-events:none;inset:0;
+  opacity:.28;
+  background-image:radial-gradient(circle,rgba(72,151,255,.58) .8px,transparent 1.25px);
+  background-size:27px 27px;
+  mask-image:radial-gradient(ellipse at 50% 45%,#000 0%,transparent 78%);
+}
+.hero>.container{position:relative;z-index:2}
+body.dark .hero::before{opacity:.9}
+body.dark .hero::after{opacity:.2}
+@keyframes portfolioColourDrift{
+  0%{transform:translate3d(-1.5%,0,0) scale(1.02)}
+  100%{transform:translate3d(1.5%,1%,0) scale(1.06)}
+}
+@media(prefers-reduced-motion:reduce){
+  .hero::before{animation:none}
+}
+rsorSettings">
    <button aria-label="Cursor settings" class="cursorSettingsBtn" id="cursorSettingsBtn" title="Cursor settings">
     <i data-lucide="mouse-pointer-2">
     </i>
@@ -3366,145 +3381,7 @@ const slamObserver=new IntersectionObserver(entries=>{
     slamObserver.unobserve(section);
   });
 },{threshold:.18,rootMargin:'0px 0px -8% 0px'});
-$$('main section').forEach(section=>slamObserver.observe(section));  document.querySelectorAll('.stagger-game').forEach(group=>{   [...group.querySelectorAll('.gameCard')].forEach((card,index)=>{     card.style.transitionDelay=(index*75)+'ms';     const cardObserver=new IntersectionObserver(entries=>{       entries.forEach(entry=>{         if(!entry.isIntersecting)return;         card.classList.add('visible');         cardObserver.unobserve(card);       });     },{threshold:.12});     cardObserver.observe(card);   }); });  /* ============================================================
-   LIGHTWEIGHT BACKGROUND PARTICLES
-   Fewer particles, smaller rail and a capped 30 FPS render loop.
-   ============================================================ */
-(function initAmbientScene(){
-  const canvas=document.querySelector('#ambientCanvas');
-  if(!canvas)return;
-  const ctx=canvas.getContext('2d');
-  if(!ctx)return;
-
-  const particles=[],rail=[];
-  let width=0,height=0,dpr=1,mouseX=-9999,mouseY=-9999,lastFrame=0;
-  const reducedMotion=matchMedia('(prefers-reduced-motion:reduce)').matches;
-  const palette=[[58,168,255],[126,203,255],[143,112,255],[65,180,220]];
-
-  const particleTarget=()=>Math.min(120,Math.max(70,Math.floor(innerWidth*innerHeight/18000)));
-  const railTarget=()=>Math.min(90,Math.max(45,Math.floor(innerWidth/12)));
-  const pick=()=>palette[(Math.random()*palette.length)|0];
-
-  function makeParticle(){
-    const c=pick();
-    return {
-      x:Math.random()*innerWidth,y:Math.random()*innerHeight,
-      vx:(Math.random()-.5)*.22,vy:(Math.random()-.5)*.22,
-      r:.7+Math.random()*1.5,a:.18+Math.random()*.32,
-      phase:Math.random()*Math.PI*2,c
-    };
-  }
-
-  function makeRailParticle(i){
-    return {
-      u:i/Math.max(1,railTarget()-1),
-      drift:(Math.random()-.5)*.006,
-      phase:Math.random()*Math.PI*2,
-      size:1.7+Math.random()*2.2,
-      band:(Math.random()-.5)*8,
-      c:pick()
-    };
-  }
-
-  function resize(){
-    width=innerWidth;height=innerHeight;
-    dpr=Math.min(devicePixelRatio||1,1.25);
-    canvas.width=Math.floor(width*dpr);
-    canvas.height=Math.floor(height*dpr);
-    canvas.style.width=width+'px';
-    canvas.style.height=height+'px';
-    ctx.setTransform(dpr,0,0,dpr,0,0);
-
-    const target=particleTarget();
-    while(particles.length<target)particles.push(makeParticle());
-    while(particles.length>target)particles.pop();
-
-    rail.length=0;
-    for(let i=0;i<railTarget();i++)rail.push(makeRailParticle(i));
-  }
-
-  function railY(x,time){
-    const nx=x/Math.max(width,1);
-    return height*.53+
-      Math.sin(nx*Math.PI*2.05+time*.00035)*height*.045+
-      Math.sin(nx*Math.PI*4.4-time*.0002)*height*.016;
-  }
-
-  function rgba(c,a){return `rgba(${c[0]},${c[1]},${c[2]},${a})`;}
-
-  function frame(ms){
-    if(ms-lastFrame<33){requestAnimationFrame(frame);return;}
-    lastFrame=ms;
-    ctx.clearRect(0,0,width,height);
-
-    /* Background field: simple fills only — no per-particle canvas shadows. */
-    for(const p of particles){
-      p.phase+=.0025;
-      p.x+=p.vx+Math.sin(p.phase*.8)*.02;
-      p.y+=p.vy+Math.cos(p.phase*.7)*.016;
-
-      const line=railY(p.x,ms),delta=p.y-line,barrier=25;
-      if(Math.abs(delta)<barrier){
-        const side=delta<0?-1:1;
-        const force=(1-Math.abs(delta)/barrier)*.28;
-        p.y+=side*force;
-      }
-
-      if(p.x<-12)p.x=width+12;
-      if(p.x>width+12)p.x=-12;
-      if(p.y<-12)p.y=height+12;
-      if(p.y>height+12)p.y=-12;
-
-      ctx.beginPath();
-      ctx.fillStyle=rgba(p.c,p.a);
-      ctx.arc(p.x,p.y,p.r,0,Math.PI*2);
-      ctx.fill();
-    }
-
-    /* One thin rail instead of a thick glowing stroke. */
-    const grad=ctx.createLinearGradient(0,0,width,0);
-    grad.addColorStop(0,'rgba(58,168,255,.55)');
-    grad.addColorStop(.35,'rgba(126,203,255,.55)');
-    grad.addColorStop(.7,'rgba(58,168,255,.55)');
-    grad.addColorStop(1,'rgba(126,203,255,.55)');
-
-    ctx.beginPath();
-    for(let i=0;i<=36;i++){
-      const x=width*(i/36),y=railY(x,ms);
-      if(i===0)ctx.moveTo(x,y);else ctx.lineTo(x,y);
-    }
-    ctx.lineWidth=2;
-    ctx.lineCap='round';
-    ctx.strokeStyle=grad;
-    ctx.stroke();
-
-    const repelRadius=90;
-    for(const p of rail){
-      p.u+=p.drift*.1+.00025;
-      if(p.u>1)p.u=0;
-      const x=p.u*width,y=railY(x,ms)+p.band;
-      const dx=x-mouseX,dy=y-mouseY;
-      const dist=Math.hypot(dx,dy)||.001;
-      let push=0;
-      if(dist<repelRadius)push=Math.pow(1-dist/repelRadius,2)*42;
-      const px=x+(dx/dist)*push,py=y+(dy/dist)*push;
-
-      ctx.beginPath();
-      ctx.fillStyle=rgba(p.c,.65);
-      ctx.arc(px,py,p.size,0,Math.PI*2);
-      ctx.fill();
-    }
-
-    if(!reducedMotion)requestAnimationFrame(frame);
-  }
-
-  addEventListener('pointermove',e=>{mouseX=e.clientX;mouseY=e.clientY},{passive:true});
-  addEventListener('pointerleave',()=>{mouseX=-9999;mouseY=-9999},{passive:true});
-  addEventListener('resize',resize,{passive:true});
-  resize();
-  if(!reducedMotion)requestAnimationFrame(frame);
-})();
-  /* reveal animations */ const ANIM_SEL=".reveal,.fade-up,.fade-down,.slide-left,.slide-right,.scale-in,.rotate-in,.blur-in,.flip-in,.pop-in,.timelineLine"; $$(".stagger").forEach(g=>[...g.children].forEach((c,i)=>{   c.style.transitionDelay=(i*70)+"ms";   c.addEventListener("transitionend",()=>{c.style.transitionDelay=""},{once:true}); })); const observer=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add("visible");observer.unobserve(e.target)}}),{threshold:.12,rootMargin:"0px 0px -6% 0px"}); $$(ANIM_SEL).forEach(e=>observer.observe(e));  /* stat counter */ const countObserver=new IntersectionObserver(es=>es.forEach(e=>{   if(!e.isIntersecting)return;   countObserver.unobserve(e.target);   const el=e.target,target=parseInt(el.dataset.count,10);   if(isNaN(target)){el.classList.add('visible');return}   const dur=1100,start=performance.now();   function tick(now){     const p=Math.min(1,(now-start)/dur);     const eased=1-Math.pow(1-p,3);     el.textContent=String(Math.round(target*eased)).padStart(el.dataset.pad?2:1,'0');     if(p<1)requestAnimationFrame(tick);else el.textContent=el.dataset.count;   }   requestAnimationFrame(tick); }),{threshold:.6}); $$('[data-count]').forEach(e=>countObserver.observe(e));  setTimeout(()=>$("#heroCard").classList.add("visible"),150);  /* TRUE INFINITE MARQUEE — exact pixel loop, never pauses/resets visually */
+$$('main section').forEach(section=>slamObserver.observe(section));  document.querySelectorAll('.stagger-game').forEach(group=>{   [...group.querySelectorAll('.gameCard')].forEach((card,index)=>{     card.style.transitionDelay=(index*75)+'ms';     const cardObserver=new IntersectionObserver(entries=>{       entries.forEach(entry=>{         if(!entry.isIntersecting)return;         card.classList.add('visible');         cardObserver.unobserve(card);       });     },{threshold:.12});     cardObserver.observe(card);   }); });  /* reveal animations */ const ANIM_SEL=".reveal,.fade-up,.fade-down,.slide-left,.slide-right,.scale-in,.rotate-in,.blur-in,.flip-in,.pop-in,.timelineLine"; $$(".stagger").forEach(g=>[...g.children].forEach((c,i)=>{   c.style.transitionDelay=(i*70)+"ms";   c.addEventListener("transitionend",()=>{c.style.transitionDelay=""},{once:true}); })); const observer=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add("visible");observer.unobserve(e.target)}}),{threshold:.12,rootMargin:"0px 0px -6% 0px"}); $$(ANIM_SEL).forEach(e=>observer.observe(e));  /* stat counter */ const countObserver=new IntersectionObserver(es=>es.forEach(e=>{   if(!e.isIntersecting)return;   countObserver.unobserve(e.target);   const el=e.target,target=parseInt(el.dataset.count,10);   if(isNaN(target)){el.classList.add('visible');return}   const dur=1100,start=performance.now();   function tick(now){     const p=Math.min(1,(now-start)/dur);     const eased=1-Math.pow(1-p,3);     el.textContent=String(Math.round(target*eased)).padStart(el.dataset.pad?2:1,'0');     if(p<1)requestAnimationFrame(tick);else el.textContent=el.dataset.count;   }   requestAnimationFrame(tick); }),{threshold:.6}); $$('[data-count]').forEach(e=>countObserver.observe(e));  setTimeout(()=>$("#heroCard").classList.add("visible"),150);  /* TRUE INFINITE MARQUEE — exact pixel loop, never pauses/resets visually */
 (function initMarquee(){
   const track=$("#marqueeTrack");
   if(!track)return;
