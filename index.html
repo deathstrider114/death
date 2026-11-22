@@ -3453,16 +3453,15 @@ rsorSettings">
    </div>
   </div>
   <style>
-   /* Full-screen media viewer */
-   .media-viewer{position:fixed;inset:0;z-index:1000000;display:flex;align-items:center;justify-content:center;padding:5vh 5vw;background:rgba(5,9,18,.88);backdrop-filter:blur(22px) saturate(125%);-webkit-backdrop-filter:blur(22px) saturate(125%);opacity:0;visibility:hidden;transition:opacity .22s ease,visibility .22s ease}
+   /* Full-screen viewer is limited to portfolio work previews. */
+   .featureMedia img,.filmstrip img,.gameCard img,.gameCard video{cursor:zoom-in}
+   .media-viewer{position:fixed;inset:0;z-index:1000000;display:flex;align-items:center;justify-content:center;padding:5vh 5vw;background:rgba(5,9,18,.9);backdrop-filter:blur(22px) saturate(125%);-webkit-backdrop-filter:blur(22px) saturate(125%);opacity:0;visibility:hidden;transition:opacity .22s ease,visibility .22s ease}
    .media-viewer.open{opacity:1;visibility:visible}
    .media-viewer-content{display:flex;align-items:center;justify-content:center;width:100%;height:100%;min-width:0;min-height:0}
    .media-viewer-content img,.media-viewer-content video{display:block;max-width:100%;max-height:90vh;width:auto;height:auto;object-fit:contain;border-radius:12px;box-shadow:0 24px 90px rgba(0,0,0,.45)}
-   .media-viewer-content video{width:min(92vw,1400px);max-height:88vh;background:#05070b}
+   .media-viewer-content video{width:min(92vw,1400px);max-height:88vh;background:#05070b;cursor:auto}
    .media-viewer-close{position:absolute;top:22px;right:24px;width:46px;height:46px;display:grid;place-items:center;border:1px solid rgba(255,255,255,.22);border-radius:50%;background:rgba(255,255,255,.12);color:#fff;font-size:27px;line-height:1;cursor:pointer;backdrop-filter:blur(14px)}
    .media-viewer-close:hover{background:rgba(255,255,255,.22)}
-   img,video{cursor:zoom-in}
-   .media-viewer video{cursor:auto}
    @media(max-width:600px){.media-viewer{padding:3vh 3vw}.media-viewer-content img,.media-viewer-content video{max-width:94vw;max-height:84vh;border-radius:8px}.media-viewer-close{top:12px;right:12px;width:42px;height:42px}}
    @media(prefers-reduced-motion:reduce){.media-viewer{transition:none}}
   </style>
@@ -3473,20 +3472,21 @@ rsorSettings">
   <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js">
   </script>
   <script>
-   /* Open any page image or video in a focused, full-screen viewer. */
+   /* Enlarge only media shown in the work and project examples. */
    (function(){
     const viewer=document.getElementById('mediaViewer');
     const content=document.getElementById('mediaViewerContent');
     const closeButton=document.getElementById('mediaViewerClose');
-    let previousFocus=null,sourceVideo=null;
+    const workMediaSelector='.featureMedia img,.filmstrip img,.gameCard img,.gameCard video';
+    let sourceVideo=null,previousFocus=null;
     function closeViewer(){
      if(!viewer.classList.contains('open'))return;
-     const activeVideo=content.querySelector('video');
-     if(activeVideo)activeVideo.pause();
+     const enlarged=content.querySelector('video');
+     if(enlarged)enlarged.pause();
      content.replaceChildren();
-     if(sourceVideo){sourceVideo.play().catch(()=>{});sourceVideo=null;}
      viewer.classList.remove('open');viewer.setAttribute('aria-hidden','true');
      document.body.style.overflow='';
+     if(sourceVideo){sourceVideo.play().catch(()=>{});sourceVideo=null;}
      if(previousFocus&&previousFocus.isConnected)previousFocus.focus({preventScroll:true});
     }
     function openViewer(media){
@@ -3495,34 +3495,43 @@ rsorSettings">
      if(media.tagName==='VIDEO'){
       sourceVideo=media;
       media.pause();
-      const video=media.cloneNode(true);
-      video.controls=true;video.autoplay=true;video.muted=false;video.loop=media.loop;
-      video.removeAttribute('aria-label');
+      const video=document.createElement('video');
+      const source=media.currentSrc||media.querySelector('source')?.src||media.src;
+      video.src=source;
+      video.controls=true;
+      video.autoplay=true;
+      video.playsInline=true;
+      video.preload='auto';
+      video.loop=false;
+      video.muted=false;
       content.appendChild(video);
+      viewer.classList.add('open');viewer.setAttribute('aria-hidden','false');
+      document.body.style.overflow='hidden';
+      closeButton.focus({preventScroll:true});
       video.play().catch(()=>{video.muted=true;video.play().catch(()=>{});});
-     }else{
-      sourceVideo=null;
-      const image=new Image();
-      image.src=media.currentSrc||media.src;
-      image.alt=media.alt||'Expanded image';
-      content.appendChild(image);
+      return;
      }
+     sourceVideo=null;
+     const image=new Image();
+     image.src=media.currentSrc||media.src;
+     image.alt=media.alt||'Expanded project image';
+     content.appendChild(image);
      viewer.classList.add('open');viewer.setAttribute('aria-hidden','false');
      document.body.style.overflow='hidden';
      closeButton.focus({preventScroll:true});
     }
     document.addEventListener('click',event=>{
-     const media=event.target.closest('img,video');
+     const media=event.target.closest(workMediaSelector);
      if(!media||viewer.contains(media))return;
-     if(media.closest('button,a')&&media.tagName!=='IMG')return;
-     event.preventDefault();event.stopPropagation();event.stopImmediatePropagation();
+     event.preventDefault();
+     event.stopPropagation();
+     event.stopImmediatePropagation();
      openViewer(media);
     },true);
     closeButton.addEventListener('click',closeViewer);
     viewer.addEventListener('click',event=>{if(event.target===viewer)closeViewer();});
     document.addEventListener('keydown',event=>{
-     if(!viewer.classList.contains('open'))return;
-     if(event.key==='Escape'){event.preventDefault();closeViewer();}
+     if(viewer.classList.contains('open')&&event.key==='Escape'){event.preventDefault();closeViewer();}
     });
    })();
    const $=s=>document.querySelector(s);const $$=s=>document.querySelectorAll(s);  /* icons */ if(window.lucide) lucide.createIcons();  /* theme setup */ function setTheme(theme){document.body.classList.toggle("dark",theme==="dark");localStorage.setItem("death-theme",theme)} const saved=localStorage.getItem("death-theme");if(saved)setTheme(saved); $("#themeButton").onclick=()=>setTheme(document.body.classList.contains("dark")?"light":"dark");  /* scroll progress + nav state + hero parallax */ let ticking=false; const heroGlow=$(".heroCardGlow"),heroCardEl=$("#heroCard"); function scrollUI(){   const h=document.documentElement.scrollHeight-innerHeight;   $("#progress").style.width=(h?scrollY/h*100:0)+"%";   $("#nav").classList.toggle("scrolled",scrollY>30);   if(heroCardEl&&heroGlow){     const r=heroCardEl.getBoundingClientRect();     const p=(r.top+r.height/2-innerHeight/2)/innerHeight;     heroGlow.style.transform=`translateY(${p*40}px)`;   }   ticking=false; } addEventListener("scroll",()=>{if(!ticking){requestAnimationFrame(scrollUI);ticking=true}},{passive:true}); scrollUI();  /* ============================================================
