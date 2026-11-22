@@ -2368,6 +2368,37 @@ footer{padding:34px 0 42px;border-color:var(--edge)}.footer{font-size:11px}.musi
 @media(prefers-reduced-motion:reduce){.navWrap,.navWrap.navIntro,.navWrap.navReady{transition:none!important;transform:translate3d(-50%,0,0)!important;opacity:1!important}}
 @media(prefers-reduced-transparency:reduce){.glass,.panel,.navWrap .nav,.nav{backdrop-filter:none!important;-webkit-backdrop-filter:none!important;background:var(--panel-strong)!important}}
 
+
+/* FINAL DETAIL PASS: interaction quality, accessibility and consistency */
+:where(a,button,input,select,textarea,[tabindex]):focus-visible{
+ outline:3px solid color-mix(in srgb,var(--blue) 72%,white);
+ outline-offset:4px;
+ border-radius:10px;
+}
+::selection{background:rgba(0,113,227,.2);color:var(--text)}
+html{scroll-behavior:smooth;scrollbar-gutter:stable}
+body{-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+.hero-shader{pointer-events:none}
+.navWrap .nav{position:relative;isolation:isolate;overflow:hidden}
+.navWrap .nav:before{
+ content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;border-radius:inherit;
+ background:linear-gradient(115deg,rgba(255,255,255,.34),transparent 34%,transparent 70%,rgba(255,255,255,.12));
+ opacity:.7
+}
+body.dark .navWrap .nav:before{background:linear-gradient(115deg,rgba(255,255,255,.08),transparent 38%,transparent 70%,rgba(255,255,255,.035))}
+.links a:focus-visible,.navBtn:focus-visible{outline-offset:2px}
+.project,.service,.aboutCard,.timeCard,.webFeature{transition:transform .28s cubic-bezier(.2,.75,.25,1),border-color .25s ease,box-shadow .28s ease,background .25s ease}
+.project:focus-within,.service:focus-within,.aboutCard:focus-within{border-color:rgba(0,113,227,.28);box-shadow:0 14px 38px rgba(20,50,90,.08)}
+img{height:auto}
+@media(hover:hover) and (pointer:fine){
+ .featureMedia img,.browser img{transition:transform .65s cubic-bezier(.2,.75,.25,1)}
+ .featureRow:hover .featureMedia img{transform:scale(1.025)}
+}
+@media(prefers-reduced-motion:reduce){
+ html{scroll-behavior:auto}
+ *,*::before,*::after{scroll-behavior:auto!important;animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}
+}
+
 </style>
  </head>
  <body>
