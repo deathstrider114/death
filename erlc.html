@@ -924,32 +924,25 @@ footer{
 }
 
 
-/* Shared Seshy-inspired colour field */
+/* Matching vibrant hero backdrop, kept static for smooth scrolling. */
 header.hero{position:relative;isolation:isolate;overflow:hidden}
 header.hero::before{
-  content:"";position:absolute;z-index:0;pointer-events:none;
-  inset:-18% -12%;opacity:.76;
+  content:"";position:absolute;inset:0;z-index:0;pointer-events:none;
   background:
-    radial-gradient(ellipse at 14% 24%,rgba(0,190,255,.32),transparent 31%),
-    radial-gradient(ellipse at 78% 20%,rgba(112,88,255,.32),transparent 32%),
-    radial-gradient(ellipse at 70% 80%,rgba(0,220,190,.2),transparent 30%),
-    radial-gradient(ellipse at 28% 82%,rgba(255,70,170,.16),transparent 28%),
-    linear-gradient(125deg,rgba(70,150,255,.06),transparent 48%,rgba(110,90,255,.08));
-  animation:portfolioColourDrift 26s ease-in-out infinite alternate;
+    radial-gradient(ellipse 54% 72% at 12% 18%,rgba(0,190,255,.30),transparent 72%),
+    radial-gradient(ellipse 48% 66% at 82% 14%,rgba(105,83,255,.26),transparent 72%),
+    radial-gradient(ellipse 52% 70% at 72% 88%,rgba(0,220,185,.18),transparent 72%),
+    radial-gradient(ellipse 42% 58% at 28% 92%,rgba(255,70,170,.13),transparent 72%),
+    linear-gradient(115deg,rgba(48,142,255,.08),transparent 52%,rgba(100,80,255,.07));
 }
 header.hero::after{
-  content:"";position:absolute;z-index:0;pointer-events:none;inset:0;
-  opacity:.22;
+  content:"";position:absolute;inset:0;z-index:1;pointer-events:none;opacity:.18;
   background-image:radial-gradient(circle,rgba(126,203,255,.7) .8px,transparent 1.25px);
-  background-size:27px 27px;
-  mask-image:radial-gradient(ellipse at 50% 45%,#000 0%,transparent 78%);
+  background-size:26px 26px;
+  mask-image:radial-gradient(ellipse at 50% 44%,#000 0%,transparent 78%);
 }
 header.hero>.container{position:relative;z-index:2}
-@keyframes portfolioColourDrift{
-  0%{transform:translate3d(-1.5%,0,0) scale(1.02)}
-  100%{transform:translate3d(1.5%,1%,0) scale(1.06)}
-}
-@media(prefers-reduced-motion:reduce){header.hero::before{animation:none}}
+header.hero>.hero-grid,header.hero>.hero-orb,header.hero>.hero-orb2{z-index:1}
 </style>
 </head>
 
