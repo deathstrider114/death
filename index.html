@@ -2400,6 +2400,33 @@ img{height:auto}
  *,*::before,*::after{scroll-behavior:auto!important;animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}
 }
 
+/* Introduction section */
+.introSection{padding-top:105px;padding-bottom:105px}
+.introTop{display:grid;grid-template-columns:.78fr 1.22fr;gap:42px;align-items:start;margin-bottom:34px}
+.introHello{display:flex;align-items:center;gap:13px;font:700 clamp(30px,4vw,48px)/1.08 "Segoe UI";letter-spacing:-1.8px}
+.introWave{display:inline-block;font-family:"Apple Color Emoji","Segoe UI Emoji",sans-serif;font-size:clamp(34px,4vw,48px);transform-origin:72% 76%;animation:introWave 2.15s ease-in-out infinite}
+@keyframes introWave{0%,58%,100%{transform:rotate(0deg)}8%,24%,40%{transform:rotate(18deg)}16%,32%,48%{transform:rotate(-10deg)}}
+.introLead p{max-width:720px;color:var(--muted);font-size:clamp(16px,1.6vw,19px);line-height:1.8}
+.introGrid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
+.introCard{position:relative;min-height:310px;padding:25px;border-radius:25px;overflow:hidden;transition:transform .35s cubic-bezier(.2,.8,.2,1),border-color .3s,box-shadow .3s}
+.introCard:before{content:"";position:absolute;inset:0 0 auto;height:2px;background:linear-gradient(90deg,var(--cyan),var(--blue),transparent);opacity:.8}
+.introCard:hover{transform:translateY(-5px);border-color:var(--edge-strong);box-shadow:0 22px 55px rgba(20,120,214,.13)}
+.introNumber{display:block;color:var(--blue);font-size:10px;font-weight:750;letter-spacing:1.4px;margin-bottom:25px}
+.introCard h3{font:700 clamp(21px,2vw,26px)/1.15 "Segoe UI";letter-spacing:-.65px;margin-bottom:12px}
+.introCard>p{color:var(--muted);font-size:13px;line-height:1.75;min-height:91px}
+.introProjects{display:grid;gap:10px;margin-top:22px;padding-top:17px;border-top:1px solid var(--edge)}
+.introProjects span{display:flex;align-items:baseline;justify-content:space-between;gap:10px}
+.introProjects strong{font-size:12px;font-weight:700}
+.introProjects small{color:var(--muted);font-size:10px;text-align:right}
+.introTags{display:flex;flex-wrap:wrap;gap:7px;margin-top:23px;padding-top:17px;border-top:1px solid var(--edge)}
+.introTags span{padding:7px 10px;border:1px solid var(--edge);border-radius:999px;background:var(--panel);font-size:10px;color:var(--muted)}
+.introFoot{display:flex;align-items:center;justify-content:space-between;gap:24px;margin-top:14px;padding:20px 24px;border:1px solid var(--edge);border-radius:20px;background:linear-gradient(110deg,rgba(58,168,255,.075),var(--panel) 55%,rgba(126,203,255,.04))}
+.introFoot span{flex-shrink:0;color:var(--blue);font-size:10px;font-weight:750;letter-spacing:1px;text-transform:uppercase}
+.introFoot p{color:var(--muted);font-size:13px;line-height:1.7;text-align:right}
+@media(max-width:850px){.introTop{grid-template-columns:1fr;gap:18px}.introGrid{grid-template-columns:1fr}.introCard{min-height:0}.introCard>p{min-height:0}.introProjects{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:560px){.introSection{padding-top:75px;padding-bottom:75px}.introCard{padding:21px}.introFoot{display:block}.introFoot p{margin-top:8px;text-align:left}.introProjects span{align-items:flex-start;flex-direction:column;gap:3px}.introProjects small{text-align:left}}
+@media(prefers-reduced-motion:reduce){.introWave{animation:none}}
+
 </style>
  </head>
  <body>
@@ -2507,6 +2534,9 @@ rsorSettings">
      </div>
     </a>
     <div class="links">
+     <a href="#introduction">
+      Intro
+     </a>
      <a href="#work">
       Work
      </a>
@@ -2668,6 +2698,51 @@ rsorSettings">
       </span>
      </div>
     </div>
+    <section class="introSection" id="introduction">
+     <div class="introTop">
+      <div class="introHello reveal">
+       <span class="introWave" role="img" aria-label="Waving hand">👋</span>
+       <span>Hey, I'm Death.</span>
+      </div>
+      <div class="introLead reveal">
+       <p>I work across Roblox games, websites and online communities. A lot of what I do is hands-on: building features, sorting out bugs, improving how things work and helping projects keep moving.</p>
+      </div>
+     </div>
+     <div class="introGrid">
+      <article class="introCard panel reveal">
+       <span class="introNumber">01 / GAMES</span>
+       <h3>Roblox development</h3>
+       <p>I've worked on projects ranging from roleplay games to horror experiences. That includes building environments, working on gameplay and UI, and helping shape how a game plays.</p>
+       <div class="introProjects">
+        <span><strong>Norfolk County</strong><small>Roleplay game</small></span>
+        <span><strong>The Gathering</strong><small>Horror game inspired by Outlast</small></span>
+       </div>
+      </article>
+      <article class="introCard panel reveal">
+       <span class="introNumber">02 / WEB</span>
+       <h3>Websites & projects</h3>
+       <p>I've built and contributed to websites, bots and larger platform ideas. My work has covered frontend development, features, bug fixing, integrations and the systems behind them.</p>
+       <div class="introProjects">
+        <span><strong>Seshy</strong><small>ER:LC bot development</small></span>
+        <span><strong>Lacker & Nexa</strong><small>Platform development</small></span>
+        <span><strong>Gabble</strong><small>Directory project</small></span>
+        <span><strong>WARP & Vanta</strong><small>Website projects</small></span>
+       </div>
+      </article>
+      <article class="introCard panel reveal">
+       <span class="introNumber">03 / COMMUNITIES</span>
+       <h3>People & day-to-day work</h3>
+       <p>I've also spent time working with online communities, from staff teams to support and moderation. I've handled things like bug reports, tickets, security, session management and helping teams stay organised.</p>
+       <div class="introTags">
+        <span>Moderation</span><span>Staff management</span><span>Support & tickets</span><span>Security</span><span>Session management</span><span>Bug reports</span>
+       </div>
+      </article>
+     </div>
+     <div class="introFoot reveal">
+      <span>What I enjoy most</span>
+      <p>Taking an idea, working out what it needs, and sticking with it until the important parts actually work.</p>
+     </div>
+    </section>
     <section id="work">
      <div class="sectionHead">
       <div>
