@@ -944,16 +944,17 @@ header.hero::after{
 header.hero>.container{position:relative;z-index:2}
 header.hero>.hero-grid,header.hero>.hero-orb,header.hero>.hero-orb2{z-index:1}
 header.hero::before{
-  inset:-5% -3%;
-  transform:translate3d(-1.5%,0,0) scale(1.04);
-  animation:portfolioColourDrift 24s ease-in-out infinite alternate;
+  inset:-22%;
+  will-change:transform;
+  transform:translate3d(-9%,-5%,0) scale(1.12);
+  animation:portfolioColourDrift 18s ease-in-out infinite alternate;
 }
 @keyframes portfolioColourDrift{
-  0%{transform:translate3d(-1.5%,0,0) scale(1.04)}
-  100%{transform:translate3d(1.5%,1%,0) scale(1.08)}
+  0%{transform:translate3d(-9%,-5%,0) scale(1.12)}
+  100%{transform:translate3d(9%,5%,0) scale(1.12)}
 }
 @media(prefers-reduced-motion:reduce){
-  header.hero::before{animation:none}
+  header.hero::before{animation:none;will-change:auto}
 }
 </style>
 </head>
