@@ -3490,13 +3490,21 @@ float fbm(vec2 p){float v=0.,a=.52;for(int i=0;i<4;i++){v+=a*noise(p);p=p*2.03+v
 void main(){
 vec2 aspect=vec2(uResolution.x/uResolution.y,1.),p=(vUv-.5)*aspect,mouse=(uPointer-.5)*aspect;
 float t=uTime*.19;vec2 delta=p-mouse;float radius=length(delta);
-vec2 radial=delta/max(radius,.0001),tangent=vec2(-radial.y,radial.x);
-float falloff=pow(1.-smoothstep(0.,.82,radius),2.)*uPointerActive;
-float speed=clamp(length(uVelocity)*3.2,0.,1.);
-// Smooth lens-like deformation, not rings: pull, twist and shear the colour field.
-p+=radial*(falloff*.20);
-p+=tangent*(falloff*(.13+speed*.15));
-p+=uVelocity*falloff*.18;
+float influence=exp(-radius*radius*2.15)*uPointerActive;
+float speed=clamp(length(uVelocity)*2.4,0.,1.);
+// Broad, rounded refraction: smoothly displace the field around the pointer.
+// No radial spokes, sharp centre, rings or pointed pull.
+vec2 localFlow=vec2(
+ fbm(p*2.15+vec2(4.2+t*.32,-2.7-t*.24)),
+ fbm(p*2.15+vec2(-3.1-t*.27,5.3+t*.29))
+)-.5;
+vec2 softBend=vec2(
+ sin(delta.y*3.1+t*.55),
+ sin(delta.x*2.8-t*.42)
+);
+p+=localFlow*influence*(.30+speed*.08);
+p+=softBend*influence*.075;
+p+=vec2(-uVelocity.y,uVelocity.x)*influence*.12;
 vec2 flow=vec2(fbm(p*2.05+vec2(t,-t*.72)),fbm(p*2.05+vec2(5.4+t*.58,2.1-t*.83)));
 p+=(flow-.5)*.58;
 float field=fbm(p*2.65+vec2(t*.7,-t*.55)),detail=fbm(p*1.48+flow*1.4+vec2(-t*.48,t*.37)),accent=noise(p*2.1+vec2(3.7,-2.2));
