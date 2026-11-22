@@ -523,6 +523,9 @@ body.dark .sectionHead{
   transform:translateY(-8px) scale(1.015);
   box-shadow:0 24px 65px rgba(20,120,214,.20)}
 
+
+/* Small cropped gameplay previews for The Gathering. The tighter frame keeps player labels and side UI out of view. */
+.gameCard .gameClip{position:absolute;inset:-12%;width:124%;height:124%;object-fit:cover;object-position:center 62%;transform:scale(1.08);pointer-events:none;filter:saturate(.86) contrast(1.04);}
 .gameCard img{
   position:absolute;
   inset:0;
@@ -2824,7 +2827,7 @@ rsorSettings">
       </div>
       <div class="gameGrid stagger-game">
        <article class="gameCard panel" data-game="The Gathering">
-        <img alt="The Gathering environment showcase" loading="lazy" src="/assets/project-placeholder.svg"/>
+        <video class="gameClip" autoplay muted loop playsinline preload="metadata" aria-label="The Gathering gameplay clip 1"><source src="https://unknownboi.itsjohan.dev/videos/roblox/gathering.mp4" type="video/mp4"/></video>
         <span class="gameIndex">
          01
         </span>
@@ -2841,7 +2844,7 @@ rsorSettings">
         </div>
        </article>
        <article class="gameCard panel" data-game="The Gathering">
-        <img alt="The Gathering development showcase" loading="lazy" src="/assets/project-placeholder.svg"/>
+        <video class="gameClip" autoplay muted loop playsinline preload="metadata" aria-label="The Gathering gameplay clip 2"><source src="https://unknownboi.itsjohan.dev/videos/roblox/vents.mp4" type="video/mp4"/></video>
         <span class="gameIndex">
          02
         </span>
@@ -2858,7 +2861,7 @@ rsorSettings">
         </div>
        </article>
        <article class="gameCard panel" data-game="The Gathering">
-        <img alt="The Gathering interface showcase" loading="lazy" src="/assets/project-placeholder.svg"/>
+        <video class="gameClip" autoplay muted loop playsinline preload="metadata" aria-label="The Gathering gameplay clip 3"><source src="https://unknownboi.itsjohan.dev/videos/roblox/supermarket.mp4" type="video/mp4"/></video>
         <span class="gameIndex">
          03
         </span>
@@ -2875,7 +2878,7 @@ rsorSettings">
         </div>
        </article>
        <article class="gameCard panel" data-game="The Gathering">
-        <img alt="The Gathering atmosphere showcase" loading="lazy" src="/assets/project-placeholder.svg"/>
+        <video class="gameClip" autoplay muted loop playsinline preload="metadata" aria-label="The Gathering gameplay clip 4"><source src="https://unknownboi.itsjohan.dev/videos/roblox/camcorder.mp4" type="video/mp4"/></video>
         <span class="gameIndex">
          04
         </span>
