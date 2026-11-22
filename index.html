@@ -80,6 +80,15 @@ img{
 ::selection{
   background:rgba(58,168,255,.25)}
 
+/* Keep page copy disabled; useful account details are exposed through dedicated copy buttons. */
+body,body *{
+  -webkit-user-select:none!important;
+  user-select:none!important;
+  -webkit-touch-callout:none}
+input,textarea,[contenteditable="true"]{
+  -webkit-user-select:text!important;
+  user-select:text!important}
+
 ::-webkit-scrollbar{
   width:8px}
 
@@ -2404,8 +2413,8 @@ img{height:auto}
 .introSection{padding-top:105px;padding-bottom:105px}
 .introTop{display:grid;grid-template-columns:.78fr 1.22fr;gap:42px;align-items:start;margin-bottom:34px}
 .introHello{display:flex;align-items:center;gap:13px;font:700 clamp(30px,4vw,48px)/1.08 "Segoe UI";letter-spacing:-1.8px}
-.introWave{display:inline-block;font-family:"Apple Color Emoji","Segoe UI Emoji",sans-serif;font-size:clamp(34px,4vw,48px);transform-origin:72% 76%;animation:introWave 2.15s ease-in-out infinite}
-@keyframes introWave{0%,58%,100%{transform:rotate(0deg)}8%,24%,40%{transform:rotate(18deg)}16%,32%,48%{transform:rotate(-10deg)}}
+.introWave{display:inline-block;font-family:"Apple Color Emoji","Segoe UI Emoji",sans-serif;font-size:clamp(34px,4vw,48px);transform-origin:72% 76%;animation:introWave 1.05s ease-in-out infinite}
+@keyframes introWave{0%,100%{transform:rotate(0deg)}20%{transform:rotate(20deg)}40%{transform:rotate(-12deg)}60%{transform:rotate(18deg)}80%{transform:rotate(-10deg)}}
 .introLead p{max-width:720px;color:var(--muted);font-size:clamp(16px,1.6vw,19px);line-height:1.8}
 .introGrid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
 .introCard{position:relative;min-height:310px;padding:25px;border-radius:25px;overflow:hidden;transition:transform .35s cubic-bezier(.2,.8,.2,1),border-color .3s,box-shadow .3s}
@@ -3830,7 +3839,12 @@ $$('main section').forEach(section=>slamObserver.observe(section));  document.qu
   addEventListener('resize',()=>{clearTimeout(resizeTimer);resizeTimer=setTimeout(fillTrack,250)});
 })();
 
-/* project filters */ $$(".filter").forEach(f=>f.onclick=()=>{   $$(".filter").forEach(x=>x.classList.remove("active"));f.classList.add("active");   const value=f.dataset.filter;   $$('.project').forEach(p=>{const show=value==="all"||p.dataset.category===value;p.style.display=show?"":"none"}); });  /* project modal */ const po=$("#projectOverlay"),di=$("#dialogImage"),dt=$("#dialogTitle"),dd=$("#dialogDescription"),dl=$("#dialogLink"); function openProject(p){di.src=p.dataset.image||'';dt.textContent=p.dataset.title||'';dd.textContent=p.dataset.description||'';if(p.dataset.url){dl.style.display='inline-flex';dl.href=p.dataset.url}else dl.style.display='none';po.classList.add('open');document.body.style.overflow='hidden'} function closeProject(){po.classList.remove('open');document.body.style.overflow=''} $$('.project').forEach(p=>p.addEventListener('click',e=>{if(e.target.closest('a'))return;openProject(p)})); $("#projectClose").onclick=closeProject;$("#dialogClose").onclick=closeProject;po.onclick=e=>{if(e.target===po)closeProject()};  /* copy roblox username */ $("#copyRoblox").onclick=async function(){const old=this.innerHTML;try{await navigator.clipboard.writeText('DeathStrider114');this.textContent='Copied ✓'}catch{this.textContent='DeathStrider114'}setTimeout(()=>this.innerHTML=old,1500)};  /* active nav highlight */ const secs=$$('main section[id]'),nls=$$('.links a'); const secObs=new IntersectionObserver(es=>es.forEach(e=>{if(!e.isIntersecting)return;nls.forEach(l=>l.classList.toggle('active',l.getAttribute('href')==='#'+e.target.id))}),{rootMargin:'-40% 0px -50% 0px'}); secs.forEach(s=>secObs.observe(s));  /* Music is kept hidden until actual audio files are added to the repository. */ const musicPlayerEl=$("#musicPlayer"); if(musicPlayerEl) musicPlayerEl.style.display="none";
+/* project filters */ $$(".filter").forEach(f=>f.onclick=()=>{   $$(".filter").forEach(x=>x.classList.remove("active"));f.classList.add("active");   const value=f.dataset.filter;   $$('.project').forEach(p=>{const show=value==="all"||p.dataset.category===value;p.style.display=show?"":"none"}); });  /* project modal */ const po=$("#projectOverlay"),di=$("#dialogImage"),dt=$("#dialogTitle"),dd=$("#dialogDescription"),dl=$("#dialogLink"); function openProject(p){di.src=p.dataset.image||'';dt.textContent=p.dataset.title||'';dd.textContent=p.dataset.description||'';if(p.dataset.url){dl.style.display='inline-flex';dl.href=p.dataset.url}else dl.style.display='none';po.classList.add('open');document.body.style.overflow='hidden'} function closeProject(){po.classList.remove('open');document.body.style.overflow=''} $$('.project').forEach(p=>p.addEventListener('click',e=>{if(e.target.closest('a'))return;openProject(p)})); $("#projectClose").onclick=closeProject;$("#dialogClose").onclick=closeProject;po.onclick=e=>{if(e.target===po)closeProject()};  /* Block manual copying and selection. The dedicated copy button below remains available. */
+document.addEventListener('copy',e=>{if(!e.target.closest('#copyRoblox')){e.preventDefault();if(e.clipboardData)e.clipboardData.clearData();}});
+document.addEventListener('cut',e=>e.preventDefault());
+document.addEventListener('contextmenu',e=>e.preventDefault());
+document.addEventListener('keydown',e=>{if((e.ctrlKey||e.metaKey)&&['c','x','a'].includes(e.key.toLowerCase())&&!e.target.closest('input,textarea,[contenteditable="true"]'))e.preventDefault();});
+/* copy roblox username */ $("#copyRoblox").onclick=async function(){const old=this.innerHTML;try{await navigator.clipboard.writeText('DeathStrider114');this.textContent='Copied ✓'}catch{this.textContent='Copy unavailable'}setTimeout(()=>this.innerHTML=old,1500)};  /* active nav highlight */ const secs=$$('main section[id]'),nls=$$('.links a'); const secObs=new IntersectionObserver(es=>es.forEach(e=>{if(!e.isIntersecting)return;nls.forEach(l=>l.classList.toggle('active',l.getAttribute('href')==='#'+e.target.id))}),{rootMargin:'-40% 0px -50% 0px'}); secs.forEach(s=>secObs.observe(s));  /* Music is kept hidden until actual audio files are added to the repository. */ const musicPlayerEl=$("#musicPlayer"); if(musicPlayerEl) musicPlayerEl.style.display="none";
   
 /* Roblox avatar lookup is proxied through this site's Vercel function to avoid browser CORS restrictions. */
 (async function(){
