@@ -1260,6 +1260,29 @@ footer{border-color:var(--line);color:#929298}
 @media(prefers-reduced-motion:reduce){.hero-orb{animation:none!important}}
 @media(prefers-reduced-transparency:reduce){.nav,.btn{backdrop-filter:none!important;-webkit-backdrop-filter:none!important;background:#fff!important}}
 
+
+/* FINAL DETAIL PASS: interaction quality, accessibility and consistency */
+:where(a,button,input,select,textarea,[tabindex]):focus-visible{
+ outline:3px solid rgba(0,113,227,.78);outline-offset:4px;border-radius:10px
+}
+::selection{background:rgba(0,113,227,.2);color:#1d1d1f}
+html{scrollbar-gutter:stable}
+body{-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+.nav{isolation:isolate;overflow:hidden}
+.nav:before{content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;border-radius:inherit;background:linear-gradient(115deg,rgba(255,255,255,.45),transparent 36%,transparent 72%,rgba(255,255,255,.14))}
+.nav-links a{padding:9px 11px;border-radius:999px;transition:color .2s ease,background .2s ease}
+.nav-links a:hover{background:rgba(0,113,227,.07)}
+.project,.skill,.experience-item,.contact-link{transition:transform .26s cubic-bezier(.2,.75,.25,1),border-color .25s ease,box-shadow .26s ease,background .25s ease}
+.project:focus-within,.skill:focus-within{border-color:rgba(0,113,227,.28);box-shadow:0 14px 38px rgba(20,50,90,.08)}
+img{height:auto}
+@media(hover:hover) and (pointer:fine){
+ .feature-box:hover{transform:translateY(-3px);box-shadow:0 24px 65px rgba(30,60,100,.1)}
+}
+@media(prefers-reduced-motion:reduce){
+ html{scroll-behavior:auto}
+ *,*::before,*::after{scroll-behavior:auto!important;animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}
+}
+
 </style>
 </head>
 
